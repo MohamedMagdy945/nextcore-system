@@ -11,7 +11,22 @@ namespace Catalog.API
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "Catalog API",
+                        Description = "An ASP.NET Core Web API for managing catalog micro-services in commerce application",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                        {
+                            Name = "Mohamed Magdy Said",
+                            Email = "mohamedmagdy000022@gmail.com",
+                        }
+                    });
+            }
+            );
 
             builder.Services.AddOpenApi();
 
