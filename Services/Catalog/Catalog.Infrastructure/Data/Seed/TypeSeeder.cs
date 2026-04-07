@@ -6,7 +6,7 @@ namespace Catalog.Infrastructure.Data.Seed
 {
     public class TypeSeeder
     {
-        public static async Task SeedDatasync(IMongoCollection<ProductType> typeCollection)
+        public static async Task SeedAsync(IMongoCollection<ProductType> typeCollection)
         {
             var hasData = await typeCollection.Find(_ => true).AnyAsync();
             if (hasData) return;

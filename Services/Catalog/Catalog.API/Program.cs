@@ -1,9 +1,13 @@
 
+using Catalog.Infrastructure.Data.Seed;
+using Catalog.Infrastructure.Persistence;
+using Catalog.Infrastructure.Settings;
+
 namespace Catalog.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public async static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +25,7 @@ namespace Catalog.API
                         Description = "An ASP.NET Core Web API for managing catalog micro-services in commerce application",
                         Contact = new Microsoft.OpenApi.Models.OpenApiContact
                         {
-                            Name = "Mohamed Magdy Said",
+                            Name = "Mohamed Magdy",
                             Email = "mohamedmagdy000022@gmail.com",
                         }
                     });
@@ -30,8 +34,19 @@ namespace Catalog.API
 
             builder.Services.AddOpenApi();
 
+            builder.Services.Configure<DatabaseSettings>(
+                builder.Configuration.GetSection("DatabaseSettings"));
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+
+                await BrandSeeder.SeedDataAsync(context.Brands);
+                await TypeSeeder.SeedDataAsync(context.Types);
+                await CatalogSeeder.SeedDataAsync(context.Products);
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -45,6 +60,9 @@ namespace Catalog.API
 
 
             app.MapControllers();
+
+
+
 
             app.Run();
         }
