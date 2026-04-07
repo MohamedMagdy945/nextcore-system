@@ -1,6 +1,6 @@
 ﻿using Catalog.Application.Interfaces;
+using Catalog.Application.Interfaces.Repositories;
 using Catalog.Core.Entities;
-using Catalog.Core.Repositories;
 using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Repositories
@@ -20,11 +20,11 @@ namespace Catalog.Infrastructure.Repositories
         {
             return await _context.Products.Find(p => true).ToListAsync();
         }
-        public async Task<IEnumerable<Product>> GetAllByName(string name)
+        public async Task<IEnumerable<Product>> GetAllByNameAsync(string name)
         {
             return await _context.Products.Find(p => p.Name == name).ToListAsync();
         }
-        public async Task<IEnumerable<Product>> GetAllByBrandName(string name)
+        public async Task<IEnumerable<Product>> GetAllByBrandNameAsync(string name)
         {
             return await _context.Products.Find(p => p.Brand.Name == name).ToListAsync();
         }

@@ -11,7 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Handlers\Commands\" />
     <Folder Include="Interfaces\Services\" />
+    <Folder Include="Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="MediatR" Version="14.1.0" />
   </ItemGroup>
 
 </Project>

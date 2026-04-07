@@ -1,6 +1,6 @@
 ﻿using Catalog.Application.Interfaces;
+using Catalog.Application.Interfaces.Repositories;
 using Catalog.Core.Entities;
-using Catalog.Core.Repositories;
 using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Repositories
