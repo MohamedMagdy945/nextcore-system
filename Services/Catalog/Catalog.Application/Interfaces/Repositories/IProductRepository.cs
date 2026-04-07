@@ -7,9 +7,9 @@ namespace Catalog.Core.Repositories
         Task<IEnumerable<Product>> GetAllAsync();
         Task<Product> GetByIdAsync(string id);
         Task<IEnumerable<Product>> GetAllByName(string name);
-        Task<IEnumerable<Product>> GetAllByBrand(string name);
+        Task<IEnumerable<Product>> GetAllByBrandName(string name);
         Task<Product> CreateAsync(Product product);
         Task<bool> UpdateAsync(Product product);
-        Task DeleteAsync(string id);
+        Task<bool> DeleteAsync(string id);
     }
 }

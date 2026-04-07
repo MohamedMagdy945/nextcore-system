@@ -1,13 +1,12 @@
-
+using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
-using Catalog.Infrastructure.Settings;
 
 namespace Catalog.API
 {
     public class Program
     {
-        public async static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -43,9 +42,9 @@ namespace Catalog.API
             {
                 var context = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
 
-                await BrandSeeder.SeedDataAsync(context.Brands);
-                await TypeSeeder.SeedDataAsync(context.Types);
-                await CatalogSeeder.SeedDataAsync(context.Products);
+                await BrandSeeder.SeedAsync(context.Brands);
+                await TypeSeeder.SeedAsync(context.Types);
+                await CatalogSeeder.SeedAsync(context.Products);
             }
 
             // Configure the HTTP request pipeline.

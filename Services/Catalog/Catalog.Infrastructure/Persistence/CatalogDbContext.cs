@@ -1,12 +1,12 @@
 ﻿using Catalog.Application.Interfaces;
 using Catalog.Core.Entities;
-using Catalog.Infrastructure.Settings;
+using Catalog.Infrastructure.Common.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Persistence
 {
-    public class CatalogDbContext : ICatalogContext
+    public class CatalogDbContext : ICatalogDbContext
     {
         public IMongoCollection<Product> Products { get; }
         public IMongoCollection<ProductBrand> Brands { get; }

@@ -14,4 +14,16 @@
     <Folder Include="Data\Configurations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\Seed\Files\brands.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Seed\Files\products.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Seed\Files\types.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

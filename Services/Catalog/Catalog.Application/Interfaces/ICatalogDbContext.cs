@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace Catalog.Application.Interfaces
 {
-    public interface ICatalogContext
+    public interface ICatalogDbContext
     {
         IMongoCollection<Product> Products { get; }
         IMongoCollection<ProductBrand> Brands { get; }
