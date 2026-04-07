@@ -1,3 +1,4 @@
+using Catalog.Application.Mappers;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
@@ -32,6 +33,11 @@ namespace Catalog.API
             );
 
             builder.Services.AddOpenApi();
+
+            builder.Services.AddAutoMapper(cfg =>
+            {
+                cfg.AddMaps(typeof(ProductMappingProfile).Assembly);
+            });
 
             builder.Services.Configure<DatabaseSettings>(
                 builder.Configuration.GetSection("DatabaseSettings"));
