@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\Commands\" />
     <Folder Include="Interfaces\Services\" />
-    <Folder Include="Commands\" />
   </ItemGroup>
 
   <ItemGroup>

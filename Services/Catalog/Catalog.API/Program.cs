@@ -1,7 +1,11 @@
+using Catalog.Application.Interfaces;
+using Catalog.Application.Interfaces.Repositories;
 using Catalog.Application.Mappers;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
+using Catalog.Infrastructure.Repositories;
+using System.Reflection;
 
 namespace Catalog.API
 {
@@ -41,6 +45,21 @@ namespace Catalog.API
 
             builder.Services.Configure<DatabaseSettings>(
                 builder.Configuration.GetSection("DatabaseSettings"));
+
+            builder.Services.AddMediatR(cfg =>
+                cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+
+            builder.Services.AddScoped<ICatalogDbContext, CatalogDbContext>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ITypeRepository, TypeRepository>();
+            builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+
+            builder.Services.AddApiVersioning(options =>
+            {
+                options.ReportApiVersions = true;
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+            });
 
             var app = builder.Build();
 
