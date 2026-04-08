@@ -36,9 +36,14 @@ namespace Basket.Infrastructure.Repositories
             return await GetBasketAsync(cart.UserName);
         }
 
-        public Task DeleteBasket(string userName)
+        public async Task DeleteBasket(string userName)
         {
-            throw new NotImplementedException();
+            var basket = _redisCache.GetStringAsync(userName);
+            if (basket == null)
+            {
+                await _redisCache.RemoveAsync(userName);
+            }
+
         }
 
 
