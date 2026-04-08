@@ -7,6 +7,11 @@ namespace Basket.Application.Commands
     public class CreateShoppingCartCommand : IRequest<ShoppingCartResponse>
     {
         public string UserName { get; set; }
+
+        public CreateShoppingCartCommand()
+        {
+
+        }
         public CreateShoppingCartCommand(string userName)
         {
             UserName = userName;

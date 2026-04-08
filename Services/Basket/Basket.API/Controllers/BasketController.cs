@@ -11,7 +11,7 @@ namespace Basket.API.Controllers
     {
         [HttpGet]
         [Route("[action]/{userName}", Name = "GetBasketByUserName")]
-        [ProducesResponseType(typeof(ShoppingCartItemResponse), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> GetBasket(string userName)
         {
             var query = new GetBasketByUserNameQuery(userName);
@@ -20,7 +20,7 @@ namespace Basket.API.Controllers
         }
 
         [HttpPut("UpdateBasket")]
-        [ProducesResponseType(typeof(ShoppingCartItemResponse), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
             var basket = await _mediator.Send(command);
@@ -29,7 +29,6 @@ namespace Basket.API.Controllers
 
         [HttpDelete()]
         [Route("[action]/{userName}", Name = "DeleteBasketByUserName")]
-        [ProducesResponseType(typeof(ShoppingCartItemResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> DeleteBasket(string userName)
         {
             var command = new DeleteBasketByUserNameCommand(userName);
