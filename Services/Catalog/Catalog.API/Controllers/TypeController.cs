@@ -11,7 +11,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(IList<BrandResponseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IList<ProductResponseDto>>> GetAllTypes()
         {
-            var query = new GetAllProductsQuery();
+            var query = new GetAllTypesQuery();
             var result = await _mediator.Send(query);
             return Ok(result);
         }
