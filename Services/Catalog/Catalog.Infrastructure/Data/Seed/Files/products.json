@@ -6,11 +6,11 @@
     "Price": 3500,
     "ImageFile": "images/products/adidas_shoe-1.png",
     "Summary": "Adidas Quick Force Indoor Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e40e0aa3968b549af53",
       "Name": "Adidas"
     }    
@@ -22,11 +22,11 @@
     "Price": 3375,
     "ImageFile": "images/products/adidas_shoe-2.png",
     "Summary": "Adidas Quick Force Indoor Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e40e0aa3968b549af53",
       "Name": "Adidas"
     } 
@@ -38,11 +38,11 @@
     "Price": 3375,
     "ImageFile": "images/products/adidas_shoe-3.png",
     "Summary": "Adidas Quick Force Indoor Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e40e0aa3968b549af53",
       "Name": "Adidas"
     } 
@@ -54,11 +54,11 @@
     "Price": 4249,
     "ImageFile": "images/products/asics_shoe-1.png",
     "Summary": "Asics Gel Rocket 8 Indoor Court Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e4c455900b990b43bc1",
       "Name": "ASICS"
     }    
@@ -70,11 +70,11 @@
     "Price": 3499,
     "ImageFile": "images/products/asics_shoe-2.png",
     "Summary": "Asics Gel Rocket 8 Indoor Court Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e4c455900b990b43bc1",
       "Name": "ASICS"
     }
@@ -86,11 +86,11 @@
     "Price": 3499,
     "ImageFile": "images/products/asics_shoe-3.png",
     "Summary": "Sigma Fit Quick Force Indoor Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e4c455900b990b43bc1",
       "Name": "ASICS"
     }
@@ -102,11 +102,11 @@
     "Price": 2392,
     "ImageFile": "images/products/victor_shoe-1.png",
     "Summary": "Victor SHW503 F Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e59065163c16451bd73",
       "Name": "Victor"
     }    
@@ -118,11 +118,11 @@
     "Price": 3000,
     "ImageFile": "images/products/victor_shoe-2.png",
     "Summary": "Victor SHW503 F Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e59065163c16451bd73",
       "Name": "Victor"
     } 
@@ -134,11 +134,11 @@
     "Price": 2590,
     "ImageFile": "images/products/yonex_shoe-1.png",
     "Summary": "Yonex Super Ace Light Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -150,11 +150,11 @@
     "Price": 3500,
     "ImageFile": "images/products/yonex_shoe-2.png",
     "Summary": "Yonex Super Ace Light Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -166,11 +166,11 @@
     "Price": 3700,
     "ImageFile": "images/products/yonex_shoe-3.png",
     "Summary": "Yonex Super Ace Light Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -182,11 +182,11 @@
     "Price": 4999,
     "ImageFile": "images/products/puma_shoe-1.png",
     "Summary": "Puma 19 FH Rubber Spike Cricket Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e728c4cff9708ada2a6",
       "Name": "Puma"
     }
@@ -198,11 +198,11 @@
     "Price": 5200,
     "ImageFile": "images/products/puma_shoe-2.png",
     "Summary": "Puma Super Ace Light Badminton Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e728c4cff9708ada2a6",
       "Name": "Puma"
     }
@@ -214,11 +214,11 @@
     "Price": 5700,
     "ImageFile": "images/products/puma_shoe-3.png",
     "Summary": "Puma 19 FH Rubber Spike Cricket Shoes",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e728c4cff9708ada2a6",
       "Name": "Puma"
     }
@@ -230,11 +230,11 @@
     "Price": 4125,
     "ImageFile": "images/products/babolat_shoe-1.png",
     "Summary": "Babolat Shadow Spirit Mens Badminton Shoes (Cloisonne/Strike)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -246,11 +246,11 @@
     "Price": 5249,
     "ImageFile": "images/products/babolat_shoe-2.png",
     "Summary": "Babolat Shadow Tour Mens Badminton Shoes (White/Blue)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -262,11 +262,11 @@
     "Price": 2999,
     "ImageFile": "images/products/babolat_shoe-3.png",
     "Summary": "Babolat Shadow Team Womens Badminton Shoes (Black/Peony)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d4bc3a8a58f47299f97",
       "Name": "Shoes"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -278,11 +278,11 @@
     "Price": 6099,
     "ImageFile": "images/products/yonex-racket-1.png",
     "Summary": "Yonex VCORE Pro 100 A Tennis Racquet (270gm, Strung)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d6d958e43ee1cd375fe",
       "Name": "Rackets"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -294,11 +294,11 @@
     "Price": 6399,
     "ImageFile": "images/products/yonex-racket-2.png",
     "Summary": "Yonex VCORE Pro 100 A Tennis Racquet (290gm, Strung)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d6d958e43ee1cd375fe",
       "Name": "Rackets"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -310,11 +310,11 @@
     "Price": 13299,
     "ImageFile": "images/products/yonex-racket-3.png",
     "Summary": "Yonex VCORE Pro 100 A Tennis Racquet (290gm, Strung)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d6d958e43ee1cd375fe",
       "Name": "Rackets"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -326,11 +326,11 @@
     "Price": 6999,
     "ImageFile": "images/products/babolat-racket-1.png",
     "Summary": "Babolat Boost D Tennis Racquet (260gm, Strung)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d6d958e43ee1cd375fe",
       "Name": "Rackets"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -342,11 +342,11 @@
     "Price": 13000,
     "ImageFile": "images/products/babolat-racket-2.png",
     "Summary": "Babolat Pure Aero 2019 Superlite Tennis Racquet",
-    "Types": {
+    "Type": {
       "Id": "63ca5d6d958e43ee1cd375fe",
       "Name": "Rackets"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -358,11 +358,11 @@
     "Price": 34000,
     "ImageFile": "images/products/babolat-racket-3.png",
     "Summary": "Babolat Pure Drive VS Tennis Racquet (Pair, 300gm, Strung)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d6d958e43ee1cd375fe",
       "Name": "Rackets"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -374,11 +374,11 @@
     "Price": 2499,
     "ImageFile": "images/products/adidas_football-1.png",
     "Summary": "Adidas FIFA World Cup 2018 OMB Football (White/Red/Black)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d7d380402dce7f06ebc",
       "Name": "Football"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e40e0aa3968b549af53",
       "Name": "Adidas"
     } 
@@ -390,11 +390,11 @@
     "Price": 3200,
     "ImageFile": "images/products/adidas_football-2.png",
     "Summary": "Adidas FIFA World Cup 2018 OMB Football",
-    "Types": {
+    "Type": {
       "Id": "63ca5d7d380402dce7f06ebc",
       "Name": "Football"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e40e0aa3968b549af53",
       "Name": "Adidas"
     } 
@@ -406,11 +406,11 @@
     "Price": 2499,
     "ImageFile": "images/products/adidas_football-3.png",
     "Summary": "Adidas FIFA World Cup 2023 OMB Football",
-    "Types": {
+    "Type": {
       "Id": "63ca5d7d380402dce7f06ebc",
       "Name": "Football"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e40e0aa3968b549af53",
       "Name": "Adidas"
     } 
@@ -422,11 +422,11 @@
     "Price": 1525,
     "ImageFile": "images/products/Nike-Football-1.png",
     "Summary": "Nike Pitch Premier League Football (Yellow/Purple)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d7d380402dce7f06ebc",
       "Name": "Football"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e7ec90ff5c8f44d5ac8",
       "Name": "Nike"
     }
@@ -438,11 +438,11 @@
     "Price": 1525,
     "ImageFile": "images/products/Nike-Football-2.png",
     "Summary": "Nike Manchester City Supporters Football (Berry)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d7d380402dce7f06ebc",
       "Name": "Football"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e7ec90ff5c8f44d5ac8",
       "Name": "Nike"
     }
@@ -454,11 +454,11 @@
     "Price": 1450,
     "ImageFile": "images/products/Nike-Football-3.png",
     "Summary": "Nike Mercurial Veer Football (White/Green/Black)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d7d380402dce7f06ebc",
       "Name": "Football"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e7ec90ff5c8f44d5ac8",
       "Name": "Nike"
     }
@@ -470,11 +470,11 @@
     "Price": 4550,
     "ImageFile": "images/products/babolat-kitback-1.png",
     "Summary": "Babolat Team Line Racket 12 Kit Bag (Fluorescent Red)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -486,11 +486,11 @@
     "Price": 9799,
     "ImageFile": "images/products/babolat-kitback-2.png",
     "Summary": "Babolat Pure Strike RH X12 Kit Bag (White/Red)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -502,11 +502,11 @@
     "Price": 4550,
     "ImageFile": "images/products/babolat-kitback-3.png",
     "Summary": "Babolat Team Line 12 Racquet Kit Bag (Silver)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e8d6110a9c56ee7dc48",
       "Name": "Babolat"
     }
@@ -518,11 +518,11 @@
     "Price": 1999,
     "ImageFile": "images/products/yonex-kitback-1.png",
     "Summary": "Yonex SUNR 4826TK BT6-SR Badminton Kit Bag (Black/Red/White)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -534,11 +534,11 @@
     "Price": 1499,
     "ImageFile": "images/products/yonex-kitback-2.png",
     "Summary": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Blue/Red)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
@@ -554,7 +554,7 @@
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
-    "Brands": {
+    "Brand": {
       "Id":"63ca5e655ec1fdc49bd9327d",
       "Name": "Yonex"
     }
