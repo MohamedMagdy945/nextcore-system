@@ -28,5 +28,16 @@ namespace Catalog.API.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetAllProducts")]
+        [ProducesResponseType(typeof(IList<ProductResponseDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType((int)StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllProducts()
+        {
+            var query = new GetAllProductsQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
