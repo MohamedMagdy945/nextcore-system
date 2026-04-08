@@ -39,12 +39,33 @@ namespace Catalog.API.Controllers
         }
 
         [HttpPost]
-        [Route("GreateProduct")]
+        [Route("CreateProduct")]
         [ProducesResponseType(typeof(ProductResponseDto), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IList<ProductResponseDto>>> GreateProduct(CreateProductCommand productCommand)
+        public async Task<ActionResult<IList<ProductResponseDto>>> CreateProduct(CreateProductCommand productCommand)
         {
             var result = await _mediator.Send(productCommand);
             return Ok(result);
         }
+
+
+        [HttpPut]
+        [Route("UpdateProduct")]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IList<ProductResponseDto>>> UpdateProduct(UpdateProductCommand productCommand)
+        {
+            var result = await _mediator.Send(productCommand);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("{id}", Name = "DeleteProduct")]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IList<ProductResponseDto>>> DeleteProduct(string id)
+        {
+            var productCommand = new DeleteProductCommand(id);
+            var result = await _mediator.Send(productCommand);
+            return Ok(result);
+        }
+
     }
 }
