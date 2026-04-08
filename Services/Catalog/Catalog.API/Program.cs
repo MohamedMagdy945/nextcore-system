@@ -1,11 +1,11 @@
+using Catalog.Application.Common;
 using Catalog.Application.Interfaces;
 using Catalog.Application.Interfaces.Repositories;
-using Catalog.Application.Mappers;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
 using Catalog.Infrastructure.Repositories;
-using System.Reflection;
+using MongoDB.Driver;
 
 namespace Catalog.API
 {
@@ -40,14 +40,24 @@ namespace Catalog.API
 
             builder.Services.AddAutoMapper(cfg =>
             {
-                cfg.AddMaps(typeof(ProductMappingProfile).Assembly);
+                cfg.AddMaps(typeof(ApplicationAssemblyMarker).Assembly);
             });
 
             builder.Services.Configure<DatabaseSettings>(
                 builder.Configuration.GetSection("DatabaseSettings"));
 
             builder.Services.AddMediatR(cfg =>
-                cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+                cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyMarker).Assembly));
+
+            var databaseSettings = builder.Configuration
+                .GetSection("DatabaseSettings")
+                .Get<DatabaseSettings>();
+
+            builder.Services.AddSingleton<IMongoClient>(sp =>
+            {
+                var configuration = sp.GetRequiredService<IConfiguration>();
+                return new MongoClient(databaseSettings?.ConnectionString);
+            });
 
             builder.Services.AddScoped<ICatalogDbContext, CatalogDbContext>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -65,7 +75,7 @@ namespace Catalog.API
 
             using (var scope = app.Services.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+                var context = scope.ServiceProvider.GetRequiredService<ICatalogDbContext>();
 
                 await BrandSeeder.SeedAsync(context.Brands);
                 await TypeSeeder.SeedAsync(context.Types);

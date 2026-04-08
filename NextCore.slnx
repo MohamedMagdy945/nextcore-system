@@ -6,4 +6,7 @@
     <Project Path="Services/Catalog/Catalog.Core/Catalog.Core.csproj" Id="4f353498-ef4d-49ee-aec8-5bfbe1c94234" />
     <Project Path="Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj" />
   </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>

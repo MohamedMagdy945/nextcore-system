@@ -1,0 +1,29 @@
+services:
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - CatalogDB
+
+    environment:
+      - ASPNETCORE_URLS=http://+:8000
+      - DatabaseSettings__ConnectionString=mongodb://CatalogDB:27017
+      - DatabaseSettings__DatabaseName=CatalogDb
+      - DatabaseSettings__BrandsCollection=Brands
+      - DatabaseSettings__TypesCollection=Types
+      - DatabaseSettings__ProductsCollection=Products
+    
+  CatalogDB:
+    image: mongo 
+    container_name: CatalogDB
+    ports:
+      - "27017:27017"
+    volumes:
+      - catalogdata:/data/db
+
+volumes:
+  catalogdata:
