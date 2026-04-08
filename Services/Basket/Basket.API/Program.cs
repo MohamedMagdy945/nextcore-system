@@ -1,6 +1,7 @@
 
 using Basket.Application.Common;
 using Basket.Core.Repositories;
+using Basket.Infrastructure.Repositories;
 
 namespace Basket.API
 {
@@ -14,7 +15,6 @@ namespace Basket.API
 
             builder.Services.AddControllers();
 
-            builder.Services.AddOpenApi();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
@@ -24,7 +24,7 @@ namespace Basket.API
                     new Microsoft.OpenApi.Models.OpenApiInfo
                     {
                         Version = "v1",
-                        Title = "Catalog API",
+                        Title = "Swagger API",
                         Description = "An ASP.NET Core Web API for managing basket micro-services in commerce application",
                         Contact = new Microsoft.OpenApi.Models.OpenApiContact
                         {
@@ -32,8 +32,9 @@ namespace Basket.API
                             Email = "mohamedmagdy000022@gmail.com",
                         }
                     });
-            }
-             );
+            });
+
+            builder.Services.AddOpenApi();
 
 
             builder.Services.AddAutoMapper(cfg =>
@@ -44,7 +45,7 @@ namespace Basket.API
             builder.Services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyMarker).Assembly));
 
-            builder.Services.AddScoped<IBasketRepository, IBasketRepository>();
+            builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
             builder.Services.AddApiVersioning(options =>
             {
