@@ -1,12 +1,14 @@
 {
   "profiles": {
-    "http": {
+    "Basket.API": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5122"
+      "applicationUrl": "http://localhost:8001",
+      "launchBrowser": true,
+      "launchUrl": "swagger"
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
