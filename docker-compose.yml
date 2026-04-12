@@ -1,58 +1,154 @@
+﻿version: '3.9'
+
 services:
+
+  # =======================
+  # 🟦 Catalog API + Mongo
+  # =======================
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
+    container_name: catalog.api
     ports:
       - "8000:8000"
     depends_on:
-      - CatalogDB
-
+      - catalogdb
     environment:
       - ASPNETCORE_URLS=http://+:8000
-      - DatabaseSettings__ConnectionString=mongodb://CatalogDB:27017
+      - DatabaseSettings__ConnectionString=mongodb://catalogdb:27017
       - DatabaseSettings__DatabaseName=CatalogDb
       - DatabaseSettings__BrandsCollection=Brands
       - DatabaseSettings__TypesCollection=Types
       - DatabaseSettings__ProductsCollection=Products
-    
-  CatalogDB:
-    image: mongo 
-    container_name: CatalogDB
+    networks:
+      - app-network
+
+  catalogdb:
+    image: mongo
+    container_name: catalogdb
     ports:
       - "27017:27017"
     volumes:
       - catalogdata:/data/db
+    networks:
+      - app-network
 
-  basketdb:
-    image : redis:alpine
-    container_name: basketdb
-    restart: always
-    ports:
-      - "6379:6379"
+  # =======================
+  # 🟩 Basket API + Redis
+  # =======================
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
+    container_name: basket.api
     ports:
-      - "8001:8000" 
+      - "8001:8000"
     depends_on:
       - basketdb
     environment:
       - ASPNETCORE_URLS=http://+:8000
       - CacheSettings__ConnectionString=basketdb:6379
+    networks:
+      - app-network
 
+  basketdb:
+    image: redis:alpine
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  # =======================
+  # 🟨 Discount API + PostgreSQL
+  # =======================
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discountapi
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+    container_name: discount.api
+    depends_on:
+      discountdb:
+        condition: service_healthy
+    ports:
+      - "8002:8000"
+    environment:
+      - ASPNETCORE_URLS=http://+:8000
+      - ConnectionStrings__Database=Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
+    networks:
+      - app-network
+
+  discountdb:
+    image: postgres:15
+    container_name: discountdb
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Password@1
+      POSTGRES_DB: discountdb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d discountdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # =======================
+  # 🛠️ pgAdmin
+  # =======================
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@nextcore.com
+      PGADMIN_DEFAULT_PASSWORD: Password@1
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+    depends_on:
+      - discountdb
+    networks:
+      - app-network
+
+  # =======================
+  # 🐳 Portainer
+  # =======================
   portainer:
     image: portainer/portainer-ce
     container_name: portainer
     restart: always
     ports:
-      - 8000:8000
-      - 9000:9000
+      - "9000:9000"
     volumes:
-    - portainer_data:/data
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app-network
+
+# =======================
+# 📦 Volumes
+# =======================
 volumes:
   catalogdata:
+  postgres_data:
+  pgadmin_data:
   portainer_data:
+
+# =======================
+# 🌐 Network
+# =======================
+networks:
+  app-network:
+    driver: bridge
