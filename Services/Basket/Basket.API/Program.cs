@@ -2,6 +2,7 @@
 using Basket.Application.Common;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
+using Discount.Grpc.Protos;
 
 namespace Basket.API
 {
@@ -45,7 +46,6 @@ namespace Basket.API
             builder.Services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyMarker).Assembly));
 
-            builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
             builder.Services.AddApiVersioning(options =>
             {
@@ -59,6 +59,14 @@ namespace Basket.API
             {
                 options.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString");
             });
+
+            builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+
+            builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
+                cfg => cfg.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
+            );
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
