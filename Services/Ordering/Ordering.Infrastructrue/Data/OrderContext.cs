@@ -30,5 +30,10 @@ namespace Ordering.Infrastructrue.Data
 
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        internal void AddAsync(object getOrders)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
