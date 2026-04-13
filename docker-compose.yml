@@ -51,7 +51,7 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:8000
       - CacheSettings__ConnectionString=basketdb:6379
-      - "GrpcSettings__DiscountUrl=http://discount.api:8080"
+      - "GrpcSettings__DiscountUrl=http://discount.api:8000"
     networks:
       - app-network
 
