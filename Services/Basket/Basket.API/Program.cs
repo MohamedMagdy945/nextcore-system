@@ -1,5 +1,6 @@
 
 using Basket.Application.Common;
+using Basket.Application.GerpcService;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
 using Discount.Grpc.Protos;
@@ -62,10 +63,14 @@ namespace Basket.API
 
             builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 
-            builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
-                cfg => cfg.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
-            );
+            var discountUrl = builder.Configuration.GetValue<string>("GrpcSettings:DiscountUrl");
 
+            builder.Services.AddScoped<DiscountGrpcSerivce>();
+
+            builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(cfg =>
+            {
+                cfg.Address = new Uri(discountUrl!);
+            });
 
             var app = builder.Build();
 
