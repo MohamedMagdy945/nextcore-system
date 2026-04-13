@@ -1,4 +1,5 @@
 ﻿using Basket.Application.Commands;
+using Basket.Application.GerpcService;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
 using Catalog.API.Controllers;
@@ -9,6 +10,15 @@ namespace Basket.API.Controllers
 {
     public class BasketController : BaseApiController
     {
+
+        private readonly DiscountGrpcSerivce _discountGrpcService;
+
+        public BasketController(DiscountGrpcSerivce discountGrpcService)
+        {
+            _discountGrpcService = discountGrpcService;
+        }
+
+
         [HttpGet]
         [Route("[action]/{userName}", Name = "GetBasketByUserName")]
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
@@ -23,6 +33,14 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
+            foreach (var item in command.Items)
+            {
+                var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
+                if (coupon is not null)
+                {
+                    item.Price -= coupon.Amount;
+                }
+            }
             var basket = await _mediator.Send(command);
             return Ok(basket);
         }
