@@ -19,7 +19,7 @@ namespace Basket.API.Controllers
             return Ok(basket);
         }
 
-        [HttpPut("UpdateBasket")]
+        [HttpPost("CreateBasket")]
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
