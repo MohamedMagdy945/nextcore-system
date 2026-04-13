@@ -23,14 +23,6 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
-            foreach (var item in command.Items)
-            {
-                var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
-                if (coupon is not null)
-                {
-                    item.Price -= coupon.Amount;
-                }
-            }
             var basket = await _mediator.Send(command);
             return Ok(basket);
         }
