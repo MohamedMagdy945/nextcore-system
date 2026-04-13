@@ -1,5 +1,4 @@
 ﻿using Basket.Application.Commands;
-using Basket.Application.GerpcService;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
 using Catalog.API.Controllers;
@@ -10,15 +9,6 @@ namespace Basket.API.Controllers
 {
     public class BasketController : BaseApiController
     {
-
-        private readonly DiscountGrpcSerivce _discountGrpcService;
-
-        public BasketController(DiscountGrpcSerivce discountGrpcService)
-        {
-            _discountGrpcService = discountGrpcService;
-        }
-
-
         [HttpGet]
         [Route("[action]/{userName}", Name = "GetBasketByUserName")]
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
