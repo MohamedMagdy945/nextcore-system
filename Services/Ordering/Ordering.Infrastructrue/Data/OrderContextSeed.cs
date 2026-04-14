@@ -25,7 +25,7 @@ namespace Ordering.Infrastructrue.Data
                     LastName="Doe"  ,
                     EmailAddress="johndoe@example.com",
                     AddressLine="123 Main St"  ,
-                    TitalPrice=100,
+                    TotalPrice=100,
                     Country="USA"  ,
                     State="NY"  ,
                     CardName= "Visa"  ,
