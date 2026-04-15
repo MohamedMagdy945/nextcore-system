@@ -1,4 +1,4 @@
-﻿version: '3.9'
+version: '3.9'
 
 services:
 
@@ -103,6 +103,40 @@ services:
       retries: 5
     networks:
       - app-network
+ 
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8000
+      - ConnectionStrings__OrderingConnectionString=Server=.;Database=OrderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
+    depends_on:
+      - orderdb
+    ports:
+      - "8003:8000"
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: orderdb
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "P@ssw0rd123"
+    restart: always
+    ports:
+      - "1433:1433"
+    volumes:
+      - orderdb_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -d ''P@ssw0rd123' -Q 'select 1' "]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+        - app-network
+
+    
 
   # =======================
   # 🛠️ pgAdmin
@@ -141,11 +175,14 @@ services:
 # =======================
 # 📦 Volumes
 # =======================
+
+
 volumes:
   catalogdata:
   postgres_data:
   pgadmin_data:
   portainer_data:
+  orderdb_data:
 
 # =======================
 # 🌐 Network
