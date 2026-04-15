@@ -14,7 +14,7 @@ WORKDIR /src
 COPY ["Services/Ordering/Ordering.API/Ordering.API.csproj", "Services/Ordering/Ordering.API/"]
 COPY ["Services/Ordering/Ordering.Application/Ordering.Application.csproj", "Services/Ordering/Ordering.Application/"]
 COPY ["Services/Ordering/Ordering.Core/Ordering.Core.csproj", "Services/Ordering/Ordering.Core/"]
-COPY ["Services/Ordering/Ordering.Infrastructrue/Ordering.Infrastructrue.csproj", "Services/Ordering/Ordering.Infrastructrue/"]
+COPY ["Services/Ordering/Ordering.Infrastructrue/Ordering.Infrastructure.csproj", "Services/Ordering/Ordering.Infrastructure/"]
 RUN dotnet restore "./Services/Ordering/Ordering.API/Ordering.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Ordering/Ordering.API"
