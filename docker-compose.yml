@@ -48,10 +48,12 @@ services:
       - "8001:8000"
     depends_on:
       - basketdb
+      - rabbitmq
     environment:
       - ASPNETCORE_URLS=http://+:8000
       - CacheSettings__ConnectionString=basketdb:6379
       - "GrpcSettings__DiscountUrl=http://discount.api:8000"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
     networks:
       - app-network
 
@@ -113,6 +115,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8000
       - ConnectionStrings__OrderingConnectionString=server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
+      - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
+
     depends_on:
       - orderdb
     ports:
@@ -138,7 +142,13 @@ services:
     networks:
         - app-network
 
-    
+  rabbitmq:
+     image: rabbitmq:3-management-alpine
+     container_name: rabbitmq
+     rastart: always
+     ports:
+      - "5672:5672"
+      - "15672:15672"
 
   # =======================
   # 🛠️ pgAdmin
