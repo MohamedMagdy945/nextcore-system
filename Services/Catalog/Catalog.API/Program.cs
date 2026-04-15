@@ -5,6 +5,7 @@ using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
 using Catalog.Infrastructure.Repositories;
+using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 
 namespace Catalog.API
@@ -22,12 +23,12 @@ namespace Catalog.API
             builder.Services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1",
-                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    new OpenApiInfo
                     {
                         Version = "v1",
                         Title = "Catalog API",
                         Description = "An ASP.NET Core Web API for managing catalog micro-services in commerce application",
-                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                        Contact = new OpenApiContact
                         {
                             Name = "Mohamed Magdy",
                             Email = "mohamedmagdy000022@gmail.com",

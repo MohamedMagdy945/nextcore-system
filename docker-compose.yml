@@ -112,11 +112,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8000
-      - ConnectionStrings__OrderingConnectionString=Server=.;Database=OrderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
+      - ConnectionStrings__OrderingConnectionString=server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
     depends_on:
       - orderdb
     ports:
       - "8003:8000"
+    networks:
+      - app-network
   orderdb:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: orderdb
@@ -129,7 +131,7 @@ services:
     volumes:
       - orderdb_data:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -d ''P@ssw0rd123' -Q 'select 1' "]
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'P@ssw0rd123' -Q 'select 1' "]
       interval: 10s
       timeout: 5s
       retries: 5

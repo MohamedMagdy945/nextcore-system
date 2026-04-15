@@ -22,7 +22,7 @@
     <Project Path="Services/Ordering/Ordering.API/Ordering.API.csproj" Id="560edb14-a51f-45d0-9a53-f2689769953e" />
     <Project Path="Services/Ordering/Ordering.Application/Ordering.Application.csproj" Id="34df9cf8-ae66-4ea8-87a4-d987c95fad6f" />
     <Project Path="Services/Ordering/Ordering.Core/Ordering.Core.csproj" Id="f9d8d169-ec4f-4dc4-865f-aba90b9d2767" />
-    <Project Path="Services/Ordering/Ordering.Infrastructrue/Ordering.Infrastructrue.csproj" Id="fc20c96b-328d-41d9-a908-06e5996d94d9" />
+    <Project Path="Services/Ordering/Ordering.Infrastructrue/Ordering.Infrastructure.csproj" Id="fc20c96b-328d-41d9-a908-06e5996d94d9" />
   </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />

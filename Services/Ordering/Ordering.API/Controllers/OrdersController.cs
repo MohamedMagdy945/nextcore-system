@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ordering.Application.Commands;
+using Ordering.Application.Queries;
 using Ordering.Application.Responses;
 
 namespace Ordering.API.Controllers
@@ -16,7 +17,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<OrderResponse>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<OrderResponse>>> GetOrdersByUserName(string userName)
         {
-            var query = new GetOrdersListQuery(userName);
+            var query = new GetOrderListQuery(userName);
             var orders = await _mediator.Send(query);
             return Ok(orders);
         }
