@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Ordering.Application.Commands;
 using Ordering.Application.Responses;
 
 namespace Ordering.API.Controllers
@@ -20,5 +21,32 @@ namespace Ordering.API.Controllers
             return Ok(orders);
         }
 
+        [HttpPost("CheckoutOrder")]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        public async Task<ActionResult> CheckoutOrder([FromBody] CheckoutOrderCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+
+        }
+
+        [HttpPut("UpdateOrder")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> UpdateOrder([FromBody] UpdateOrderCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpDelete("DeleteOrder/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> DeleteOrder([FromBody] DeleteOrderCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return NoContent();
+
+        }
     }
 }
