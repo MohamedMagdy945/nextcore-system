@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Infrastructure\EventBus.Messages\EventBus.Messages.csproj" />
     <ProjectReference Include="..\Basket.Core\Basket.Core.csproj" />
   </ItemGroup>
 
@@ -17,8 +18,6 @@
   </ItemGroup>
 	
 	<ItemGroup>
-		<Protobuf Include="..\..\..\Services\Discount\Discount.Application\Protos\discount.proto"
-				  GrpcServices="Client"
-				  Link="Protos\discount.proto" />
+		<Protobuf Include="..\..\..\Services\Discount\Discount.Application\Protos\discount.proto" GrpcServices="Client" Link="Protos\discount.proto" />
 	</ItemGroup>
 </Project>
