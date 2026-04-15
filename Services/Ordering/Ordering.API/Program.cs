@@ -1,3 +1,6 @@
+using Microsoft.OpenApi;
+using Ordering.Application.Extensions;
+using Ordering.Infrastructrue.Extensions;
 
 namespace Ordering.API
 {
@@ -13,12 +16,41 @@ namespace Ordering.API
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+
+            object value = builder.Services.AddApiVersioning(options =>
+            {
+                options.ReportApiVersions = true;
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+            });
+
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "Catalog API",
+                        Description = "An ASP.NET Core Web API for managing ordering micro-services in commerce application",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Mohamed Magdy",
+                            Email = "mohamedmagdy000022@gmail.com",
+                        }
+                    });
+            });
+
+            builder.Services.AddApplicationServices();
+            builder.Services.AddInfraService(builder.Configuration);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseAuthorization();
