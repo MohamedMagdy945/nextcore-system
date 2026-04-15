@@ -9,13 +9,13 @@ namespace Ordering.Infrastructrue.Data
         {
             if (!context.Orders.Any())
             {
-                context.AddRangeAsync(GetOrders());
+                await context.AddRangeAsync(GetOrders());
                 await context.SaveChangesAsync();
                 logger.LogInformation($"Seeded Orders.{typeof(OrderContext).Name}!");
             }
         }
 
-        private static object GetOrders()
+        private static IEnumerable<Order> GetOrders()
         {
             return new List<Order>
             {

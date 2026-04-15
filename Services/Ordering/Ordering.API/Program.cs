@@ -33,7 +33,7 @@ namespace Ordering.API
                     new OpenApiInfo
                     {
                         Version = "v1",
-                        Title = "Catalog API",
+                        Title = "Order API",
                         Description = "An ASP.NET Core Web API for managing ordering micro-services in commerce application",
                         Contact = new OpenApiContact
                         {
