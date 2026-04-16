@@ -4,6 +4,7 @@ using Basket.Application.GerpcService;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
 using Discount.Grpc.Protos;
+using MassTransit;
 
 namespace Basket.API
 {
@@ -71,6 +72,17 @@ namespace Basket.API
             {
                 cfg.Address = new Uri(discountUrl!);
             });
+
+
+            builder.Services.AddMassTransit(config =>
+            {
+                config.UsingRabbitMq((ct, cfg) =>
+                {
+                    cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+                });
+            });
+
+            builder.Services.AddMassTransitHostedService();
 
             var app = builder.Build();
 
