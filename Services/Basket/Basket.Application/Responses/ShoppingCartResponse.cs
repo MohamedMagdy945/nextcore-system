@@ -11,11 +11,11 @@ namespace Basket.Application.Responses
         {
             UserName = userName;
         }
-        public decimal TotalPrice
+        public double TotalPrice
         {
             get
             {
-                decimal total = 0;
+                double total = 0;
                 foreach (var item in Items)
                 {
                     total += item.Price * item.Quantity;
