@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
@@ -28,6 +29,21 @@ namespace Common.Logging
                         .MinimumLevel.Override("Ordering", LogEventLevel.Debug);
                 }
 
+                var elasticSearch = context.Configuration.GetValue<string>("ElasticConfiguration:Uri");
+                if (!string.IsNullOrEmpty(elasticSearch))
+                {
+                    loggerConfigureation.WriteTo.Elasticsearch(
+                        new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(
+                            new Uri(elasticSearch))
+                        {
+                            AutoRegisterTemplate = true,
+                            AutoRegisterTemplateVersion = Serilog.Sinks.Elasticsearch.AutoRegisterTemplateVersion.ESv8,
+                            IndexFormat = "NewEcommerce-logs-{0:yyy.MM.dd}",
+                            MinimumLogEventLevel = LogEventLevel.Debug,
+                        }
+
+                        );
+                }
 
             };
     }
