@@ -2,6 +2,7 @@
 {
     public class BasketCheckoutEvent : BaseIntegrationEvent
     {
+
         public string? UserName { get; set; }
         public double? TotalPrice { get; set; }
         public string? FirstName { get; set; }
