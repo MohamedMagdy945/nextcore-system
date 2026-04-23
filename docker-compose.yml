@@ -22,6 +22,7 @@ services:
       - DatabaseSettings__BrandsCollection=Brands
       - DatabaseSettings__TypesCollection=Types
       - DatabaseSettings__ProductsCollection=Products
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
     networks:
       - app-network
 
@@ -54,6 +55,7 @@ services:
       - CacheSettings__ConnectionString=basketdb:6379
       - "GrpcSettings__DiscountUrl=http://discount.api:8000"
       - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
     networks:
       - app-network
 
@@ -83,6 +85,7 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:8000
       - DatabaseSettings__ConnectionString=Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
     networks:
       - app-network
 
@@ -116,7 +119,7 @@ services:
       - ASPNETCORE_URLS=http://+:8000
       - ConnectionStrings__OrderingConnectionString=server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
       - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
-
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
     depends_on:
       - orderdb
     ports:
@@ -184,6 +187,28 @@ services:
     networks:
       - app-network
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+    container_name: elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+
+  kibana:
+      image: docker.elastic.co/kibana/kibana:8.14.3
+      container_name: kibana
+      environment:
+        - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      ports:
+        - "5601:5601"
+      depends_on:
+        - elasticsearch
+
 # =======================
 # 📦 Volumes
 # =======================
@@ -195,7 +220,7 @@ volumes:
   pgadmin_data:
   portainer_data:
   orderdb_data:
-
+  elasticsearch-data:
 # =======================
 # 🌐 Network
 # =======================
