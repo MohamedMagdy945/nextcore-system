@@ -3,7 +3,7 @@ using Ordering.Application.Commands;
 
 namespace Ordering.Application.Validators
 {
-    public class CheckoutOrderCommandValidatorV2 : AbstractValidator<CheckoutOrderCommadV2>
+    public class CheckoutOrderCommandValidatorV2 : AbstractValidator<CheckoutOrderCommandV2>
     {
         public CheckoutOrderCommandValidatorV2()
         {
