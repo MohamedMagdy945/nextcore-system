@@ -8,6 +8,14 @@ namespace Catalog.API.Controllers
 {
     public class ProductController : BaseApiController
     {
+
+        private readonly ILogger<ProductController> _logger;
+
+        public ProductController(ILogger<ProductController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         [Route("[action]/{id}", Name = "GetProductById")]
         [ProducesResponseType(typeof(ProductResponseDto), StatusCodes.Status200OK)]
@@ -25,6 +33,7 @@ namespace Catalog.API.Controllers
         {
             var query = new GetAllProductsByNameQuery(productName);
             var result = await _mediator.Send(query);
+            _logger.LogInformation($"Product with {productName} ({result})");
             return Ok(result);
         }
 

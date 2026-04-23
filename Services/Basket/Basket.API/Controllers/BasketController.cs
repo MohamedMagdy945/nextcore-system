@@ -16,13 +16,16 @@ namespace Basket.API.Controllers
 
         private readonly IPublishEndpoint _publishEndpoint;
         private readonly IMapper _mapper;
+        private readonly ILogger<BasketController> _logger;
         public BasketController(
             IPublishEndpoint publishEndpoint,
-            IMapper mapper
+            IMapper mapper,
+            ILogger<BasketController> logger
             )
         {
             _publishEndpoint = publishEndpoint;
             _mapper = mapper;
+            _logger = logger;
         }
 
 
@@ -70,7 +73,7 @@ namespace Basket.API.Controllers
             var eventMsg = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMsg.TotalPrice = basket.TotalPrice;
             await _publishEndpoint.Publish(eventMsg);
-
+            _logger.LogInformation($"Basket Published for {basket.UserName}");
             var deleteCommand = new DeleteBasketByUserNameCommand(basket.UserName);
             await _mediator.Send(deleteCommand);
             return Accepted();
