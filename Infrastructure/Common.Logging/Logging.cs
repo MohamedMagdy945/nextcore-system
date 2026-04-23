@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
 using Serilog.Exceptions;
 
 namespace Common.Logging
@@ -15,16 +16,16 @@ namespace Common.Logging
                     .Enrich.WithProperty("ApplicationName", environment.ApplicationName)
                     .Enrich.WithProperty("EnvironmentName", environment.EnvironmentName)
                     .Enrich.WithExceptionDetails()
-                    .MinimumLevel.Override("Microsoft.AspNetCore", Serilog.Events.LogEventLevel.Warning)
-                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", Serilog.Events.LogEventLevel.Warning)
+                    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Warning)
                     .WriteTo.Console();
 
                 if (context.HostingEnvironment.IsDevelopment())
                 {
-                    loggerConfigureation.MinimumLevel.Override("Catalog", Serilog.Events.LogEventLevel.Debug)
-                        .MinimumLevel.Override("Basket", Serilog.Events.LogEventLevel.Debug)
-                        .MinimumLevel.Override("Discount", Serilog.Events.LogEventLevel.Debug)
-                        .MinimumLevel.Override("Ordering", Serilog.Events.LogEventLevel.Debug);
+                    loggerConfigureation.MinimumLevel.Override("Catalog", LogEventLevel.Debug)
+                        .MinimumLevel.Override("Basket", LogEventLevel.Debug)
+                        .MinimumLevel.Override("Discount", LogEventLevel.Debug)
+                        .MinimumLevel.Override("Ordering", LogEventLevel.Debug);
                 }
 
 

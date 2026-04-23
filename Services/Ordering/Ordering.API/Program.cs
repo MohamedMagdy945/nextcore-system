@@ -1,3 +1,4 @@
+using Common.Logging;
 using EventBus.Messages.Common;
 using MassTransit;
 using Microsoft.OpenApi.Models;
@@ -6,6 +7,7 @@ using Ordering.API.Extensions;
 using Ordering.Application.Extensions;
 using Ordering.Infrastructrue.Data;
 using Ordering.Infrastructrue.Extensions;
+using Serilog;
 
 
 namespace Ordering.API
@@ -17,6 +19,7 @@ namespace Ordering.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

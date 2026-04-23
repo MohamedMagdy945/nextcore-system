@@ -3,8 +3,10 @@ using Basket.Application.Common;
 using Basket.Application.GerpcService;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
+using Common.Logging;
 using Discount.Grpc.Protos;
 using MassTransit;
+using Serilog;
 
 namespace Basket.API
 {
@@ -18,6 +20,7 @@ namespace Basket.API
 
             builder.Services.AddControllers();
 
+            builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 

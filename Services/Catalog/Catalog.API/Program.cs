@@ -5,8 +5,10 @@ using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
 using Catalog.Infrastructure.Repositories;
+using Common.Logging;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using Serilog;
 
 namespace Catalog.API
 {
@@ -19,6 +21,9 @@ namespace Catalog.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Host.UseSerilog(Logging.ConfigureLogger);
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddSwaggerGen(options =>
             {
