@@ -3,8 +3,8 @@ using Catalog.Application.Common;
 using Catalog.Application.Interfaces;
 using Catalog.Application.Interfaces.Repositories;
 using Catalog.Infrastructure.Common.Settings;
-using Catalog.Infrastructure.Data.Seed;
-using Catalog.Infrastructure.Persistence;
+using Catalog.Infrastructure.Persistence.DbContext;
+using Catalog.Infrastructure.Persistence.Seeder;
 using Catalog.Infrastructure.Repositories;
 using Common.Logging;
 using MongoDB.Driver;
@@ -49,7 +49,7 @@ namespace Catalog.API
                 return new MongoClient(databaseSettings?.ConnectionString);
             });
 
-            builder.Services.AddScoped<ICatalogDbContext, CatalogDbContext>();
+            builder.Services.AddScoped<ICatalogDbContext, AppDbContext>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<ITypeRepository, TypeRepository>();
             builder.Services.AddScoped<IBrandRepository, BrandRepository>();

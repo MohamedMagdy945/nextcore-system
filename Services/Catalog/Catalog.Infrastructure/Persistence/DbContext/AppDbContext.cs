@@ -1,18 +1,17 @@
-﻿using Catalog.Application.Interfaces;
-using Catalog.Core.Entities;
+﻿using Catalog.Core.Entities;
 using Catalog.Infrastructure.Common.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Catalog.Infrastructure.Persistence
+namespace Catalog.Infrastructure.Persistence.DbContext
 {
-    public class CatalogDbContext : ICatalogDbContext
+    public class AppDbContext
     {
         public IMongoCollection<Product> Products { get; }
         public IMongoCollection<ProductBrand> Brands { get; }
         public IMongoCollection<ProductType> Types { get; }
 
-        public CatalogDbContext(IMongoClient client, IOptions<DatabaseSettings> options)
+        public AppDbContext(IMongoClient client, IOptions<DatabaseSettings> options)
         {
 
             var database = client.GetDatabase(options.Value.DatabaseName);

@@ -2,16 +2,16 @@
 using MongoDB.Driver;
 using System.Text.Json;
 
-namespace Catalog.Infrastructure.Data.Seed
+namespace Catalog.Infrastructure.Persistence.Seeder
 {
     public class TypeSeeder
     {
         public static async Task SeedAsync(IMongoCollection<ProductType> typeCollection)
         {
-            var hasData = await typeCollection.Find(_ => true).AnyAsync();
+            var hasData = await typeCollection.Find(FilterDefinition<ProductType>.Empty).AnyAsync();
             if (hasData) return;
 
-            var filePath = Path.Combine("Data", "Seed", "Files", "types.json");
+            var filePath = Path.Combine(AppContext.BaseDirectory, "Persistence", "Files", "brands.json");
 
             if (!File.Exists(filePath))
             {
