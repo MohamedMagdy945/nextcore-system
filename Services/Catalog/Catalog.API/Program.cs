@@ -1,6 +1,5 @@
 using Catalog.API.Configurations;
 using Catalog.Application.Common;
-using Catalog.Application.Interfaces;
 using Catalog.Application.Interfaces.Repositories;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Persistence.DbContext;
@@ -49,7 +48,7 @@ namespace Catalog.API
                 return new MongoClient(databaseSettings?.ConnectionString);
             });
 
-            builder.Services.AddScoped<ICatalogDbContext, AppDbContext>();
+            builder.Services.AddScoped<IAppDbContext, AppDbContext>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<ITypeRepository, TypeRepository>();
             builder.Services.AddScoped<IBrandRepository, BrandRepository>();
@@ -63,19 +62,21 @@ namespace Catalog.API
 
             var app = builder.Build();
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<ICatalogDbContext>();
 
-                await BrandSeeder.SeedAsync(context.Brands);
-                await TypeSeeder.SeedAsync(context.Types);
-                await CatalogSeeder.SeedAsync(context.Products);
-            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwaggerDocumentation();
+
+                using (var scope = app.Services.CreateScope())
+                {
+                    var context = scope.ServiceProvider.GetRequiredService<IAppDbContext>();
+
+                    await BrandSeeder.SeedAsync(context.Brands);
+                    await TypeSeeder.SeedAsync(context.Types);
+                    await CatalogSeeder.SeedAsync(context.Products);
+                }
             }
 
             app.UseAuthorization();

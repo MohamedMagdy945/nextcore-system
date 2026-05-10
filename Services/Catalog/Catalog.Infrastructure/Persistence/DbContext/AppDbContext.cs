@@ -5,12 +5,8 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Persistence.DbContext
 {
-    public class AppDbContext
+    public class AppDbContext : IAppDbContext
     {
-        public IMongoCollection<Product> Products { get; }
-        public IMongoCollection<ProductBrand> Brands { get; }
-        public IMongoCollection<ProductType> Types { get; }
-
         public AppDbContext(IMongoClient client, IOptions<DatabaseSettings> options)
         {
 
@@ -19,7 +15,9 @@ namespace Catalog.Infrastructure.Persistence.DbContext
             Brands = database.GetCollection<ProductBrand>(options.Value.Brands);
             Types = database.GetCollection<ProductType>(options.Value.Types);
             Products = database.GetCollection<Product>(options.Value.Products);
-
         }
+        public IMongoCollection<Product> Products { get; }
+        public IMongoCollection<ProductBrand> Brands { get; }
+        public IMongoCollection<ProductType> Types { get; }
     }
 }

@@ -28,8 +28,8 @@ namespace Catalog.Application.Handlers.Commands
                 ImageFile = request.ImageFile,
                 Price = request.Price,
                 Summary = request.Summary,
-                Brand = request.Brand,
-                Type = request.Type,
+                ProductBrand = request.Brand,
+                ProductType = request.Type,
             };
             var product = await _productRepository.UpdateAsync(productEntity);
             return product;
