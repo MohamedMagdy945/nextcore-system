@@ -1,3 +1,4 @@
+using Catalog.API.Configurations;
 using Catalog.Application.Common;
 using Catalog.Application.Interfaces;
 using Catalog.Application.Interfaces.Repositories;
@@ -6,7 +7,6 @@ using Catalog.Infrastructure.Data.Seed;
 using Catalog.Infrastructure.Persistence;
 using Catalog.Infrastructure.Repositories;
 using Common.Logging;
-using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 using Serilog;
 
@@ -25,24 +25,8 @@ namespace Catalog.API
             builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1",
-                    new OpenApiInfo
-                    {
-                        Version = "v1",
-                        Title = "Catalog API",
-                        Description = "An ASP.NET Core Web API for managing catalog micro-services in commerce application",
-                        Contact = new OpenApiContact
-                        {
-                            Name = "Mohamed Magdy",
-                            Email = "mohamedmagdy000022@gmail.com",
-                        }
-                    });
-            }
-            );
 
-            builder.Services.AddOpenApi();
+            builder.Services.AddSwaggerConfiguration();
 
             builder.Services.AddAutoMapper(cfg =>
             {
@@ -91,9 +75,7 @@ namespace Catalog.API
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerDocumentation();
             }
 
             app.UseAuthorization();
