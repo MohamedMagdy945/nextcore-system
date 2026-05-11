@@ -14,7 +14,7 @@ public static class SwaggerConfiguration
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "Catalog API v2",
+                Title = "Catalog API v1",
                 Version = "v1",
                 Description = "An ASP.NET Core Web API for managing basket v1 micro-services in commerce application",
             });

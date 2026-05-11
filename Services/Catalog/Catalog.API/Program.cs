@@ -3,7 +3,6 @@ using Catalog.Application;
 using Catalog.Infrastructure;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Persistence.DbContext;
-using Catalog.Infrastructure.Persistence.Seeder;
 using Common.Logging;
 using Serilog;
 
@@ -44,9 +43,9 @@ namespace Catalog.API
                 {
                     var context = scope.ServiceProvider.GetRequiredService<IAppDbContext>();
 
-                    await BrandSeeder.SeedAsync(context.Brands);
-                    await TypeSeeder.SeedAsync(context.Types);
-                    await CatalogSeeder.SeedAsync(context.Products);
+                    //await BrandSeeder.SeedAsync(context.Brands);
+                    //await TypeSeeder.SeedAsync(context.Types);
+                    //await CatalogSeeder.SeedAsync(context.Products);
                 }
             }
 

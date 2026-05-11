@@ -11,7 +11,7 @@ namespace Catalog.Infrastructure.Persistence.Seeder
             var hasData = await productCollection.Find(FilterDefinition<Product>.Empty).AnyAsync();
             if (hasData) return;
 
-            var filePath = Path.Combine(AppContext.BaseDirectory, "Persistence", "Files", "brands.json");
+            var filePath = Path.Combine(AppContext.BaseDirectory, "Persistence", "Files", "products.json");
 
             if (!File.Exists(filePath))
             {

@@ -9,7 +9,7 @@ services:
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
     container_name: catalog.api
     ports:
-      - "8000:8000"
+      - "8001:8000"
     depends_on:
       - catalogdb
       - elasticsearch
@@ -43,7 +43,7 @@ services:
       dockerfile: Services/Basket/Basket.API/Dockerfile
     container_name: basket.api
     ports:
-      - "8001:8000"
+      - "8002:8000"
     depends_on:
       - basketdb
       - rabbitmq
@@ -73,7 +73,7 @@ services:
       dockerfile: Services/Discount/Discount.API/Dockerfile
     container_name: discount.api
     ports:
-      - "8002:8000"
+      - "8003:8000"
     depends_on:
       discountdb:
         condition: service_healthy
@@ -112,7 +112,7 @@ services:
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
     container_name: ordering.api
     ports:
-      - "8003:8000"
+      - "8004:8000"
     depends_on:
       orderdb:
         condition: service_healthy

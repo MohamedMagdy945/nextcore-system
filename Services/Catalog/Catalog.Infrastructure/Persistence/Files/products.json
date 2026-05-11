@@ -550,7 +550,7 @@
     "Price": 1499,
     "ImageFile": "images/products/yonex-kitback-3.png",
     "Summary": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Grey/Orange)",
-    "Types": {
+    "Type": {
       "Id": "63ca5d8849bc19321b8be5f1",
       "Name": "Kit Bags"
     },
