@@ -6,10 +6,10 @@ using MediatR;
 namespace Catalog.Application.Features.Queries.GetProductsByBrand
 {
     public record GetProductsByBrandQuery(string Brand) : IRequest<IList<ProductResponseDto>>;
-    public class GetProductsByBrandQueryHandler : IRequestHandler<GetProductsByBrandQuery, IList<ProductResponseDto>>
+    public class GetProductsByBrandHandler : IRequestHandler<GetProductsByBrandQuery, IList<ProductResponseDto>>
     {
         private readonly IProductRepository _productRepository;
-        public GetProductsByBrandQueryHandler(
+        public GetProductsByBrandHandler(
             IProductRepository productRepository)
         {
             _productRepository = productRepository;

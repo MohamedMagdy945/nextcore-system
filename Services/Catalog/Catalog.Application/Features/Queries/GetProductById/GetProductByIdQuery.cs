@@ -6,11 +6,11 @@ using MediatR;
 namespace Catalog.Application.Features.Queries.GetProductById
 {
     public record GetProductByIdQuery(string Id) : IRequest<ProductResponseDto>;
-    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductResponseDto>
+    public class GetProductByIdHadler : IRequestHandler<GetProductByIdQuery, ProductResponseDto>
     {
         private readonly IProductRepository _productRepository;
 
-        public GetProductByIdQueryHandler(
+        public GetProductByIdHadler(
             IProductRepository productRepository)
         {
             _productRepository = productRepository;

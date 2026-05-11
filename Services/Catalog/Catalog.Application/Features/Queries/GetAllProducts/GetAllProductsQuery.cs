@@ -1,30 +1,27 @@
-﻿using AutoMapper;
-using Catalog.Application.Interfaces.Repositories;
-using Catalog.Application.OLD.Queries;
+﻿using Catalog.Application.Interfaces.Repositories;
 using Catalog.Application.Responses;
 using Catalog.Core.Specs;
+using Mapster;
 using MediatR;
 
 namespace Catalog.Application.Features.Queries.GetAllProducts
 {
+    public record GetAllProductsQuery(CatalogSpecParams CatalogSpecParams) : IRequest<Pagination<ProductResponseDto>>;
     public class GetAllProductsQueryHandle : IRequestHandler<GetAllProductsQuery, Pagination<ProductResponseDto>>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
 
         public GetAllProductsQueryHandle(
-            IProductRepository productRepository,
-            IMapper mapper)
+            IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _mapper = mapper;
         }
 
 
         public async Task<Pagination<ProductResponseDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var products = await _productRepository.GetAllAsync(request.CatalogSpecParams);
-            var productsResponse = _mapper.Map<Pagination<ProductResponseDto>>(products);
+            var productsResponse = products.Adapt<Pagination<ProductResponseDto>>();
             return productsResponse;
         }
     }
