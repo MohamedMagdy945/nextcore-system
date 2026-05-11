@@ -57,7 +57,7 @@ namespace Catalog.Infrastructure.Repositories
         public async Task<IEnumerable<Product>> GetAllByBrandNameAsync(string name)
         {
             var filter = _filterBuilder.Regex(
-                p => p.ProductBrand.Name,
+                p => p.Brand.Name,
                 new BsonRegularExpression(name, "i")
             );
 
@@ -105,14 +105,14 @@ namespace Catalog.Infrastructure.Repositories
             if (!string.IsNullOrWhiteSpace(spec.BrandId))
             {
                 filters.Add(
-                    _filterBuilder.Eq(p => p.ProductBrand.Id, spec.BrandId)
+                    _filterBuilder.Eq(p => p.Brand.Id, spec.BrandId)
                 );
             }
 
             if (!string.IsNullOrWhiteSpace(spec.TypeId))
             {
                 filters.Add(
-                    _filterBuilder.Eq(p => p.ProductType.Id, spec.TypeId)
+                    _filterBuilder.Eq(p => p.Type.Id, spec.TypeId)
                 );
             }
 
