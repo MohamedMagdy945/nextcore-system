@@ -7,7 +7,7 @@ namespace Catalog.API.Controllers
     [ApiVersion("1")]
     [Route("api/v{version:apiVersion}[controller]")]
     [ApiController]
-    public class BaseApiController : ControllerBase
+    public class AppControllerBase : ControllerBase
     {
         private IMediator? _mediatorInstance;
         protected IMediator _mediator => _mediatorInstance ??= HttpContext.RequestServices.GetService<IMediator>()!;

@@ -1,12 +1,16 @@
-﻿using Catalog.Application.OLD.Commands;
-using Catalog.Application.Queries;
+﻿using Catalog.Application.Features.Commands.CreateProduct;
+using Catalog.Application.Features.Commands.DeleteProduct;
+using Catalog.Application.Features.Commands.UpdateProduct;
+using Catalog.Application.Features.Queries.GetAllProducts;
+using Catalog.Application.Features.Queries.GetAllProductsByName;
+using Catalog.Application.Features.Queries.GetProductById;
 using Catalog.Application.Responses;
 using Catalog.Core.Specs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
-    public class ProductController : BaseApiController
+    public class ProductController : AppControllerBase
     {
 
         private readonly ILogger<ProductController> _logger;
@@ -19,6 +23,7 @@ namespace Catalog.API.Controllers
         [HttpGet]
         [Route("[action]/{id}", Name = "GetProductById")]
         [ProducesResponseType(typeof(ProductResponseDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductResponseDto>> GetProductById(string id)
         {
             var query = new GetProductByIdQuery(id);

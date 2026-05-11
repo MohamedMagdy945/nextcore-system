@@ -1,10 +1,10 @@
-﻿using Catalog.Application.Queries;
+﻿using Catalog.Application.Features.Queries.GetAllTypes;
 using Catalog.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
-    public class TypeController : BaseApiController
+    public class TypeController : AppControllerBase
     {
         [HttpGet]
         [Route("GetAllTypes")]

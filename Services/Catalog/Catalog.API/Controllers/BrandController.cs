@@ -1,11 +1,11 @@
-﻿using Catalog.Application.Queries;
+﻿using Catalog.Application.Features.Queries.GetAllBrands;
 using Catalog.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
 
-    public class BrandController : BaseApiController
+    public class BrandController : AppControllerBase
     {
         [HttpGet]
         [Route("GetAllBrands")]

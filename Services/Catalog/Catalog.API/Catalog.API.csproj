@@ -22,9 +22,4 @@
     <ProjectReference Include="..\Catalog.Infrastructure\Catalog.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="OLD\Features\Commands\CreateProduct\" />
-    <Folder Include="OLD\Features\Queries\" />
-  </ItemGroup>
-
 </Project>
