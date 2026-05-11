@@ -27,7 +27,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<ProductResponseDto>> GetProductById(string id)
         {
             var query = new GetProductByIdQuery(id);
-            var result = await _mediator.Send(query);
+            var result = await Mediator.Send(query);
             return Ok(result);
         }
 
@@ -37,7 +37,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<ProductResponseDto>>> GetProductsByName(string productName)
         {
             var query = new GetAllProductsByNameQuery(productName);
-            var result = await _mediator.Send(query);
+            var result = await Mediator.Send(query);
             _logger.LogInformation($"Product with {productName} ({result})");
             return Ok(result);
         }
@@ -48,7 +48,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<ProductResponseDto>>> GetAllProducts([FromQuery] CatalogSpecParams specs)
         {
             var query = new GetAllProductsQuery(specs);
-            var result = await _mediator.Send(query);
+            var result = await Mediator.Send(query);
             return Ok(result);
         }
 
@@ -57,7 +57,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(ProductResponseDto), StatusCodes.Status200OK)]
         public async Task<ActionResult<IList<ProductResponseDto>>> CreateProduct(CreateProductCommand productCommand)
         {
-            var result = await _mediator.Send(productCommand);
+            var result = await Mediator.Send(productCommand);
             return Ok(result);
         }
 
@@ -67,7 +67,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         public async Task<ActionResult<IList<ProductResponseDto>>> UpdateProduct(UpdateProductCommand productCommand)
         {
-            var result = await _mediator.Send(productCommand);
+            var result = await Mediator.Send(productCommand);
             return Ok(result);
         }
 
@@ -77,7 +77,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<ProductResponseDto>>> DeleteProduct(string id)
         {
             var productCommand = new DeleteProductCommand(id);
-            var result = await _mediator.Send(productCommand);
+            var result = await Mediator.Send(productCommand);
             return Ok(result);
         }
 

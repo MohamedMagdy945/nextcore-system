@@ -13,7 +13,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<ProductResponseDto>>> GetAllBrands()
         {
             var query = new GetAllBrandsQuery();
-            var result = await _mediator.Send(query);
+            var result = await Mediator.Send(query);
             return Ok(result);
         }
     }
