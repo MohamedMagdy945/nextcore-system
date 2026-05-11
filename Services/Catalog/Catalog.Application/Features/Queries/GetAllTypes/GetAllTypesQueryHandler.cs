@@ -2,7 +2,7 @@
 using Catalog.Application.Responses;
 using MediatR;
 
-namespace Catalog.Application.Handlers.Queries
+namespace Catalog.Application.Features.Queries.GetAllTypes
 {
     public class GetAllTypesQueryHandler : IRequestHandler<GetAllTypesQuery, IList<TypeResponseDto>>
     {

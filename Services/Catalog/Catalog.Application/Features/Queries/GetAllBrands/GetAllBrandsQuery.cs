@@ -3,14 +3,14 @@ using Catalog.Application.Responses;
 using Mapster;
 using MediatR;
 
-namespace Catalog.Application.Queries.GetAllBrandsQuery
+namespace Catalog.Application.Features.Queries.GetAllBrands
 {
     public record GetAllBrandsQuery() : IRequest<IList<BrandResponseDto>>;
-    public class GetAllBrandsQueryHandler : IRequestHandler<GetAllBrandsQuery, IList<BrandResponseDto>>
+    public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IList<BrandResponseDto>>
     {
         private readonly IBrandRepository _brandRepository;
 
-        public GetAllBrandsQueryHandler(IBrandRepository brandRepository)
+        public GetAllBrandsHandler(IBrandRepository brandRepository)
         {
             _brandRepository = brandRepository;
         }
