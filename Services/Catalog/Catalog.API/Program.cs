@@ -1,12 +1,10 @@
 using Catalog.API.Configurations;
-using Catalog.Application.Common;
-using Catalog.Application.Interfaces.Repositories;
+using Catalog.Application;
+using Catalog.Infrastructure;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Persistence.DbContext;
 using Catalog.Infrastructure.Persistence.Seeder;
-using Catalog.Infrastructure.Repositories;
 using Common.Logging;
-using MongoDB.Driver;
 using Serilog;
 
 namespace Catalog.API
@@ -24,41 +22,15 @@ namespace Catalog.API
             builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-
+            builder.Services.AddApiVersioningConfiguration();
             builder.Services.AddSwaggerConfiguration();
 
-            builder.Services.AddAutoMapper(cfg =>
-            {
-                cfg.AddMaps(typeof(ApplicationAssemblyMarker).Assembly);
-            });
 
             builder.Services.Configure<DatabaseSettings>(
                 builder.Configuration.GetSection("DatabaseSettings"));
 
-            builder.Services.AddMediatR(cfg =>
-                cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyMarker).Assembly));
-
-            var databaseSettings = builder.Configuration
-                .GetSection("DatabaseSettings")
-                .Get<DatabaseSettings>();
-
-            builder.Services.AddSingleton<IMongoClient>(sp =>
-            {
-                var configuration = sp.GetRequiredService<IConfiguration>();
-                return new MongoClient(databaseSettings?.ConnectionString);
-            });
-
-            builder.Services.AddScoped<IAppDbContext, AppDbContext>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
-            builder.Services.AddScoped<ITypeRepository, TypeRepository>();
-            builder.Services.AddScoped<IBrandRepository, BrandRepository>();
-
-            builder.Services.AddApiVersioning(options =>
-            {
-                options.ReportApiVersions = true;
-                options.AssumeDefaultVersionWhenUnspecified = true;
-                options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
-            });
+            builder.Services.AddApplicationService();
+            builder.Services.AddInfrastructureService(builder.Configuration);
 
             var app = builder.Build();
 
