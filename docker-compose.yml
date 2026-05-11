@@ -1,12 +1,9 @@
-version: '3.9'
-
 services:
 
   # =======================
   # 🟦 Catalog API + Mongo
   # =======================
   catalog.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
@@ -15,6 +12,7 @@ services:
       - "8000:8000"
     depends_on:
       - catalogdb
+      - elasticsearch
     environment:
       - ASPNETCORE_URLS=http://+:8000
       - DatabaseSettings__ConnectionString=mongodb://catalogdb:27017
@@ -40,7 +38,6 @@ services:
   # 🟩 Basket API + Redis
   # =======================
   basket.api:
-    image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
@@ -54,7 +51,7 @@ services:
       - ASPNETCORE_URLS=http://+:8000
       - CacheSettings__ConnectionString=basketdb:6379
       - GrpcSettings__DiscountUrl=http://discount.api:8000
-      - EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672
+      - EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672
       - ElasticConfiguration__Uri=http://elasticsearch:9200
     networks:
       - app-network
@@ -62,7 +59,6 @@ services:
   basketdb:
     image: redis:alpine
     container_name: basketdb
-    restart: always
     ports:
       - "6379:6379"
     networks:
@@ -72,16 +68,15 @@ services:
   # 🟨 Discount API + PostgreSQL
   # =======================
   discount.api:
-    image: ${DOCKER_REGISTRY-}discountapi
     build:
       context: .
       dockerfile: Services/Discount/Discount.API/Dockerfile
     container_name: discount.api
+    ports:
+      - "8002:8000"
     depends_on:
       discountdb:
         condition: service_healthy
-    ports:
-      - "8002:8000"
     environment:
       - ASPNETCORE_URLS=http://+:8000
       - DatabaseSettings__ConnectionString=Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
@@ -96,7 +91,6 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: Password@1
       POSTGRES_DB: discountdb
-    restart: always
     ports:
       - "5432:5432"
     volumes:
@@ -108,50 +102,57 @@ services:
       retries: 5
     networks:
       - app-network
- 
+
+  # =======================
+  # 🟧 Ordering API + SQL Server
+  # =======================
   ordering.api:
-    image: ${DOCKER_REGISTRY-}orderingapi
     build:
       context: .
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:8000
-      - ConnectionStrings__OrderingConnectionString=server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
-      - EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672
-      - ElasticConfiguration__Uri=http://elasticsearch:9200
-    depends_on:
-      - orderdb
+    container_name: ordering.api
     ports:
       - "8003:8000"
+    depends_on:
+      orderdb:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_URLS=http://+:8000
+      - ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
+      - EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672
+      - ElasticConfiguration__Uri=http://elasticsearch:9200
     networks:
       - app-network
+
   orderdb:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: orderdb
-    environment: 
+    environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "P@ssw0rd123"
-    restart: always
     ports:
       - "1433:1433"
     volumes:
       - orderdb_data:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'P@ssw0rd123' -Q 'select 1' "]
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'P@ssw0rd123' -Q 'SELECT 1'"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-        - app-network
+      - app-network
 
+  # =======================
+  # 📨 RabbitMQ
+  # =======================
   rabbitmq:
-     image: rabbitmq:3-management-alpine
-     container_name: rabbitmq
-     restart: always
-     ports:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - app-network
 
   # =======================
   # 🛠️ pgAdmin
@@ -159,7 +160,6 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
-    restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@nextcore.com
       PGADMIN_DEFAULT_PASSWORD: Password@1
@@ -178,7 +178,6 @@ services:
   portainer:
     image: portainer/portainer-ce
     container_name: portainer
-    restart: always
     ports:
       - "9000:9000"
     volumes:
@@ -187,33 +186,38 @@ services:
     networks:
       - app-network
 
+  # =======================
+  # 🔎 Elasticsearch + Kibana
+  # =======================
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
     container_name: elasticsearch
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - discovery.type=single-node
       - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
     ports:
       - "9200:9200"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - app-network
 
   kibana:
-      image: docker.elastic.co/kibana/kibana:8.14.3
-      container_name: kibana
-      environment:
-        - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      ports:
-        - "5601:5601"
-      depends_on:
-        - elasticsearch
+    image: docker.elastic.co/kibana/kibana:8.14.3
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - app-network
 
 # =======================
 # 📦 Volumes
 # =======================
-
-
 volumes:
   catalogdata:
   postgres_data:
@@ -221,6 +225,7 @@ volumes:
   portainer_data:
   orderdb_data:
   elasticsearch-data:
+
 # =======================
 # 🌐 Network
 # =======================
