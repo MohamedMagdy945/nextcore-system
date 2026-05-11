@@ -16,7 +16,7 @@ public static class SwaggerConfiguration
                    new OpenApiInfo
                    {
                        Version = "v1",
-                       Title = "Catalog API",
+                       Title = "Catalog API v1",
                        Description = "An ASP.NET Core Web API for managing basket v1 micro-services in commerce application",
                        Contact = new OpenApiContact
                        {
@@ -24,6 +24,19 @@ public static class SwaggerConfiguration
                            Email = "mohamedmagdy000022@gmail.com",
                        }
                    });
+
+            options.SwaggerDoc("v2",
+                  new OpenApiInfo
+                  {
+                      Version = "v2",
+                      Title = "Catalog API v2",
+                      Description = "An ASP.NET Core Web API for managing basket v2 micro-services in commerce application",
+                      Contact = new OpenApiContact
+                      {
+                          Name = "Mohamed Magdy",
+                          Email = "mohamedmagdy000022@gmail.com",
+                      }
+                  });
 
             const string securityScheme = "Bearer";
 
@@ -64,6 +77,7 @@ public static class SwaggerConfiguration
         {
             options.RoutePrefix = string.Empty;
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog API V1");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog API V2");
 
 
             options.DisplayRequestDuration();
