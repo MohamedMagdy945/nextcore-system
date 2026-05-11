@@ -3,7 +3,7 @@ using Catalog.Application.Responses;
 using Mapster;
 using MediatR;
 
-namespace Catalog.Application.Handlers.Queries
+namespace Catalog.Application.Features.Queries.GetProductById
 {
     public record GetProductByIdQuery(string Id) : IRequest<ProductResponseDto>;
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductResponseDto>
