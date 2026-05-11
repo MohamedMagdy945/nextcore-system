@@ -1,25 +1,28 @@
-﻿using Catalog.Application.Interfaces.Repositories;
+﻿using AutoMapper;
+using Catalog.Application.Interfaces.Repositories;
+using Catalog.Application.OLD.Queries;
 using Catalog.Application.Responses;
-using Mapster;
 using MediatR;
 
 namespace Catalog.Application.Handlers.Queries
 {
-    public record GetProductByIdQuery(string Id) : IRequest<ProductResponseDto>;
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductResponseDto>
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
         public GetProductByIdQueryHandler(
-            IProductRepository productRepository)
+            IProductRepository productRepository,
+            IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public async Task<ProductResponseDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
             var product = await _productRepository.GetByIdAsync(request.Id);
-            var productResponseDto = product.Adapt<ProductResponseDto>();
+            var productResponseDto = _mapper.Map<ProductResponseDto>(product);
             return productResponseDto;
         }
     }

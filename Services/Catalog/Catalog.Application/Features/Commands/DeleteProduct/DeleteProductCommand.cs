@@ -1,14 +1,14 @@
-﻿using Catalog.Application.Commands;
-using Catalog.Application.Interfaces.Repositories;
+﻿using Catalog.Application.Interfaces.Repositories;
 using MediatR;
 
-namespace Catalog.Application.Handlers.Commands
+namespace Catalog.Application.Features.Commands.DeleteProduct
 {
-    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, bool>
+    public record DeleteProductCommand(string Id) : IRequest<bool>;
+    public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, bool>
     {
         private readonly IProductRepository _productRepository;
 
-        public DeleteProductCommandHandler(IProductRepository productRepository)
+        public DeleteProductHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

@@ -2,7 +2,7 @@
 using Catalog.Core.Specs;
 using MediatR;
 
-namespace Catalog.Application.Queries
+namespace Catalog.Application.OLD.Queries
 {
     public class GetAllProductsQuery : IRequest<Pagination<ProductResponseDto>>
     {

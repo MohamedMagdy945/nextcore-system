@@ -1,4 +1,6 @@
-﻿using Catalog.Application.Interfaces.Repositories;
+﻿using AutoMapper;
+using Catalog.Application.Interfaces.Repositories;
+using Catalog.Application.OLD.Queries;
 using Catalog.Application.Responses;
 using MediatR;
 
@@ -7,6 +9,7 @@ namespace Catalog.Application.Handlers.Queries
     public class GetAllTypesQueryHandler : IRequestHandler<GetAllTypesQuery, IList<TypeResponseDto>>
     {
         private readonly ITypeRepository _typeRepository;
+        private readonly IMapper _mapper;
 
         public GetAllTypesQueryHandler(
             ITypeRepository typeRepository,

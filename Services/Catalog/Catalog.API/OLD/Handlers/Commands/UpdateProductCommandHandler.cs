@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Catalog.Application.Commands;
+using Catalog.Application.Features.Commands.UpdateProduct;
 using Catalog.Application.Interfaces.Repositories;
+using Catalog.Application.OLD.Commands;
 using Catalog.Core.Entities;
 using MediatR;
 

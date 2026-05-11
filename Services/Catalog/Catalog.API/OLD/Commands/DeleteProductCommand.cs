@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Catalog.Application.Commands
+namespace Catalog.Application.OLD.Commands
 {
     public class DeleteProductCommand : IRequest<bool>
     {

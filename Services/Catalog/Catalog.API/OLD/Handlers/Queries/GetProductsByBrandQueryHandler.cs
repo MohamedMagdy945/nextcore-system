@@ -2,29 +2,25 @@
 using Catalog.Application.Interfaces.Repositories;
 using Catalog.Application.OLD.Queries;
 using Catalog.Application.Responses;
-using Catalog.Core.Specs;
 using MediatR;
 
 namespace Catalog.Application.Handlers.Queries
 {
-    public class GetAllProductsQueryHandle : IRequestHandler<GetAllProductsQuery, Pagination<ProductResponseDto>>
+    public class GetProductsByBrandQueryHandler : IRequestHandler<GetProductsByBrandQuery, IList<ProductResponseDto>>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-
-        public GetAllProductsQueryHandle(
+        public GetProductsByBrandQueryHandler(
             IProductRepository productRepository,
             IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
         }
-
-
-        public async Task<Pagination<ProductResponseDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<IList<ProductResponseDto>> Handle(GetProductsByBrandQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.GetAllAsync(request.CatalogSpecParams);
-            var productsResponse = _mapper.Map<Pagination<ProductResponseDto>>(products);
+            var products = await _productRepository.GetAllByBrandNameAsync(request.Brand);
+            var productsResponse = _mapper.Map<IList<ProductResponseDto>>(products);
             return productsResponse;
         }
     }

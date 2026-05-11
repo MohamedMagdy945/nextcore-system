@@ -1,7 +1,7 @@
 ﻿using Catalog.Application.Responses;
 using MediatR;
 
-namespace Catalog.Application.Queries
+namespace Catalog.Application.OLD.Queries
 {
     public class GetProductsByBrandQuery : IRequest<IList<ProductResponseDto>>
     {
