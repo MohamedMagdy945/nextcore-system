@@ -1,6 +1,6 @@
-﻿namespace Catalog.Core.Specs
+﻿namespace Catalog.Core.Models
 {
-    public class CatalogSpecParams
+    public class ProductParams
     {
         private const int MaxPageSize = 50;
         public int PageIndex { get; set; } = 1;
@@ -12,9 +12,7 @@
         }
         public string? BrandId { get; set; }
         public string? TypeId { get; set; }
-
         public string? Sort { get; set; }
-
         public string? Search { get; set; }
 
     }

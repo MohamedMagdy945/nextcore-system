@@ -1,12 +1,12 @@
 ﻿using Catalog.Application.Interfaces.Repositories;
 using Catalog.Application.Responses;
-using Catalog.Core.Specs;
+using Catalog.Core.Models;
 using Mapster;
 using MediatR;
 
 namespace Catalog.Application.Features.Queries.GetAllProducts
 {
-    public record GetAllProductsQuery(CatalogSpecParams CatalogSpecParams) : IRequest<Pagination<ProductResponseDto>>;
+    public record GetAllProductsQuery(PaginationParams CatalogSpecParams) : IRequest<Pagination<ProductResponseDto>>;
     public class GetAllProductsQueryHandle : IRequestHandler<GetAllProductsQuery, Pagination<ProductResponseDto>>
     {
         private readonly IProductRepository _productRepository;

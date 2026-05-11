@@ -5,7 +5,7 @@ using Catalog.Application.Features.Queries.GetAllProducts;
 using Catalog.Application.Features.Queries.GetAllProductsByName;
 using Catalog.Application.Features.Queries.GetProductById;
 using Catalog.Application.Responses;
-using Catalog.Core.Specs;
+using Catalog.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
@@ -45,7 +45,7 @@ namespace Catalog.API.Controllers
         [HttpGet]
         [Route("GetAllProducts")]
         [ProducesResponseType(typeof(IList<ProductResponseDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllProducts([FromQuery] CatalogSpecParams specs)
+        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllProducts([FromQuery] PaginationParams specs)
         {
             var query = new GetAllProductsQuery(specs);
             var result = await Mediator.Send(query);

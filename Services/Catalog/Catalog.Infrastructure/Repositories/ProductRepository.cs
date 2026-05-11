@@ -1,6 +1,7 @@
 ﻿using Catalog.Application.Interfaces.Repositories;
+using Catalog.Core.Constants;
 using Catalog.Core.Entities;
-using Catalog.Core.Specs;
+using Catalog.Core.Models;
 using Catalog.Infrastructure.Persistence.DbContext;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -25,18 +26,18 @@ namespace Catalog.Infrastructure.Repositories
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Pagination<Product>> GetAllAsync(CatalogSpecParams spec)
+        public async Task<Pagination<Product>> GetAllAsync(ProductParams productParams)
         {
-            var filter = BuildFilter(spec);
+            var filter = BuildFilter(productParams);
 
             var totalItems = await _context.Products
                 .CountDocumentsAsync(filter);
 
-            var data = await ApplySortAndPagingAsync(spec, filter);
+            var data = await ApplySortAndPagingAsync(productParams, filter);
 
             return new Pagination<Product>(
-                spec.PageIndex,
-                spec.PageSize,
+                productParams.PageIndex,
+                productParams.PageSize,
                 (int)totalItems,
                 data
             );
@@ -88,31 +89,31 @@ namespace Catalog.Infrastructure.Repositories
             return result.IsAcknowledged && result.DeletedCount > 0;
         }
 
-        private FilterDefinition<Product> BuildFilter(CatalogSpecParams spec)
+        private FilterDefinition<Product> BuildFilter(ProductParams productParams)
         {
             var filters = new List<FilterDefinition<Product>>();
 
-            if (!string.IsNullOrWhiteSpace(spec.Search))
+            if (!string.IsNullOrWhiteSpace(productParams.Search))
             {
                 filters.Add(
                     _filterBuilder.Regex(
                         p => p.Name,
-                        new BsonRegularExpression(spec.Search, "i")
+                        new BsonRegularExpression(productParams.Search, "i")
                     )
                 );
             }
 
-            if (!string.IsNullOrWhiteSpace(spec.BrandId))
+            if (!string.IsNullOrWhiteSpace(productParams.BrandId))
             {
                 filters.Add(
-                    _filterBuilder.Eq(p => p.Brand.Id, spec.BrandId)
+                    _filterBuilder.Eq(p => p.Brand.Id, productParams.BrandId)
                 );
             }
 
-            if (!string.IsNullOrWhiteSpace(spec.TypeId))
+            if (!string.IsNullOrWhiteSpace(productParams.TypeId))
             {
                 filters.Add(
-                    _filterBuilder.Eq(p => p.Type.Id, spec.TypeId)
+                    _filterBuilder.Eq(p => p.Type.Id, productParams.TypeId)
                 );
             }
 
@@ -122,23 +123,23 @@ namespace Catalog.Infrastructure.Repositories
         }
 
         private async Task<IReadOnlyList<Product>> ApplySortAndPagingAsync(
-            CatalogSpecParams spec,
+            ProductParams productParams,
             FilterDefinition<Product> filter)
         {
-            var sort = (spec.Sort ?? "").ToLowerInvariant() switch
+            var sort = (productParams.Sort ?? "").ToLowerInvariant() switch
             {
-                "priceasc" => _sortBuilder.Ascending(p => p.Price),
-                "pricedesc" => _sortBuilder.Descending(p => p.Price),
+                ProductSortOptions.PriceDesc => _sortBuilder.Ascending(p => p.Price),
+                ProductSortOptions.PriceAsc => _sortBuilder.Descending(p => p.Price),
                 _ => _sortBuilder.Ascending(p => p.Name)
             };
 
-            var skip = spec.PageSize * (spec.PageIndex - 1);
+            var skip = productParams.PageSize * (productParams.PageIndex - 1);
 
             return await _context.Products
                 .Find(filter)
                 .Sort(sort)
                 .Skip(skip)
-                .Limit(spec.PageSize)
+                .Limit(productParams.PageSize)
                 .ToListAsync();
         }
     }
