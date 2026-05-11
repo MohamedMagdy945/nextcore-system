@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Catalog.Application.Features.Queries.GetAllProducts
 {
-    public record GetAllProductsQuery(PaginationParams CatalogSpecParams) : IRequest<Pagination<ProductResponseDto>>;
+    public record GetAllProductsQuery(ProductParams ProductParams) : IRequest<Pagination<ProductResponseDto>>;
     public class GetAllProductsQueryHandle : IRequestHandler<GetAllProductsQuery, Pagination<ProductResponseDto>>
     {
         private readonly IProductRepository _productRepository;
@@ -20,7 +20,7 @@ namespace Catalog.Application.Features.Queries.GetAllProducts
 
         public async Task<Pagination<ProductResponseDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _productRepository.GetAllAsync(request.CatalogSpecParams);
+            var products = await _productRepository.GetAllAsync(request.ProductParams);
             var productsResponse = products.Adapt<Pagination<ProductResponseDto>>();
             return productsResponse;
         }

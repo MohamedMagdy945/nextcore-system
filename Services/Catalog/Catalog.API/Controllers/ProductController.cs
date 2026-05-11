@@ -1,4 +1,5 @@
-﻿using Catalog.Application.Features.Commands.CreateProduct;
+﻿using Asp.Versioning;
+using Catalog.Application.Features.Commands.CreateProduct;
 using Catalog.Application.Features.Commands.DeleteProduct;
 using Catalog.Application.Features.Commands.UpdateProduct;
 using Catalog.Application.Features.Queries.GetAllProducts;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
+    [ApiVersion("1.0")]
     public class ProductController : AppControllerBase
     {
 
@@ -45,7 +47,7 @@ namespace Catalog.API.Controllers
         [HttpGet]
         [Route("GetAllProducts")]
         [ProducesResponseType(typeof(IList<ProductResponseDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllProducts([FromQuery] PaginationParams specs)
+        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllProducts([FromQuery] ProductParams specs)
         {
             var query = new GetAllProductsQuery(specs);
             var result = await Mediator.Send(query);

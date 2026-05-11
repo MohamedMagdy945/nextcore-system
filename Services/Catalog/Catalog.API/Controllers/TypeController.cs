@@ -1,9 +1,11 @@
-﻿using Catalog.Application.Features.Queries.GetAllTypes;
+﻿using Asp.Versioning;
+using Catalog.Application.Features.Queries.GetAllTypes;
 using Catalog.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
+    [ApiVersion("1.0")]
     public class TypeController : AppControllerBase
     {
         [HttpGet]

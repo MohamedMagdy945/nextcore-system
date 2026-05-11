@@ -21,7 +21,6 @@ namespace Catalog.API
 
             builder.Host.UseSerilog(Logging.ConfigureLogger);
 
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddApiVersioningConfiguration();
             builder.Services.AddSwaggerConfiguration();
 

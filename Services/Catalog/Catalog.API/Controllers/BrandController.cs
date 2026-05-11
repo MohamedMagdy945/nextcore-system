@@ -1,10 +1,11 @@
-﻿using Catalog.Application.Features.Queries.GetAllBrands;
+﻿using Asp.Versioning;
+using Catalog.Application.Features.Queries.GetAllBrands;
 using Catalog.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
-
+    [ApiVersion("1.0")]
     public class BrandController : AppControllerBase
     {
         [HttpGet]
