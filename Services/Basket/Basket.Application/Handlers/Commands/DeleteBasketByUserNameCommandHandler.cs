@@ -15,7 +15,7 @@ namespace Basket.Application.Handlers.Commands
 
         public async Task<Unit> Handle(DeleteBasketByUserNameCommand request, CancellationToken cancellationToken)
         {
-            await _basketRepository.DeleteBasketAsync(request.UserName);
+            await _basketRepository.DeleteCartAsync(request.UserName);
             return Unit.Value;
         }
     }

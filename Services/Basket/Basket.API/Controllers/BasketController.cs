@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using Basket.Application.Commands;
+using Basket.Application.Features.Commands.CreateShoppingCart;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
 using Basket.Core.Entities;

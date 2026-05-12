@@ -17,7 +17,7 @@ namespace Basket.Application.Handlers.Queries
 
         public async Task<ShoppingCartResponse> Handle(GetBasketByUserNameQuery request, CancellationToken cancellationToken)
         {
-            var shoppingCart = await _repository.GetBasketAsync(request.UserName);
+            var shoppingCart = await _repository.GetCartAsync(request.UserName);
             var shoppingCartResponse = shoppingCart.Adapt<ShoppingCartResponse>();
             return shoppingCartResponse;
         }

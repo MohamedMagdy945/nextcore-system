@@ -20,4 +20,8 @@
 	<ItemGroup>
 		<Protobuf Include="..\..\..\Services\Discount\Discount.Application\Protos\discount.proto" GrpcServices="Client" Link="Protos\discount.proto" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="Features\Queries\" />
+	</ItemGroup>
 </Project>

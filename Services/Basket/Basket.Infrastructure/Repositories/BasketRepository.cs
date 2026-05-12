@@ -14,38 +14,30 @@ namespace Basket.Infrastructure.Repositories
             _redisCache = redisCache;
         }
 
-        public async Task<ShoppingCart> GetBasketAsync(string userName)
+        public async Task<ShoppingCart?> GetCartAsync(string userName)
         {
-            var basket = await _redisCache.GetStringAsync(userName);
+            var cart = await _redisCache.GetStringAsync(userName);
 
-            if (string.IsNullOrEmpty(basket))
-                return null;
-
-            return JsonConvert.DeserializeObject<ShoppingCart>(basket)!;
+            return string.IsNullOrEmpty(cart)
+                ? null
+                : JsonConvert.DeserializeObject<ShoppingCart>(cart);
         }
 
-        public async Task<ShoppingCart> UpdateBasketAsync(ShoppingCart cart)
+        public async Task<ShoppingCart> UpdateCartAsync(ShoppingCart cart)
         {
-            var basket = await _redisCache.GetStringAsync(cart.UserName);
-
-
+            var serializedCart = JsonConvert.SerializeObject(cart);
 
             await _redisCache.SetStringAsync(
                 cart.UserName,
-                JsonConvert.SerializeObject(cart)
+                serializedCart
             );
 
-            return await GetBasketAsync(cart.UserName);
+            return cart;
         }
 
-        public async Task DeleteBasketAsync(string userName)
+        public async Task DeleteCartAsync(string userName)
         {
-            var basket = await _redisCache.GetStringAsync(userName);
-
-            if (!string.IsNullOrEmpty(basket))
-            {
-                await _redisCache.RemoveAsync(userName);
-            }
+            await _redisCache.RemoveAsync(userName);
         }
     }
 }

@@ -1,20 +1,24 @@
-﻿using Basket.Application.Commands;
-using Basket.Application.GerpcService;
+﻿using Basket.Application.GerpcService;
 using Basket.Application.Responses;
 using Basket.Core.Entities;
 using Basket.Core.Repositories;
 using Mapster;
 using MediatR;
 
-namespace Basket.Application.Handlers.Commands
+namespace Basket.Application.Features.Commands.CreateShoppingCart
 {
-    public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShoppingCartCommand, ShoppingCartResponse>
+    public record CreateShoppingCartCommand(
+     string UserName,
+     List<ShoppingCartItem> Items
+    ) : IRequest<ShoppingCartResponse>;
+
+    public class CreateShoppingCartHandler : IRequestHandler<CreateShoppingCartCommand, ShoppingCartResponse>
     {
         private readonly IBasketRepository _basketRepository;
         private readonly DiscountGrpcSerivce _discountGrpcService;
 
 
-        public CreateShoppingCartCommandHandler(
+        public CreateShoppingCartHandler(
             IBasketRepository basketRepository,
             DiscountGrpcSerivce discountGrpcSerivce)
         {
@@ -34,13 +38,10 @@ namespace Basket.Application.Handlers.Commands
                     item.Price -= coupon.Amount;
                 }
             }
-            var shoppingCart = new ShoppingCart()
-            {
-                UserName = request.UserName,
-                Items = request.Items
-            };
 
-            shoppingCart = await _basketRepository.UpdateBasketAsync(shoppingCart);
+            var shoppingCart = request.Adapt<ShoppingCart>();
+
+            shoppingCart = await _basketRepository.UpdateCartAsync(shoppingCart);
             var shoppingCartResponse = shoppingCart.Adapt<ShoppingCartResponse>();
             return shoppingCartResponse;
         }
