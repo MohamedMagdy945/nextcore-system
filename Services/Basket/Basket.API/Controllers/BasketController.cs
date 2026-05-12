@@ -1,11 +1,11 @@
 ﻿using Asp.Versioning;
-using AutoMapper;
 using Basket.Application.Commands;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
 using Basket.Core.Entities;
 using Catalog.API.Controllers;
 using EventBus.Messages.Events;
+using Mapster;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -17,16 +17,13 @@ namespace Basket.API.Controllers
     {
 
         private readonly IPublishEndpoint _publishEndpoint;
-        private readonly IMapper _mapper;
         private readonly ILogger<BasketController> _logger;
         public BasketController(
             IPublishEndpoint publishEndpoint,
-            IMapper mapper,
             ILogger<BasketController> logger
             )
         {
             _publishEndpoint = publishEndpoint;
-            _mapper = mapper;
             _logger = logger;
         }
 
@@ -72,7 +69,7 @@ namespace Basket.API.Controllers
                 return BadRequest();
             }
 
-            var eventMsg = _mapper.Map<BasketCheckoutEventV2>(basketCheckout);
+            var eventMsg = basketCheckout.Adapt<BasketCheckoutEventV2>();
             eventMsg.TotalPrice = basket.TotalPrice;
             await _publishEndpoint.Publish(eventMsg);
             _logger.LogInformation($"Basket Published for {basket.UserName}");

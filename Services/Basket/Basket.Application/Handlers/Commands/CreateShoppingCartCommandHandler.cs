@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using Basket.Application.Commands;
+﻿using Basket.Application.Commands;
 using Basket.Application.GerpcService;
 using Basket.Application.Responses;
 using Basket.Core.Entities;
 using Basket.Core.Repositories;
+using Mapster;
 using MediatR;
 
 namespace Basket.Application.Handlers.Commands
@@ -11,17 +11,14 @@ namespace Basket.Application.Handlers.Commands
     public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShoppingCartCommand, ShoppingCartResponse>
     {
         private readonly IBasketRepository _basketRepository;
-        private readonly IMapper _mapper;
         private readonly DiscountGrpcSerivce _discountGrpcService;
 
 
         public CreateShoppingCartCommandHandler(
             IBasketRepository basketRepository,
-            IMapper mapper,
             DiscountGrpcSerivce discountGrpcSerivce)
         {
             _basketRepository = basketRepository;
-            _mapper = mapper;
             _discountGrpcService = discountGrpcSerivce;
         }
 
@@ -44,7 +41,7 @@ namespace Basket.Application.Handlers.Commands
             };
 
             shoppingCart = await _basketRepository.UpdateBasketAsync(shoppingCart);
-            var shoppingCartResponse = _mapper.Map<ShoppingCartResponse>(shoppingCart);
+            var shoppingCartResponse = shoppingCart.Adapt<ShoppingCartResponse>();
             return shoppingCartResponse;
         }
     }

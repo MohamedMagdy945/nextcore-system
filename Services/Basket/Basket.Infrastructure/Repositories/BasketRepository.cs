@@ -21,7 +21,7 @@ namespace Basket.Infrastructure.Repositories
             if (string.IsNullOrEmpty(basket))
                 return null;
 
-            return JsonConvert.DeserializeObject<ShoppingCart>(basket);
+            return JsonConvert.DeserializeObject<ShoppingCart>(basket)!;
         }
 
         public async Task<ShoppingCart> UpdateBasketAsync(ShoppingCart cart)
