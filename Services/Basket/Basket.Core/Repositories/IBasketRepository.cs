@@ -6,6 +6,6 @@ namespace Basket.Core.Repositories
     {
         Task<ShoppingCart> GetBasketAsync(string userName);
         Task<ShoppingCart> UpdateBasketAsync(ShoppingCart cart);
-        Task DeleteBasket(string userName);
+        Task DeleteBasketAsync(string userName);
     }
 }

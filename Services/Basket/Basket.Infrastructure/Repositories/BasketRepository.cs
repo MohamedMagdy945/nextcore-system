@@ -17,36 +17,35 @@ namespace Basket.Infrastructure.Repositories
         public async Task<ShoppingCart> GetBasketAsync(string userName)
         {
             var basket = await _redisCache.GetStringAsync(userName);
+
             if (string.IsNullOrEmpty(basket))
-            {
                 return null;
-            }
+
             return JsonConvert.DeserializeObject<ShoppingCart>(basket);
         }
+
         public async Task<ShoppingCart> UpdateBasketAsync(ShoppingCart cart)
         {
             var basket = await _redisCache.GetStringAsync(cart.UserName);
 
-            if (string.IsNullOrEmpty(basket))
-            {
-                // logic return
-            }
 
-            await _redisCache.SetStringAsync(cart.UserName, JsonConvert.SerializeObject(cart));
+
+            await _redisCache.SetStringAsync(
+                cart.UserName,
+                JsonConvert.SerializeObject(cart)
+            );
+
             return await GetBasketAsync(cart.UserName);
         }
 
-        public async Task DeleteBasket(string userName)
+        public async Task DeleteBasketAsync(string userName)
         {
-            var basket = _redisCache.GetStringAsync(userName);
-            if (basket == null)
+            var basket = await _redisCache.GetStringAsync(userName);
+
+            if (!string.IsNullOrEmpty(basket))
             {
                 await _redisCache.RemoveAsync(userName);
             }
-
         }
-
-
-
     }
 }
