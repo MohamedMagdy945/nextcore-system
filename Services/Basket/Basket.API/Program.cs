@@ -30,11 +30,6 @@ namespace Basket.API
 
 
 
-            builder.Services.AddAutoMapper(cfg =>
-            {
-                cfg.AddMaps(typeof(ApplicationAssemblyMarker).Assembly);
-            });
-
             builder.Services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyMarker).Assembly));
 
