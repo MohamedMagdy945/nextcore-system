@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
-using Basket.Application.Commands;
-using Basket.Application.Queries;
+using Basket.Application.Features.Commands.DeleteShoppingCartByUserName;
+using Basket.Application.Features.Queries;
 using Basket.Core.Entities;
 using Catalog.API.Controllers;
 using EventBus.Messages.Events;
@@ -44,7 +44,7 @@ namespace Basket.API.Controllers.V2
             eventMsg.TotalPrice = basket.TotalPrice;
             await _publishEndpoint.Publish(eventMsg);
             _logger.LogInformation($"Basket Published for {basket.UserName} v2 endpoint");
-            var deleteCommand = new DeleteBasketByUserNameCommand(basket.UserName);
+            var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
             await _mediator.Send(deleteCommand);
             return Accepted();
         }

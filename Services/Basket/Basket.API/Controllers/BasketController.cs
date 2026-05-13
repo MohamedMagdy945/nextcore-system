@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
-using Basket.Application.Commands;
 using Basket.Application.Features.Commands.CreateShoppingCart;
-using Basket.Application.Queries;
+using Basket.Application.Features.Commands.DeleteShoppingCartByUserName;
+using Basket.Application.Features.Queries;
 using Basket.Application.Responses;
 using Basket.Core.Entities;
 using Catalog.API.Controllers;
@@ -51,7 +51,7 @@ namespace Basket.API.Controllers
         [Route("[action]/{userName}", Name = "DeleteBasketByUserName")]
         public async Task<ActionResult<ShoppingCartResponse>> DeleteBasket(string userName)
         {
-            var command = new DeleteBasketByUserNameCommand(userName);
+            var command = new DeleteShoppingCartByUserNameCommand(userName);
             var basket = await _mediator.Send(command);
             return Ok(basket);
         }
@@ -74,7 +74,7 @@ namespace Basket.API.Controllers
             eventMsg.TotalPrice = basket.TotalPrice;
             await _publishEndpoint.Publish(eventMsg);
             _logger.LogInformation($"Basket Published for {basket.UserName}");
-            var deleteCommand = new DeleteBasketByUserNameCommand(basket.UserName);
+            var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
             await _mediator.Send(deleteCommand);
             return Accepted();
         }
