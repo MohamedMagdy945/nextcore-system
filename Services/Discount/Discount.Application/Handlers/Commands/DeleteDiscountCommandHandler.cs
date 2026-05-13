@@ -15,7 +15,7 @@ namespace Discount.Application.Handlers.Commands
 
         public async Task<bool> Handle(DeleteDiscountCommand request, CancellationToken cancellationToken)
         {
-            var deleted = await _discountRepository.DeleteDiscount(request.ProductName);
+            var deleted = await _discountRepository.DeleteDiscountAsync(request.ProductName);
             return deleted;
         }
     }

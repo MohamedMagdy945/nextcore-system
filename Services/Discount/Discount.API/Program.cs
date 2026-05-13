@@ -25,11 +25,6 @@ namespace Discount.API
             builder.Services.AddOpenApi();
 
 
-            builder.Services.AddAutoMapper(cfg =>
-            {
-                cfg.AddMaps(typeof(ApplicationAssemblyMarker).Assembly);
-            });
-
             builder.Services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssemblies(typeof(ApplicationAssemblyMarker).Assembly));
 

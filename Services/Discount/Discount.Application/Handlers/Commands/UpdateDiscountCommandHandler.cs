@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using Discount.Application.Commands;
+﻿using Discount.Application.Commands;
 using Discount.Core.Entities;
 using Discount.Core.Repositories;
 using Discount.Grpc.Protos;
+using Mapster;
 using MediatR;
 
 namespace Discount.Application.Handlers.Commands
@@ -10,20 +10,17 @@ namespace Discount.Application.Handlers.Commands
     public class UpdateDiscountCommandHandler : IRequestHandler<UpdateDiscountCommand, CouponModel>
     {
         private readonly IDiscountRepository _discountRepository;
-        private readonly IMapper _mapper;
 
-        public UpdateDiscountCommandHandler(IDiscountRepository discountRepository
-            , IMapper mapper)
+        public UpdateDiscountCommandHandler(IDiscountRepository discountRepository)
         {
             _discountRepository = discountRepository;
-            _mapper = mapper;
         }
 
         public async Task<CouponModel> Handle(UpdateDiscountCommand request, CancellationToken cancellationToken)
         {
-            var coupon = _mapper.Map<Coupon>(request);
-            await _discountRepository.UpdateDiscount(coupon);
-            var couponModel = _mapper.Map<CouponModel>(coupon);
+            var coupon = request.Adapt<Coupon>();
+            await _discountRepository.UpdateDiscountAsync(coupon);
+            var couponModel = coupon.Adapt<CouponModel>();
             return couponModel;
         }
     }

@@ -23,7 +23,7 @@ namespace Discount.Application.Handlers.Queries
 
         public async Task<CouponModel> Handle(GetDiscountQuery request, CancellationToken cancellationToken)
         {
-            var coupon = await _discountRepository.GetDiscount(request.ProductName);
+            var coupon = await _discountRepository.GetDiscountAsync(request.ProductName);
 
             if (coupon == null)
             {
