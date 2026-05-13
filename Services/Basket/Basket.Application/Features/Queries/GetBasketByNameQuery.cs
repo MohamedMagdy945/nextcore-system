@@ -1,15 +1,17 @@
-﻿using Basket.Application.Queries;
-using Basket.Application.Responses;
+﻿using Basket.Application.Responses;
 using Basket.Core.Repositories;
 using Mapster;
 using MediatR;
 
-namespace Basket.Application.Handlers.Queries
+namespace Basket.Application.Features.Queries
 {
-    public class GetBasketByNameQueryHandler : IRequestHandler<GetBasketByUserNameQuery, ShoppingCartResponse>
+    public record GetBasketByUserNameQuery(string UserName)
+        : IRequest<ShoppingCartResponse>;
+    public class GetBasketByNameHandler :
+        IRequestHandler<GetBasketByUserNameQuery, ShoppingCartResponse>
     {
         private readonly IBasketRepository _repository;
-        public GetBasketByNameQueryHandler(IBasketRepository repository)
+        public GetBasketByNameHandler(IBasketRepository repository)
         {
             _repository = repository;
         }
