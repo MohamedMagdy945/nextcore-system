@@ -14,7 +14,7 @@ using System.Net;
 namespace Basket.API.Controllers
 {
     [ApiVersion("1.0")]
-    public class BasketController : BaseApiController
+    public class BasketController : AppControllerBase
     {
 
         private readonly IPublishEndpoint _publishEndpoint;
@@ -35,7 +35,7 @@ namespace Basket.API.Controllers
         public async Task<ActionResult<ShoppingCartResponse>> GetBasket(string userName)
         {
             var query = new GetBasketByUserNameQuery(userName);
-            var basket = await _mediator.Send(query);
+            var basket = await Mediator.Send(query);
             return Ok(basket);
         }
 
@@ -43,7 +43,7 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
-            var basket = await _mediator.Send(command);
+            var basket = await Mediator.Send(command);
             return Ok(basket);
         }
 
@@ -52,7 +52,7 @@ namespace Basket.API.Controllers
         public async Task<ActionResult<ShoppingCartResponse>> DeleteBasket(string userName)
         {
             var command = new DeleteShoppingCartByUserNameCommand(userName);
-            var basket = await _mediator.Send(command);
+            var basket = await Mediator.Send(command);
             return Ok(basket);
         }
 
@@ -63,7 +63,7 @@ namespace Basket.API.Controllers
         public async Task<IActionResult> Checkout(BasketCheckout basketCheckout)
         {
             var query = new GetBasketByUserNameQuery(basketCheckout.UserName);
-            var basket = await _mediator.Send(query);
+            var basket = await Mediator.Send(query);
 
             if (basket == null)
             {
@@ -75,7 +75,7 @@ namespace Basket.API.Controllers
             await _publishEndpoint.Publish(eventMsg);
             _logger.LogInformation($"Basket Published for {basket.UserName}");
             var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
-            await _mediator.Send(deleteCommand);
+            await Mediator.Send(deleteCommand);
             return Accepted();
         }
     }

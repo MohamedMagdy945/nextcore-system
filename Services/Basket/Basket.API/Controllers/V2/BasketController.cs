@@ -12,7 +12,7 @@ using System.Net;
 namespace Basket.API.Controllers.V2
 {
     [ApiVersion("2")]
-    public class BasketController : BaseApiController
+    public class BasketController : AppControllerBase
     {
 
         private readonly IPublishEndpoint _publishEndpoint;
@@ -33,7 +33,7 @@ namespace Basket.API.Controllers.V2
         public async Task<IActionResult> Checkout(BasketCheckout basketCheckout)
         {
             var query = new GetBasketByUserNameQuery(basketCheckout.UserName);
-            var basket = await _mediator.Send(query);
+            var basket = await Mediator.Send(query);
 
             if (basket == null)
             {
@@ -45,7 +45,7 @@ namespace Basket.API.Controllers.V2
             await _publishEndpoint.Publish(eventMsg);
             _logger.LogInformation($"Basket Published for {basket.UserName} v2 endpoint");
             var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
-            await _mediator.Send(deleteCommand);
+            await Mediator.Send(deleteCommand);
             return Accepted();
         }
     }
