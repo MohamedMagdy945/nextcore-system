@@ -14,7 +14,7 @@ namespace Discount.Infrastructure.Repositories
             _configuration = configuration;
         }
 
-        public async Task<Coupon> GetDiscount(string productName)
+        public async Task<Coupon> GetDiscountAsync(string productName)
         {
             await using var connection = new Npgsql.NpgsqlConnection(
                 _configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
@@ -28,7 +28,7 @@ namespace Discount.Infrastructure.Repositories
 
             return coupon;
         }
-        public async Task<bool> CreateDiscount(Coupon coupon)
+        public async Task<bool> CreateDiscountAsync(Coupon coupon)
         {
             await using var connection = new Npgsql.NpgsqlConnection(
                 _configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
@@ -48,7 +48,7 @@ namespace Discount.Infrastructure.Repositories
 
             return true;
         }
-        public async Task<bool> UpdateDiscount(Coupon coupon)
+        public async Task<bool> UpdateDiscountAsync(Coupon coupon)
         {
 
             await using var connection = new Npgsql.NpgsqlConnection(
@@ -70,7 +70,7 @@ namespace Discount.Infrastructure.Repositories
 
             return true;
         }
-        public async Task<bool> DeleteDiscount(string productName)
+        public async Task<bool> DeleteDiscountAsync(string productName)
         {
             await using var connection = new Npgsql.NpgsqlConnection(
                 _configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
@@ -87,5 +87,6 @@ namespace Discount.Infrastructure.Repositories
 
             return true;
         }
+
     }
 }
