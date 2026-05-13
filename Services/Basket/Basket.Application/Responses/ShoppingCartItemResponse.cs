@@ -1,6 +1,6 @@
 ﻿namespace Basket.Application.Responses
 {
-    public class ShoppingCartItemResponse
+    public record ShoppingCartItemResponse
     {
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }

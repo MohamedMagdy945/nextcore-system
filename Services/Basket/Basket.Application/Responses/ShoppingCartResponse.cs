@@ -2,15 +2,11 @@
 
 namespace Basket.Application.Responses
 {
-    public class ShoppingCartResponse
+    public record ShoppingCartResponse
     {
         public string UserName { get; set; } = string.Empty;
         public List<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
 
-        public ShoppingCartResponse(string userName)
-        {
-            UserName = userName;
-        }
         public decimal TotalPrice
         {
             get
