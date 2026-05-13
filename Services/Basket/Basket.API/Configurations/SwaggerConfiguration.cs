@@ -77,8 +77,8 @@ public static class SwaggerConfiguration
         app.UseSwaggerUI(options =>
         {
             options.RoutePrefix = string.Empty;
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog API V1");
-            options.SwaggerEndpoint("/swagger/v2/swagger.json", "Catalog API V2");
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket API V1");
+            options.SwaggerEndpoint("/swagger/v2/swagger.json", "Basket API V2");
 
 
             options.DisplayRequestDuration();

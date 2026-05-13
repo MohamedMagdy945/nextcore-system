@@ -11,7 +11,7 @@ using System.Net;
 
 namespace Basket.API.Controllers.V2
 {
-    [ApiVersion("2")]
+    [ApiVersion("2.0")]
     public class BasketController : AppControllerBase
     {
 
