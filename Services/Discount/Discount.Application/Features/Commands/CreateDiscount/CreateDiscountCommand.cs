@@ -4,7 +4,7 @@ using Discount.Grpc.Protos;
 using Mapster;
 using MediatR;
 
-namespace Discount.Application.Features.CreateDiscount
+namespace Discount.Application.Features.Commands.CreateDiscount
 {
     public record CreateDiscountCommand(string ProductName, string Description,
     int Amount) : IRequest<CouponModel>;

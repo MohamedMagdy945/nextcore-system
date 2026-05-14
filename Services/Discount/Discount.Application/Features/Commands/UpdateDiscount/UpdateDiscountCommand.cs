@@ -1,12 +1,14 @@
-﻿using Discount.Application.Features.Commands;
-using Discount.Core.Entities;
+﻿using Discount.Core.Entities;
 using Discount.Core.Repositories;
 using Discount.Grpc.Protos;
 using Mapster;
 using MediatR;
 
-namespace Discount.Application.Features.Handlers.Commands
+namespace Discount.Application.Features.Commands.UpdateDiscount
 {
+    public record UpdateDiscountCommand(
+      int Id, string ProductName, string Description, int Amount
+    ) : IRequest<CouponModel>;
     public class UpdateDiscountCommandHandler : IRequestHandler<UpdateDiscountCommand, CouponModel>
     {
         private readonly IDiscountRepository _discountRepository;

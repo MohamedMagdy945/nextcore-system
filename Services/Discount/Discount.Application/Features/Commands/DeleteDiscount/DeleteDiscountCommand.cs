@@ -1,7 +1,7 @@
 ﻿using Discount.Core.Repositories;
 using MediatR;
 
-namespace Discount.Application.Features.DeleteDiscount
+namespace Discount.Application.Features.Commands.DeleteDiscount
 {
     public record DeleteDiscountCommand(string ProductName) : IRequest<bool>;
     public class DeleteDiscountHandler : IRequestHandler<DeleteDiscountCommand, bool>
