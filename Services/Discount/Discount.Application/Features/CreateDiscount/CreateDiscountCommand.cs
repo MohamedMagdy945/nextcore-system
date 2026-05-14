@@ -8,10 +8,10 @@ namespace Discount.Application.Features.CreateDiscount
 {
     public record CreateDiscountCommand(string ProductName, string Description,
     int Amount) : IRequest<CouponModel>;
-    public class CreateDiscountCommandHandler : IRequestHandler<CreateDiscountCommand, CouponModel>
+    public class CreateDiscountHandler : IRequestHandler<CreateDiscountCommand, CouponModel>
     {
         private readonly IDiscountRepository _discountRepository;
-        public CreateDiscountCommandHandler(
+        public CreateDiscountHandler(
             IDiscountRepository discountRepository
             )
         {

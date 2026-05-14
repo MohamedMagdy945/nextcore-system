@@ -1,14 +1,14 @@
-﻿using Discount.Application.Features.Commands;
-using Discount.Core.Repositories;
+﻿using Discount.Core.Repositories;
 using MediatR;
 
-namespace Discount.Application.Features.Handlers.Commands
+namespace Discount.Application.Features.DeleteDiscount
 {
-    public class DeleteDiscountCommandHandler : IRequestHandler<DeleteDiscountCommand, bool>
+    public record DeleteDiscountCommand(string ProductName) : IRequest<bool>;
+    public class DeleteDiscountHandler : IRequestHandler<DeleteDiscountCommand, bool>
     {
         private readonly IDiscountRepository _discountRepository;
 
-        public DeleteDiscountCommandHandler(IDiscountRepository discountRepository)
+        public DeleteDiscountHandler(IDiscountRepository discountRepository)
         {
             _discountRepository = discountRepository;
         }
