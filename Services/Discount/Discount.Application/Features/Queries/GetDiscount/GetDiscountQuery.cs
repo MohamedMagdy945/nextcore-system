@@ -1,20 +1,20 @@
-﻿using Discount.Application.Features.Queries;
-using Discount.Core.Repositories;
+﻿using Discount.Core.Repositories;
 using Discount.Grpc.Protos;
 using Grpc.Core;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Discount.Application.Features.Handlers.Queries
+namespace Discount.Application.Features.Queries.GetDiscount
 {
-    public class GetDiscountQueryHandler : IRequestHandler<GetDiscountQuery, CouponModel>
+    public record GetDiscountQuery(string ProductName) : IRequest<CouponModel>;
+    public class GetDiscountHandler : IRequestHandler<GetDiscountQuery, CouponModel>
     {
         private readonly IDiscountRepository _discountRepository;
-        private readonly ILogger<GetDiscountQueryHandler> _logger;
+        private readonly ILogger<GetDiscountHandler> _logger;
 
-        public GetDiscountQueryHandler(
+        public GetDiscountHandler(
             IDiscountRepository discountRepository,
-            ILogger<GetDiscountQueryHandler> logger
+            ILogger<GetDiscountHandler> logger
             )
         {
             _discountRepository = discountRepository;
