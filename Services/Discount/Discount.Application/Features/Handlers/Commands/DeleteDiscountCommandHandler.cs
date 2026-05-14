@@ -1,8 +1,8 @@
-﻿using Discount.Application.Commands;
+﻿using Discount.Application.Features.Commands;
 using Discount.Core.Repositories;
 using MediatR;
 
-namespace Discount.Application.Handlers.Commands
+namespace Discount.Application.Features.Handlers.Commands
 {
     public class DeleteDiscountCommandHandler : IRequestHandler<DeleteDiscountCommand, bool>
     {

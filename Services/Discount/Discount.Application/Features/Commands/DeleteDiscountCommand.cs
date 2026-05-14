@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Discount.Application.Commands
+namespace Discount.Application.Features.Commands
 {
     public class DeleteDiscountCommand : IRequest<bool>
     {

@@ -1,11 +1,11 @@
-﻿using Discount.Application.Queries;
+﻿using Discount.Application.Features.Queries;
 using Discount.Core.Repositories;
 using Discount.Grpc.Protos;
 using Grpc.Core;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Discount.Application.Handlers.Queries
+namespace Discount.Application.Features.Handlers.Queries
 {
     public class GetDiscountQueryHandler : IRequestHandler<GetDiscountQuery, CouponModel>
     {

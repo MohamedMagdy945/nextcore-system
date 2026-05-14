@@ -1,12 +1,13 @@
-﻿using Discount.Application.Commands;
-using Discount.Core.Entities;
+﻿using Discount.Core.Entities;
 using Discount.Core.Repositories;
 using Discount.Grpc.Protos;
 using Mapster;
 using MediatR;
 
-namespace Discount.Application.Handlers.Commands
+namespace Discount.Application.Features.CreateDiscount
 {
+    public record CreateDiscountCommand(string ProductName, string Description,
+    int Amount) : IRequest<CouponModel>;
     public class CreateDiscountCommandHandler : IRequestHandler<CreateDiscountCommand, CouponModel>
     {
         private readonly IDiscountRepository _discountRepository;

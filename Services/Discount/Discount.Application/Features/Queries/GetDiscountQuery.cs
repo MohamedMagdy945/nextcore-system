@@ -1,7 +1,7 @@
 ﻿using Discount.Grpc.Protos;
 using MediatR;
 
-namespace Discount.Application.Queries
+namespace Discount.Application.Features.Queries
 {
     public class GetDiscountQuery : IRequest<CouponModel>
     {

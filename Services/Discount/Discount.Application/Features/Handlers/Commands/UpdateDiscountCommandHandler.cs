@@ -1,11 +1,11 @@
-﻿using Discount.Application.Commands;
+﻿using Discount.Application.Features.Commands;
 using Discount.Core.Entities;
 using Discount.Core.Repositories;
 using Discount.Grpc.Protos;
 using Mapster;
 using MediatR;
 
-namespace Discount.Application.Handlers.Commands
+namespace Discount.Application.Features.Handlers.Commands
 {
     public class UpdateDiscountCommandHandler : IRequestHandler<UpdateDiscountCommand, CouponModel>
     {
