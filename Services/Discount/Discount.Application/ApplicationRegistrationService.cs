@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Basket.Application
+namespace Discount.Application
 {
     public static class ApplicationRegistrationService
     {

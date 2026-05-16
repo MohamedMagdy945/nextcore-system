@@ -1,8 +1,6 @@
 using Common.Logging;
 using Discount.API.Services;
-using Discount.Core.Repositories;
 using Discount.Infrastructure.Extensions;
-using Discount.Infrastructure.Repositories;
 using Serilog;
 
 namespace Discount.API
@@ -16,9 +14,6 @@ namespace Discount.API
             builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             builder.Services.AddControllers();
-
-            builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
-
 
             var app = builder.Build();
 
