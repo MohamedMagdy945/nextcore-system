@@ -64,8 +64,8 @@ namespace Discount.Infrastructure.Extensions
             var seedSql = @"
                 INSERT INTO Coupon (ProductName, Description, Amount)
                 VALUES
-                ('Adidas Shoes', 'Discount', 600),
-                ('PowerFit Cricket Shoes', 'Discount', 700)
+                ('Egypt Adidas Quick Force Indoor Badminton Shoes', 'Adidas Discount', 600),
+                ('PowerFit 19 FH Rubber Spike Cricket Shoes', 'PowerFit Discount', 700)
                 ON CONFLICT (ProductName) DO NOTHING;
             ";
 
