@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Ordering.Application.Commands;
+using Ordering.Application.Features.Commands;
 
 namespace Ordering.Application.Validators
 {

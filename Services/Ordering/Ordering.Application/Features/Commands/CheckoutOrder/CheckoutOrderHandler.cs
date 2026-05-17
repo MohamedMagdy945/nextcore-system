@@ -1,18 +1,18 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Application.Commands;
 using Ordering.Core.Entities;
 using Ordering.Core.Repositories;
-namespace Ordering.Application.Handlers.Commands
+
+namespace Ordering.Application.Features.Commands.CheckoutOrder
 {
-    public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int>
+    public class CheckoutOrderHandler : IRequestHandler<CheckoutOrderCommand, int>
     {
-        private readonly ILogger<CheckoutOrderCommandHandler> _logger;
+        private readonly ILogger<CheckoutOrderHandler> _logger;
 
         private readonly IOrderRepository _orderRepository;
-        public CheckoutOrderCommandHandler(
-            ILogger<CheckoutOrderCommandHandler> logger,
+        public CheckoutOrderHandler(
+            ILogger<CheckoutOrderHandler> logger,
 
             IOrderRepository orderRepository)
         {

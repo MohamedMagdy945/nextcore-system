@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Ordering.Application.Responses;
 
-namespace Ordering.Application.Queries
+namespace Ordering.Application.Features.Queries
 {
     public class GetOrderListQuery : IRequest<IList<OrderResponse>>
     {

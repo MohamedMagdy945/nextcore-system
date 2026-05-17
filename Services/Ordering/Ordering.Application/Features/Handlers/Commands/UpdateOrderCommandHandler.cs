@@ -1,12 +1,12 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Application.Commands;
 using Ordering.Application.Exceptions;
+using Ordering.Application.Features.Commands;
 using Ordering.Core.Entities;
 using Ordering.Core.Repositories;
 
-namespace Ordering.Application.Handlers.Commands
+namespace Ordering.Application.Features.Handlers.Commands
 {
     public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, Unit>
     {

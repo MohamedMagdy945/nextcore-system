@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Application.Commands;
 using Ordering.Application.Exceptions;
+using Ordering.Application.Features.Commands;
 using Ordering.Core.Repositories;
 
-namespace Ordering.Application.Handlers.Commands
+namespace Ordering.Application.Features.Handlers.Commands
 {
     public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand, Unit>
     {

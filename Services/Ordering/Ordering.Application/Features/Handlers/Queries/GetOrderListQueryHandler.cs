@@ -1,10 +1,10 @@
 ﻿using Mapster;
 using MediatR;
-using Ordering.Application.Queries;
+using Ordering.Application.Features.Queries;
 using Ordering.Application.Responses;
 using Ordering.Core.Repositories;
 
-namespace Ordering.Application.Handlers.Queries
+namespace Ordering.Application.Features.Handlers.Queries
 {
     public class GetOrderListQueryHandler : IRequestHandler<GetOrderListQuery, IList<OrderResponse>>
     {

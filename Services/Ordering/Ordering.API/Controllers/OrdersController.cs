@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Ordering.Application.Commands;
+using Ordering.Application.Features.Commands;
 using Ordering.Application.Queries;
 using Ordering.Application.Responses;
 
