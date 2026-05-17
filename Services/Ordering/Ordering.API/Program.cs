@@ -6,6 +6,7 @@ using Ordering.API.EventBusConsumer;
 using Ordering.API.Extensions;
 using Ordering.Application;
 using Ordering.Infrastructure;
+using Ordering.Infrastructure.Extensions;
 using Ordering.Infrastructure.Persistence;
 using Ordering.Infrastructure.Persistence.Seeder;
 using Serilog;
@@ -15,7 +16,7 @@ namespace Ordering.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -50,12 +51,7 @@ namespace Ordering.API
                     });
             });
 
-            builder.Services.AddApplicationService();
-            builder.Services.AddInfrastructureService(builder.Configuration);
             builder.Services.AddScoped<BasketOrderingConsumer>();
-
-
-
             builder.Services.AddMassTransit(config =>
             {
                 config.AddConsumer<BasketOrderingConsumer>();
@@ -73,6 +69,9 @@ namespace Ordering.API
             builder.Services.AddMassTransitHostedService();
 
 
+            builder.Services.AddApplicationService();
+            builder.Services.AddInfrastructureService(builder.Configuration);
+
             var app = builder.Build();
             app.MigerateDatabast<OrderDbContext>(
                 (context, services) =>
@@ -81,21 +80,18 @@ namespace Ordering.API
                 OrderSeeder.SeedAsync(context, logger).Wait();
             });
 
-            // Configure the HTTP request pipeline.
+            app.Services.ApplyMigrations();
+            await app.Services.SeedDatabaseAsync();
+
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
             app.UseAuthorization();
 
-
-
             app.MapControllers();
-
-
 
             app.Run();
         }
