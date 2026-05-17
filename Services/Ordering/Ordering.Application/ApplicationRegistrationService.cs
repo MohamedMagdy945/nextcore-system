@@ -4,11 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Behaviors;
 using System.Reflection;
 
-namespace Ordering.Application.Extensions
+namespace Ordering.Application
 {
-    public static class ServiceRegisteration
+    public static class ApplicationRegistrationService
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

@@ -4,7 +4,7 @@ using MassTransit;
 using Microsoft.OpenApi.Models;
 using Ordering.API.EventBusConsumer;
 using Ordering.API.Extensions;
-using Ordering.Application.Extensions;
+using Ordering.Application;
 using Ordering.Infrastructure;
 using Ordering.Infrastructure.Persistence;
 using Ordering.Infrastructure.Persistence.Seeder;
@@ -50,7 +50,7 @@ namespace Ordering.API
                     });
             });
 
-            builder.Services.AddApplicationServices();
+            builder.Services.AddApplicationService();
             builder.Services.AddInfrastructureService(builder.Configuration);
             builder.Services.AddScoped<BasketOrderingConsumer>();
 
