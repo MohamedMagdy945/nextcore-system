@@ -1,8 +1,11 @@
-﻿namespace Ordering.Core.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Ordering.Core.Entities
 {
     public class Order : EntityBase
     {
         public string UserName { get; set; } = string.Empty;
+        [Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice { get; set; }
 
         // Customer Info
