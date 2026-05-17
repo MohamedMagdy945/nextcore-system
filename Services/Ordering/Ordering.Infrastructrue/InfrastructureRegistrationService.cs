@@ -5,18 +5,22 @@ using Ordering.Core.Repositories;
 using Ordering.Infrastructure.Persistence;
 using Ordering.Infrastructure.Repositories;
 
-namespace Ordering.Infrastructure.Extensions
+namespace Ordering.Infrastructure
 {
-    public static class InfraService
+    public static class InfrastructureRegistrationService
     {
-        public static void AddInfraService(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<OrderDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString"),
-                sqlServerOptions => sqlServerOptions.EnableRetryOnFailure())
-                );
+               options.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString"),
+               sqlServerOptions => sqlServerOptions.EnableRetryOnFailure())
+            );
+
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
+
             services.AddScoped<IOrderRepository, OrderRepository>();
+
+            return services;
         }
     }
 }

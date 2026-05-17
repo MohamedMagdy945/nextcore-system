@@ -5,7 +5,7 @@ using Microsoft.OpenApi.Models;
 using Ordering.API.EventBusConsumer;
 using Ordering.API.Extensions;
 using Ordering.Application.Extensions;
-using Ordering.Infrastructrue.Extensions;
+using Ordering.Infrastructure;
 using Ordering.Infrastructure.Persistence;
 using Ordering.Infrastructure.Persistence.Seeder;
 using Serilog;
@@ -51,7 +51,7 @@ namespace Ordering.API
             });
 
             builder.Services.AddApplicationServices();
-            builder.Services.AddInfraService(builder.Configuration);
+            builder.Services.AddInfrastructureService(builder.Configuration);
             builder.Services.AddScoped<BasketOrderingConsumer>();
 
 
