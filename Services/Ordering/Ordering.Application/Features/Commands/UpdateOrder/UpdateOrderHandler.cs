@@ -2,18 +2,17 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Ordering.Application.Exceptions;
-using Ordering.Application.Features.Commands;
 using Ordering.Core.Entities;
 using Ordering.Core.Repositories;
 
-namespace Ordering.Application.Features.Handlers.Commands
+namespace Ordering.Application.Features.Commands.UpdateOrder
 {
-    public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, Unit>
+    public class UpdateOrderHandler : IRequestHandler<UpdateOrderCommand, Unit>
     {
-        private readonly ILogger<UpdateOrderCommandHandler> _logger;
+        private readonly ILogger<UpdateOrderHandler> _logger;
         private readonly IOrderRepository _orderRepository;
-        public UpdateOrderCommandHandler(
-            ILogger<UpdateOrderCommandHandler> logger,
+        public UpdateOrderHandler(
+            ILogger<UpdateOrderHandler> logger,
             IOrderRepository orderRepository)
         {
             _logger = logger;
