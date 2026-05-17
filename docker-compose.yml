@@ -9,20 +9,24 @@ services:
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
     container_name: catalog.api
     ports:
-      - "8001:8000"
+      - "8001:8080"
     depends_on:
       - catalogdb
       - elasticsearch
     environment:
-      - ASPNETCORE_URLS=http://+:8000
-      - DatabaseSettings__ConnectionString=mongodb://catalogdb:27017
-      - DatabaseSettings__DatabaseName=CatalogDb
-      - DatabaseSettings__BrandsCollection=Brands
-      - DatabaseSettings__TypesCollection=Types
-      - DatabaseSettings__ProductsCollection=Products
-      - ElasticConfiguration__Uri=http://elasticsearch:9200
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+
+      DatabaseSettings__ConnectionString: mongodb://catalogdb:27017
+      DatabaseSettings__DatabaseName: CatalogDb
+      DatabaseSettings__BrandsCollection: Brands
+      DatabaseSettings__TypesCollection: Types
+      DatabaseSettings__ProductsCollection: Products
+
+      ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
       - app-network
+
 
   catalogdb:
     image: mongo
@@ -34,6 +38,7 @@ services:
     networks:
       - app-network
 
+
   # =======================
   # 🟩 Basket API + Redis
   # =======================
@@ -43,18 +48,22 @@ services:
       dockerfile: Services/Basket/Basket.API/Dockerfile
     container_name: basket.api
     ports:
-      - "8002:8000"
+      - "8002:8080"
     depends_on:
       - basketdb
       - rabbitmq
     environment:
-      - ASPNETCORE_URLS=http://+:8000
-      - CacheSettings__ConnectionString=basketdb:6379
-      - GrpcSettings__DiscountUrl=http://discount.api:8000
-      - EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672
-      - ElasticConfiguration__Uri=http://elasticsearch:9200
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+
+      CacheSettings__ConnectionString: basketdb:6379
+      GrpcSettings__DiscountUrl: http://discount.api:8080
+      EventBusSettings__HostAddress: amqp://guest:guest@rabbitmq:5672
+
+      ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
       - app-network
+
 
   basketdb:
     image: redis:alpine
@@ -63,6 +72,7 @@ services:
       - "6379:6379"
     networks:
       - app-network
+
 
   # =======================
   # 🟨 Discount API + PostgreSQL
@@ -73,16 +83,18 @@ services:
       dockerfile: Services/Discount/Discount.API/Dockerfile
     container_name: discount.api
     ports:
-      - "8003:8000"
+      - "8003:8080"
     depends_on:
       discountdb:
         condition: service_healthy
     environment:
-      - ASPNETCORE_URLS=http://+:8000
-      - DatabaseSettings__ConnectionString=Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
-      - ElasticConfiguration__Uri=http://elasticsearch:9200
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      DatabaseSettings__ConnectionString: Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
+      ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
       - app-network
+
 
   discountdb:
     image: postgres:15
@@ -103,44 +115,47 @@ services:
     networks:
       - app-network
 
+
+
   # =======================
   # 🟧 Ordering API + SQL Server
   # =======================
-  # ordering.api:
-  #   build:
-  #     context: .
-  #     dockerfile: Services/Ordering/Ordering.API/Dockerfile
-  #   container_name: ordering.api
-  #   ports:
-  #     - "8004:8000"
-  #   depends_on:
-  #     orderdb:
-  #       condition: service_healthy
-  #   environment:
-  #     - ASPNETCORE_URLS=http://+:8000
-  #     - ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
-  #     - EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672
-  #     - ElasticConfiguration__Uri=http://elasticsearch:9200
-  #   networks:
-  #     - app-network
+  ordering.api:
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+    container_name: ordering.api
+    ports:
+      - "8004:8080"
+    depends_on:
+      - orderdb
+      - rabbitmq
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
 
-  # orderdb:
-  #   image: mcr.microsoft.com/mssql/server:2022-latest
-  #   container_name: orderdb
-  #   environment:
-  #     ACCEPT_EULA: "Y"
-  #     SA_PASSWORD: "P@ssw0rd123"
-  #   ports:
-  #     - "1433:1433"
-  #   volumes:
-  #     - orderdb_data:/var/opt/mssql
-  #   healthcheck:
-  #     test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'P@ssw0rd123' -Q 'SELECT 1'"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
-  #   networks:
-  #     - app-network
+      ConnectionStrings__OrderingConnectionString: Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
+
+      EventBusSettings__HostAddress: amqp://guest:guest@rabbitmq:5672
+
+      ElasticConfiguration__Uri: http://elasticsearch:9200
+    networks:
+      - app-network
+
+
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: orderdb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "P@ssw0rd123"
+    ports:
+      - "1433:1433"
+    volumes:
+      - orderdb_data:/var/opt/mssql
+    networks:
+      - app-network
+
 
   # =======================
   # 📨 RabbitMQ
@@ -154,6 +169,7 @@ services:
     networks:
       - app-network
 
+
   # =======================
   # 🛠️ pgAdmin
   # =======================
@@ -165,12 +181,11 @@ services:
       PGADMIN_DEFAULT_PASSWORD: Password@1
     ports:
       - "5050:80"
-    volumes:
-      - pgadmin_data:/root/.pgadmin
     depends_on:
       - discountdb
     networks:
       - app-network
+
 
   # =======================
   # 🐳 Portainer
@@ -186,6 +201,7 @@ services:
     networks:
       - app-network
 
+
   # =======================
   # 🔎 Elasticsearch + Kibana
   # =======================
@@ -193,15 +209,16 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
     container_name: elasticsearch
     environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
     ports:
       - "9200:9200"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     networks:
       - app-network
+
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.14.3
@@ -211,9 +228,10 @@ services:
     depends_on:
       - elasticsearch
     environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
     networks:
       - app-network
+
 
 # =======================
 # 📦 Volumes
@@ -225,6 +243,7 @@ volumes:
   portainer_data:
   orderdb_data:
   elasticsearch-data:
+
 
 # =======================
 # 🌐 Network
