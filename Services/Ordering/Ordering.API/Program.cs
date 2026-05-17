@@ -3,12 +3,9 @@ using EventBus.Messages.Common;
 using MassTransit;
 using Microsoft.OpenApi.Models;
 using Ordering.API.EventBusConsumer;
-using Ordering.API.Extensions;
 using Ordering.Application;
 using Ordering.Infrastructure;
 using Ordering.Infrastructure.Extensions;
-using Ordering.Infrastructure.Persistence;
-using Ordering.Infrastructure.Persistence.Seeder;
 using Serilog;
 
 
@@ -73,12 +70,6 @@ namespace Ordering.API
             builder.Services.AddInfrastructureService(builder.Configuration);
 
             var app = builder.Build();
-            app.MigerateDatabast<OrderDbContext>(
-                (context, services) =>
-            {
-                var logger = services.GetRequiredService<ILogger<OrderSeeder>>();
-                OrderSeeder.SeedAsync(context, logger).Wait();
-            });
 
             app.Services.ApplyMigrations();
             await app.Services.SeedDatabaseAsync();

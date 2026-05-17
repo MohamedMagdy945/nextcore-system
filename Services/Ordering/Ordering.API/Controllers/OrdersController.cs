@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ordering.Application.Features.Commands;
+using Ordering.Application.Features.Commands.CheckoutOrder;
 using Ordering.Application.Features.Commands.UpdateOrder;
-using Ordering.Application.Queries;
+using Ordering.Application.Features.Queries.GetOrdersByUserName;
 using Ordering.Application.Responses;
 
 namespace Ordering.API.Controllers
 {
-    public class OrdersController : BaseApiController
+    public class OrdersController : AppControllerBase
     {
         private readonly ILogger<OrdersController> _logger;
         public OrdersController(ILogger<OrdersController> logger)
@@ -18,8 +19,8 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<OrderResponse>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<OrderResponse>>> GetOrdersByUserName(string userName)
         {
-            var query = new GetOrderListQuery(userName);
-            var orders = await _mediator.Send(query);
+            var query = new GetOrdersByUserNameQuery(userName);
+            var orders = await Mediator.Send(query);
             return Ok(orders);
         }
 
@@ -27,7 +28,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         public async Task<ActionResult> CheckoutOrder([FromBody] CheckoutOrderCommand command)
         {
-            var result = await _mediator.Send(command);
+            var result = await Mediator.Send(command);
             return Ok(result);
 
         }
@@ -37,7 +38,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UpdateOrder([FromBody] UpdateOrderCommand command)
         {
-            var result = await _mediator.Send(command);
+            var result = await Mediator.Send(command);
             return NoContent();
         }
 
@@ -46,7 +47,7 @@ namespace Ordering.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> DeleteOrder(int id)
         {
-            var result = await _mediator.Send(new DeleteOrderCommand(id));
+            var result = await Mediator.Send(new DeleteOrderCommand(id));
             return NoContent();
 
         }
