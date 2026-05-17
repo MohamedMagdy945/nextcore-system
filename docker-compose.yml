@@ -106,41 +106,41 @@ services:
   # =======================
   # 🟧 Ordering API + SQL Server
   # =======================
-  ordering.api:
-    build:
-      context: .
-      dockerfile: Services/Ordering/Ordering.API/Dockerfile
-    container_name: ordering.api
-    ports:
-      - "8004:8000"
-    depends_on:
-      orderdb:
-        condition: service_healthy
-    environment:
-      - ASPNETCORE_URLS=http://+:8000
-      - ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
-      - EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672
-      - ElasticConfiguration__Uri=http://elasticsearch:9200
-    networks:
-      - app-network
+  # ordering.api:
+  #   build:
+  #     context: .
+  #     dockerfile: Services/Ordering/Ordering.API/Dockerfile
+  #   container_name: ordering.api
+  #   ports:
+  #     - "8004:8000"
+  #   depends_on:
+  #     orderdb:
+  #       condition: service_healthy
+  #   environment:
+  #     - ASPNETCORE_URLS=http://+:8000
+  #     - ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
+  #     - EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672
+  #     - ElasticConfiguration__Uri=http://elasticsearch:9200
+  #   networks:
+  #     - app-network
 
-  orderdb:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: orderdb
-    environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "P@ssw0rd123"
-    ports:
-      - "1433:1433"
-    volumes:
-      - orderdb_data:/var/opt/mssql
-    healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'P@ssw0rd123' -Q 'SELECT 1'"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-network
+  # orderdb:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   container_name: orderdb
+  #   environment:
+  #     ACCEPT_EULA: "Y"
+  #     SA_PASSWORD: "P@ssw0rd123"
+  #   ports:
+  #     - "1433:1433"
+  #   volumes:
+  #     - orderdb_data:/var/opt/mssql
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'P@ssw0rd123' -Q 'SELECT 1'"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   networks:
+  #     - app-network
 
   # =======================
   # 📨 RabbitMQ

@@ -1,5 +1,7 @@
 using Common.Logging;
 using Discount.API.Services;
+using Discount.Application;
+using Discount.Infrastructure;
 using Discount.Infrastructure.Extensions;
 using Serilog;
 
@@ -12,6 +14,10 @@ namespace Discount.API
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Host.UseSerilog(Logging.ConfigureLogger);
+
+            builder.Services.AddApplicationService();
+            builder.Services.AddInfrastructureService(builder.Configuration);
+
 
             builder.Services.AddControllers();
 
@@ -28,8 +34,6 @@ namespace Discount.API
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.MapControllers();
 
             app.UseEndpoints(endpoints =>
             {

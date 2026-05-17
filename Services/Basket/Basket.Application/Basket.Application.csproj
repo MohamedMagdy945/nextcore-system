@@ -16,8 +16,8 @@
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
-	
-	<ItemGroup>
-		<Protobuf Include="..\..\..\Services\Discount\Discount.Application\Protos\discount.proto" GrpcServices="Client" Link="Protos\discount.proto" />
-	</ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\discount.proto" GrpcServices="Client" />
+  </ItemGroup>
 </Project>
