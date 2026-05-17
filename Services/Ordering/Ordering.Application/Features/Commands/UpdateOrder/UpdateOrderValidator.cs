@@ -1,11 +1,10 @@
 ﻿using FluentValidation;
-using Ordering.Application.Features.Commands.UpdateOrder;
 
-namespace Ordering.Application.Validators
+namespace Ordering.Application.Features.Commands.UpdateOrder
 {
-    public class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>
+    public class UpdateOrderValidator : AbstractValidator<UpdateOrderCommand>
     {
-        public UpdateOrderCommandValidator()
+        public UpdateOrderValidator()
         {
             RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("Id is required.")
