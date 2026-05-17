@@ -2,8 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.Core.Repositories;
-using Ordering.Infrastructrue.Data;
 using Ordering.Infrastructrue.Repositories;
+using Ordering.Infrastructure.Persistence;
+using Ordering.Infrastructure.Repositories;
 
 namespace Ordering.Infrastructrue.Extensions
 {
@@ -11,7 +12,7 @@ namespace Ordering.Infrastructrue.Extensions
     {
         public static void AddInfraService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<OrderContext>(options =>
+            services.AddDbContext<OrderDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString"),
                 sqlServerOptions => sqlServerOptions.EnableRetryOnFailure())
                 );

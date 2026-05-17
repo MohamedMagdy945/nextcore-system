@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ordering.Core.Entities;
 
-namespace Ordering.Infrastructrue.Data
+namespace Ordering.Infrastructure.Persistence
 {
-    public class OrderContext : DbContext
+    public class OrderDbContext : DbContext
     {
-        public OrderContext(DbContextOptions<OrderContext> options) : base(options)
+        public OrderDbContext(DbContextOptions<OrderDbContext> options) : base(options)
         {
         }
 
@@ -29,11 +29,6 @@ namespace Ordering.Infrastructrue.Data
             }
 
             return base.SaveChangesAsync(cancellationToken);
-        }
-
-        internal void AddAsync(object getOrders)
-        {
-            throw new NotImplementedException();
         }
     }
 }

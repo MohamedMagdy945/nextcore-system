@@ -1,17 +1,18 @@
 ﻿using Microsoft.Extensions.Logging;
 using Ordering.Core.Entities;
 
-namespace Ordering.Infrastructrue.Data
+namespace Ordering.Infrastructure.Persistence.Seeder
 {
     public class OrderContextSeed
     {
-        public static async Task SeedAsync(OrderContext context, ILogger<OrderContextSeed> logger)
+        public static async Task SeedAsync(OrderDbContext context, ILogger<OrderContextSeed> logger)
         {
             if (!context.Orders.Any())
             {
                 await context.AddRangeAsync(GetOrders());
                 await context.SaveChangesAsync();
-                logger.LogInformation($"Seeded Orders.{typeof(OrderContext).Name}!");
+                logger.LogInformation($"Seeded Orders.{typeof(OrderDbContext).Name}!");
+                logger.LogInformation($"Seeded Orders.{typeof(OrderDbContext).Name}!");
             }
         }
 
@@ -25,7 +26,7 @@ namespace Ordering.Infrastructrue.Data
                     LastName="Doe"  ,
                     EmailAddress="johndoe@example.com",
                     AddressLine="123 Main St"  ,
-                    TotalPrice=100.5,
+                    TotalPrice=100.5m,
                     Country="USA"  ,
                     State="NY"  ,
                     CardName= "Visa"  ,

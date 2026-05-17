@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ordering.Core.Entities;
 using Ordering.Core.Repositories;
-using Ordering.Infrastructrue.Data;
+using Ordering.Infrastructrue.Repositories;
+using Ordering.Infrastructure.Persistence;
 
-namespace Ordering.Infrastructrue.Repositories
+namespace Ordering.Infrastructure.Repositories
 {
     public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
-        public OrderRepository(OrderContext context) : base(context) { }
+        public OrderRepository(OrderDbContext context) : base(context) { }
 
         public async Task<IEnumerable<Order>> GetOrdersByUserNameAsync(string userName)
         {

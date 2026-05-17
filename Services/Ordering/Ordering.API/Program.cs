@@ -5,8 +5,9 @@ using Microsoft.OpenApi.Models;
 using Ordering.API.EventBusConsumer;
 using Ordering.API.Extensions;
 using Ordering.Application.Extensions;
-using Ordering.Infrastructrue.Data;
 using Ordering.Infrastructrue.Extensions;
+using Ordering.Infrastructure.Persistence;
+using Ordering.Infrastructure.Persistence.Seeder;
 using Serilog;
 
 
@@ -73,7 +74,7 @@ namespace Ordering.API
 
 
             var app = builder.Build();
-            app.MigerateDatabast<OrderContext>(
+            app.MigerateDatabast<OrderDbContext>(
                 (context, services) =>
             {
                 var logger = services.GetRequiredService<ILogger<OrderContextSeed>>();
