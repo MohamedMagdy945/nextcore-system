@@ -3,7 +3,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Ordering.Application.Behaviors
 {
-    public class UnhandledExceptionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class UnhandledExceptionBehavior<TRequest, TResponse>
+        : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest
     {
         private readonly ILogger<TRequest> _logger;
