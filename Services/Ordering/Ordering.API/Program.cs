@@ -77,8 +77,8 @@ namespace Ordering.API
             app.MigerateDatabast<OrderDbContext>(
                 (context, services) =>
             {
-                var logger = services.GetRequiredService<ILogger<OrderContextSeed>>();
-                OrderContextSeed.SeedAsync(context, logger).Wait();
+                var logger = services.GetRequiredService<ILogger<OrderSeeder>>();
+                OrderSeeder.SeedAsync(context, logger).Wait();
             });
 
             // Configure the HTTP request pipeline.
