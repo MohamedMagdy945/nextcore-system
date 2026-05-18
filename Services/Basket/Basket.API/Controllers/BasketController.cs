@@ -7,6 +7,7 @@ using Basket.Core.Entities;
 using Catalog.API.Controllers;
 using EventBus.Messages.Events;
 using Mapster;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -16,14 +17,14 @@ namespace Basket.API.Controllers
     public class BasketController : AppControllerBase
     {
 
-        //private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IPublishEndpoint _publishEndpoint;
         private readonly ILogger<BasketController> _logger;
         public BasketController(
-            //IPublishEndpoint publishEndpoint,
+            IPublishEndpoint publishEndpoint,
             ILogger<BasketController> logger
             )
         {
-
+            _publishEndpoint = publishEndpoint;
             _logger = logger;
         }
 
@@ -69,8 +70,11 @@ namespace Basket.API.Controllers
                 return BadRequest();
             }
 
-            var eventMsg = basketCheckout.Adapt<BasketCheckoutEventV2>();
+            var eventMsg = basketCheckout.Adapt<BasketCheckoutEvent>();
             eventMsg.TotalPrice = basket.TotalPrice;
+
+            await _publishEndpoint.Publish(eventMsg);
+
             _logger.LogInformation($"Basket Published for {basket.UserName}");
             var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
             await Mediator.Send(deleteCommand);

@@ -1,8 +1,11 @@
 
 using AppCoreSystem.API.Configurations;
+using Basket.API.Settings;
 using Basket.Application;
 using Basket.Infrastructure;
 using Common.Logging;
+using MassTransit;
+using Microsoft.Extensions.Options;
 using Serilog;
 namespace Basket.API
 {
@@ -24,14 +27,22 @@ namespace Basket.API
 
             builder.Services.AddSwaggerConfiguration();
 
-            //builder.Services.AddMassTransit(config =>
-            //{
-            //    config.UsingRabbitMq((ct, cfg) =>
-            //    {
-            //        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
-            //    });
-            //});
+            builder.Services.Configure<EventBusSettings>(
+                builder.Configuration.GetSection("EventBusSettings"));
 
+            builder.Services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    var settings = context.GetRequiredService<IOptions<EventBusSettings>>().Value;
+
+                    cfg.Host(new Uri($"rabbitmq://{settings.Host}:{settings.Port}"), h =>
+                    {
+                        h.Username(settings.Username);
+                        h.Password(settings.Password);
+                    });
+                });
+            });
             //builder.Services.AddMassTransitHostedService();
 
             builder.Services.AddApplicationService();
