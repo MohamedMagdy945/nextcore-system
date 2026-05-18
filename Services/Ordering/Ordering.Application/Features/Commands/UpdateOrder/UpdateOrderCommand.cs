@@ -9,7 +9,7 @@ namespace Ordering.Application.Features.Commands.UpdateOrder
         string FirstName,
         string LastName,
         string AddressLine,
-        string EmailAddress,
+        string Email,
         string Country,
         string State,
         string ZipCode,

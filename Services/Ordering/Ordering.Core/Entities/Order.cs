@@ -11,7 +11,7 @@ namespace Ordering.Core.Entities
         // Customer Info
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public string EmailAddress { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
 
         // Address
         public string AddressLine { get; set; } = string.Empty;

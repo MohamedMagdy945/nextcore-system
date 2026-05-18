@@ -27,14 +27,14 @@ namespace Ordering.API
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-
-            builder.Services.AddScoped<BasketOrderingConsumer>();
-
+            // 1. Options
             builder.Services.Configure<EventBusSettings>(
-              builder.Configuration.GetSection("EventBusSettings"));
+                builder.Configuration.GetSection("EventBusSettings"));
 
+            // 2. MassTransit
             builder.Services.AddMassTransit(x =>
             {
+                // Consumer
                 x.AddConsumer<BasketOrderingConsumer>();
 
                 x.UsingRabbitMq((context, cfg) =>
@@ -47,14 +47,13 @@ namespace Ordering.API
                         h.Password(settings.Password);
                     });
 
+                    // Receive Endpoint
                     cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, e =>
                     {
                         e.ConfigureConsumer<BasketOrderingConsumer>(context);
                     });
                 });
             });
-
-            builder.Services.AddMassTransitHostedService();
 
 
 

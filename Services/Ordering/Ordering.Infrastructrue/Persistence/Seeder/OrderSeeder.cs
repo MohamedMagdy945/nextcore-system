@@ -26,7 +26,7 @@ namespace Ordering.Infrastructure.Persistence.Seeder
                     UserName = "johndoe",
                     FirstName = "John",
                     LastName = "Doe",
-                    EmailAddress = "johndoe@example.com",
+                    Email = "johndoe@example.com",
                     AddressLine = "123 Main St",
                     Country = "USA",
                     State = "NY",

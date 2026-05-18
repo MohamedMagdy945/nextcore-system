@@ -8,7 +8,7 @@ namespace Ordering.Application.Features.Commands.CheckoutOrder
         string FirstName,
         string LastName,
         string AddressLine,
-        string EmailAddress,
+        string Email,
         string Country,
         string State,
         string ZipCode,
