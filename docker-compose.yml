@@ -55,11 +55,12 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
-
       CacheSettings__ConnectionString: basketdb:6379
       GrpcSettings__DiscountUrl: http://discount.api:8080
-      EventBusSettings__HostAddress: amqp://guest:guest@rabbitmq:5672
-
+      EventBusSettings__Host: rabbitmq
+      EventBusSettings__Port: 5672
+      EventBusSettings__Username: guest
+      EventBusSettings__Password: guest
       ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
       - app-network
@@ -92,6 +93,7 @@ services:
       ASPNETCORE_URLS: http://+:8080
       DatabaseSettings__ConnectionString: Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
       ElasticConfiguration__Uri: http://elasticsearch:9200
+
     networks:
       - app-network
 
@@ -136,7 +138,10 @@ services:
 
       ConnectionStrings__OrderingConnectionString: Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
 
-      EventBusSettings__HostAddress: amqp://guest:guest@rabbitmq:5672
+      EventBusSettings__Host: rabbitmq
+      EventBusSettings__Port: 5672
+      EventBusSettings__Username: guest
+      EventBusSettings__Password: guest
 
       ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
