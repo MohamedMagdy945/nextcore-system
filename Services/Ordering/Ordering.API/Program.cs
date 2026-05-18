@@ -30,6 +30,9 @@ namespace Ordering.API
 
             builder.Services.AddScoped<BasketOrderingConsumer>();
 
+            builder.Services.Configure<EventBusSettings>(
+              builder.Configuration.GetSection("EventBusSettings"));
+
             builder.Services.AddMassTransit(x =>
             {
                 x.AddConsumer<BasketOrderingConsumer>();
