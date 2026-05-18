@@ -54,6 +54,7 @@ namespace Ordering.API
                     });
                 });
             });
+            builder.Services.AddMassTransitHostedService();
 
 
 

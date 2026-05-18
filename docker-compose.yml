@@ -1,8 +1,9 @@
+
 services:
 
-  # =======================
-  # 🟦 Catalog API + Mongo
-  # =======================
+  # =========================================================================
+  # 🟦 Catalog API + MongoDB
+  # =========================================================================
   catalog.api:
     build:
       context: .
@@ -11,37 +12,40 @@ services:
     ports:
       - "8001:8080"
     depends_on:
-      - catalogdb
-      - elasticsearch
+      catalogdb:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
-
       DatabaseSettings__ConnectionString: mongodb://catalogdb:27017
       DatabaseSettings__DatabaseName: CatalogDb
       DatabaseSettings__BrandsCollection: Brands
       DatabaseSettings__TypesCollection: Types
       DatabaseSettings__ProductsCollection: Products
-
       ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
       - app-network
 
-
   catalogdb:
-    image: mongo
+    image: mongo:latest
     container_name: catalogdb
     ports:
       - "27017:27017"
     volumes:
       - catalogdata:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - app-network
 
-
-  # =======================
+  # =========================================================================
   # 🟩 Basket API + Redis
-  # =======================
+  # =========================================================================
   basket.api:
     build:
       context: .
@@ -50,8 +54,10 @@ services:
     ports:
       - "8002:8080"
     depends_on:
-      - basketdb
-      - rabbitmq
+      basketdb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
@@ -65,19 +71,22 @@ services:
     networks:
       - app-network
 
-
   basketdb:
     image: redis:alpine
     container_name: basketdb
     ports:
       - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
     networks:
       - app-network
 
-
-  # =======================
+  # =========================================================================
   # 🟨 Discount API + PostgreSQL
-  # =======================
+  # =========================================================================
   discount.api:
     build:
       context: .
@@ -93,13 +102,11 @@ services:
       ASPNETCORE_URLS: http://+:8080
       DatabaseSettings__ConnectionString: Host=discountdb;Port=5432;Database=discountdb;Username=admin;Password=Password@1
       ElasticConfiguration__Uri: http://elasticsearch:9200
-
     networks:
       - app-network
 
-
   discountdb:
-    image: postgres:15
+    image: postgres:15-alpine
     container_name: discountdb
     environment:
       POSTGRES_USER: admin
@@ -117,11 +124,9 @@ services:
     networks:
       - app-network
 
-
-
-  # =======================
+  # =========================================================================
   # 🟧 Ordering API + SQL Server
-  # =======================
+  # =========================================================================
   ordering.api:
     build:
       context: .
@@ -130,23 +135,21 @@ services:
     ports:
       - "8004:8080"
     depends_on:
-      - orderdb
-      - rabbitmq
+      orderdb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
-
       ConnectionStrings__OrderingConnectionString: Server=orderdb;Database=orderDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
-
       EventBusSettings__Host: rabbitmq
       EventBusSettings__Port: 5672
       EventBusSettings__Username: guest
       EventBusSettings__Password: guest
-
       ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:
       - app-network
-
 
   orderdb:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -158,58 +161,34 @@ services:
       - "1433:1433"
     volumes:
       - orderdb_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "P@ssw0rd123", "-Q", "SELECT 1", "-C"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
     networks:
       - app-network
 
-
-  # =======================
+  # =========================================================================
   # 📨 RabbitMQ
-  # =======================
+  # =========================================================================
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - app-network
 
-
-  # =======================
-  # 🛠️ pgAdmin
-  # =======================
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@nextcore.com
-      PGADMIN_DEFAULT_PASSWORD: Password@1
-    ports:
-      - "5050:80"
-    depends_on:
-      - discountdb
-    networks:
-      - app-network
-
-
-  # =======================
-  # 🐳 Portainer
-  # =======================
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
-    ports:
-      - "9000:9000"
-    volumes:
-      - portainer_data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - app-network
-
-
-  # =======================
+  # =========================================================================
   # 🔎 Elasticsearch + Kibana
-  # =======================
+  # =========================================================================
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
     container_name: elasticsearch
@@ -221,9 +200,13 @@ services:
       - "9200:9200"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"\\|\"status\":\"yellow\"'"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
     networks:
       - app-network
-
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.14.3
@@ -231,16 +214,46 @@ services:
     ports:
       - "5601:5601"
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
     environment:
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
     networks:
       - app-network
 
+  # =========================================================================
+  # 🛠️ الأدوات الإضافية (Management Tools)
+  # =========================================================================
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@nextcore.com
+      PGADMIN_DEFAULT_PASSWORD: Password@1
+    ports:
+      - "5050:80"
+    depends_on:
+      discountdb:
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - app-network
 
-# =======================
-# 📦 Volumes
-# =======================
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app-network
+
+# =========================================================================
+# 📦 Volumes Configuration
+# =========================================================================
 volumes:
   catalogdata:
   postgres_data:
@@ -249,10 +262,9 @@ volumes:
   orderdb_data:
   elasticsearch-data:
 
-
-# =======================
-# 🌐 Network
-# =======================
+# =========================================================================
+# 🌐 Network Configuration
+# =========================================================================
 networks:
   app-network:
     driver: bridge
