@@ -1,5 +1,10 @@
 using Common.Logging;
+using EventBus.Messages.Common;
+using MassTransit;
+using Microsoft.Extensions.Options;
 using Ordering.API.Configurations;
+using Ordering.API.EventBusConsumer;
+using Ordering.API.Settings;
 using Ordering.Application;
 using Ordering.Infrastructure;
 using Ordering.Infrastructure.Extensions;
@@ -23,22 +28,30 @@ namespace Ordering.API
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-            //builder.Services.AddScoped<BasketOrderingConsumer>();
-            //builder.Services.AddMassTransit(config =>
-            //{
-            //    config.AddConsumer<BasketOrderingConsumer>();
-            //    config.UsingRabbitMq((ct, cfg) =>
-            //    {
-            //        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
-            //        // provide the queue name with consumer 
-            //        cfg.ReceiveEndpoint(EventBusConstant.BasketCheckoutQueue, c =>
-            //        {
-            //            c.ConfigureConsumer<BasketOrderingConsumer>(ct);
-            //        });
-            //    });
-            //});
+            builder.Services.AddScoped<BasketOrderingConsumer>();
 
-            //builder.Services.AddMassTransitHostedService();
+            builder.Services.AddMassTransit(x =>
+            {
+                x.AddConsumer<BasketOrderingConsumer>();
+
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    var settings = context.GetRequiredService<IOptions<EventBusSettings>>().Value;
+
+                    cfg.Host(new Uri($"rabbitmq://{settings.Host}:{settings.Port}"), h =>
+                    {
+                        h.Username(settings.Username);
+                        h.Password(settings.Password);
+                    });
+
+                    cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, e =>
+                    {
+                        e.ConfigureConsumer<BasketOrderingConsumer>(context);
+                    });
+                });
+            });
+
+            builder.Services.AddMassTransitHostedService();
 
 
 
