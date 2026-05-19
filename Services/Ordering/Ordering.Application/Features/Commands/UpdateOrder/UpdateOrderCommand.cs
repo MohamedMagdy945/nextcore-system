@@ -2,7 +2,7 @@
 
 namespace Ordering.Application.Features.Commands.UpdateOrder
 {
-    public record UpdateOrderCommand : IRequest
+    public record UpdateOrderCommand : IRequest<Unit>
     {
         public int Id { get; init; }
         public string UserName { get; init; } = string.Empty;

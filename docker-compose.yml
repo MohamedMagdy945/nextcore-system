@@ -1,4 +1,3 @@
-
 services:
 
   # =========================================================================
@@ -29,7 +28,7 @@ services:
       - app-network
 
   catalogdb:
-    image: mongo:latest
+    image: mongo:8.0
     container_name: catalogdb
     ports:
       - "27017:27017"
@@ -72,7 +71,7 @@ services:
       - app-network
 
   basketdb:
-    image: redis:alpine
+    image: redis:7.4-alpine
     container_name: basketdb
     ports:
       - "6379:6379"
@@ -106,7 +105,7 @@ services:
       - app-network
 
   discountdb:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     container_name: discountdb
     environment:
       POSTGRES_USER: admin
@@ -152,7 +151,7 @@ services:
       - app-network
 
   orderdb:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server:2022-CU15-ubuntu-22.04
     container_name: orderdb
     environment:
       ACCEPT_EULA: "Y"
@@ -173,7 +172,7 @@ services:
   # 📨 RabbitMQ
   # =========================================================================
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    image: rabbitmq:4.1-management-alpine
     container_name: rabbitmq
     ports:
       - "5672:5672"
@@ -190,7 +189,7 @@ services:
   # 🔎 Elasticsearch + Kibana
   # =========================================================================
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.1
     container_name: elasticsearch
     environment:
       discovery.type: single-node
@@ -209,7 +208,7 @@ services:
       - app-network
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.14.3
+    image: docker.elastic.co/kibana/kibana:8.18.1
     container_name: kibana
     ports:
       - "5601:5601"
@@ -222,26 +221,11 @@ services:
       - app-network
 
   # =========================================================================
-  # 🛠️ الأدوات الإضافية (Management Tools)
+  # 🛠️  (Management Tools)
   # =========================================================================
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@nextcore.com
-      PGADMIN_DEFAULT_PASSWORD: Password@1
-    ports:
-      - "5050:80"
-    depends_on:
-      discountdb:
-        condition: service_healthy
-    volumes:
-      - pgadmin_data:/var/lib/pgadmin
-    networks:
-      - app-network
-
+  
   portainer:
-    image: portainer/portainer-ce:latest
+    image: portainer/portainer-ce:2.27.1
     container_name: portainer
     ports:
       - "9000:9000"
