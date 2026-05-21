@@ -3,7 +3,7 @@
     public class BasketCheckoutV2
     {
         public string UserName { get; set; } = string.Empty;
-        public decimal? TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
 
     }
 }
