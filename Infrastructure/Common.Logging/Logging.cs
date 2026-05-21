@@ -1,50 +1,46 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
 
-namespace Common.Logging
+namespace Common.Logging;
+
+public static class LoggingConfiguration
 {
-    public static class Logging
+
+    public static void ConfigureBootstrapLogger()
     {
-        public static Action<HostBuilderContext, LoggerConfiguration> ConfigureLogger =>
-            (context, loggerConfigureation) =>
-            {
-                var environment = context.HostingEnvironment;
-                loggerConfigureation.MinimumLevel.Information()
-                    .Enrich.FromLogContext()
-                    .Enrich.WithProperty("ApplicationName", environment.ApplicationName)
-                    .Enrich.WithProperty("EnvironmentName", environment.EnvironmentName)
-                    .Enrich.WithExceptionDetails()
-                    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Warning)
-                    .WriteTo.Console();
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .Enrich.FromLogContext()
+            .Enrich.WithExceptionDetails()
+            .CreateBootstrapLogger();
+    }
 
-                if (context.HostingEnvironment.IsDevelopment())
-                {
-                    loggerConfigureation.MinimumLevel.Override("Catalog", LogEventLevel.Debug)
-                        .MinimumLevel.Override("Basket", LogEventLevel.Debug)
-                        .MinimumLevel.Override("Discount", LogEventLevel.Debug)
-                        .MinimumLevel.Override("Ordering", LogEventLevel.Debug);
-                }
 
-                var elasticSearch = context.Configuration.GetValue<string>("ElasticConfiguration:Uri");
-                if (!string.IsNullOrEmpty(elasticSearch))
-                {
-                    loggerConfigureation.WriteTo.Elasticsearch(
-                        new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(
-                            new Uri(elasticSearch))
-                        {
-                            AutoRegisterTemplate = true,
-                            AutoRegisterTemplateVersion = Serilog.Sinks.Elasticsearch.AutoRegisterTemplateVersion.ESv8,
-                            IndexFormat = "NewEcommerce-logs-{0:yyy.MM.dd}",
-                            MinimumLogEventLevel = LogEventLevel.Debug,
-                        }
+    public static void ConfigureSerilog(this WebApplicationBuilder builder)
+    {
 
-                        );
-                }
+        builder.Host.UseSerilog((context, services, configuration) =>
+        {
+            configuration
+                .ReadFrom.Configuration(context.Configuration)
+                .ReadFrom.Services(services)
+                .Enrich.FromLogContext();
+        });
+    }
+    public static IApplicationBuilder UseCustomRequestLogging(this IApplicationBuilder app)
+    {
 
-            };
+        return app.UseSerilogRequestLogging(options =>
+        {
+            options.GetLevel = (ctx, _, ex) =>
+               ex != null ? LogEventLevel.Error :
+               ctx.Response.StatusCode >= 500 ? LogEventLevel.Error :
+               ctx.Response.StatusCode >= 400 ? LogEventLevel.Warning :
+               LogEventLevel.Information;
+
+            options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} -> {StatusCode} in {Elapsed:0.0000} ms";
+        });
     }
 }
