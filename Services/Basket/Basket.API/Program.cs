@@ -6,20 +6,21 @@ using Basket.Infrastructure;
 using Common.Logging;
 using MassTransit;
 using Microsoft.Extensions.Options;
-using Serilog;
 namespace Basket.API
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            LoggingConfiguration.ConfigureBootstrapLogger();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.ConfigureSerilog();
 
             builder.Services.AddControllers();
 
-            builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
@@ -57,6 +58,8 @@ namespace Basket.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerDocumentation();
             }
+
+            app.UseCustomRequestLogging();
 
             app.UseAuthorization();
 

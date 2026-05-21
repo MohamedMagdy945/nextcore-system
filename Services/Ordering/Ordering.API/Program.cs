@@ -8,7 +8,6 @@ using Ordering.API.Settings;
 using Ordering.Application;
 using Ordering.Infrastructure;
 using Ordering.Infrastructure.Extensions;
-using Serilog;
 
 
 namespace Ordering.API
@@ -17,10 +16,12 @@ namespace Ordering.API
     {
         public static async Task Main(string[] args)
         {
+            LoggingConfiguration.ConfigureBootstrapLogger();
+
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Host.UseSerilog(Logging.ConfigureLogger);
+            builder.ConfigureSerilog();
+
             builder.Services.AddApiVersioningConfiguration();
             builder.Services.AddSwaggerConfiguration();
 
@@ -70,6 +71,7 @@ namespace Ordering.API
             {
                 app.UseSwaggerDocumentation();
             }
+            app.UseCustomRequestLogging();
 
             app.UseAuthorization();
 

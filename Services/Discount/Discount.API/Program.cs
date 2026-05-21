@@ -3,7 +3,6 @@ using Discount.API.Services;
 using Discount.Application;
 using Discount.Infrastructure;
 using Discount.Infrastructure.Extensions;
-using Serilog;
 
 namespace Discount.API
 {
@@ -11,9 +10,11 @@ namespace Discount.API
     {
         public static async Task Main(string[] args)
         {
+            LoggingConfiguration.ConfigureBootstrapLogger();
+
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Host.UseSerilog(Logging.ConfigureLogger);
+            builder.ConfigureSerilog();
 
             builder.Services.AddApplicationService();
             builder.Services.AddInfrastructureService(builder.Configuration);
@@ -30,6 +31,7 @@ namespace Discount.API
 
             }
 
+            app.UseCustomRequestLogging();
 
             app.UseRouting();
 

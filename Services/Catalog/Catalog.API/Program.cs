@@ -5,7 +5,6 @@ using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Persistence.DbContext;
 using Catalog.Infrastructure.Persistence.Seeder;
 using Common.Logging;
-using Serilog;
 
 namespace Catalog.API
 {
@@ -13,13 +12,13 @@ namespace Catalog.API
     {
         public static async Task Main(string[] args)
         {
+            LoggingConfiguration.ConfigureBootstrapLogger();
+
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.ConfigureSerilog();
 
             builder.Services.AddControllers();
-
-            builder.Host.UseSerilog(Logging.ConfigureLogger);
 
             builder.Services.AddApiVersioningConfiguration();
             builder.Services.AddSwaggerConfiguration();
@@ -49,6 +48,7 @@ namespace Catalog.API
                     await CatalogSeeder.SeedAsync(context.Products);
                 }
             }
+            app.UseCustomRequestLogging();
 
             app.UseAuthorization();
 

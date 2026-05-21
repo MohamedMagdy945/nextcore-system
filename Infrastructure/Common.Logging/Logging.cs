@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Elastic.Channels;
+using Elastic.Ingest.Elasticsearch;
+using Elastic.Ingest.Elasticsearch.DataStreams;
+using Elastic.Serilog.Sinks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
@@ -7,7 +12,6 @@ namespace Common.Logging;
 
 public static class LoggingConfiguration
 {
-
     public static void ConfigureBootstrapLogger()
     {
         Log.Logger = new LoggerConfiguration()
@@ -17,30 +21,60 @@ public static class LoggingConfiguration
             .CreateBootstrapLogger();
     }
 
-
-    public static void ConfigureSerilog(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder ConfigureSerilog(this WebApplicationBuilder builder)
     {
-
-        builder.Host.UseSerilog((context, services, configuration) =>
+        builder.Host.UseSerilog((context, logger) =>
         {
-            configuration
-                .ReadFrom.Configuration(context.Configuration)
-                .ReadFrom.Services(services)
-                .Enrich.FromLogContext();
-        });
-    }
-    public static IApplicationBuilder UseCustomRequestLogging(this IApplicationBuilder app)
-    {
+            var env = context.HostingEnvironment;
 
-        return app.UseSerilogRequestLogging(options =>
-        {
-            options.GetLevel = (ctx, _, ex) =>
-               ex != null ? LogEventLevel.Error :
-               ctx.Response.StatusCode >= 500 ? LogEventLevel.Error :
-               ctx.Response.StatusCode >= 400 ? LogEventLevel.Warning :
-               LogEventLevel.Information;
+            logger
+                .MinimumLevel.Information()
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("ApplicationName", env.ApplicationName)
+                .Enrich.WithProperty("Environment", env.EnvironmentName)
+                .Enrich.WithExceptionDetails()
 
-            options.MessageTemplate = "HTTP {RequestMethod} {RequestPath} -> {StatusCode} in {Elapsed:0.0000} ms";
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information);
+
+            if (env.IsDevelopment())
+            {
+                logger.MinimumLevel.Debug();
+            }
+
+            logger.WriteTo.Console(
+                outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} [{CorrelationId}]{NewLine}{Exception}"
+            );
+
+            var elasticUri = context.Configuration["ElasticConfiguration:Uri"];
+
+            if (elasticUri == null) return;
+
+
+            logger.WriteTo.Elasticsearch(new[] { new Uri(elasticUri) }, opts =>
+            {
+                var cleanAppName = env.ApplicationName?.ToLower().Replace(".", "-") ?? "app";
+                var cleanEnvName = env.EnvironmentName?.ToLower() ?? "production";
+
+                opts.DataStream = new DataStreamName("logs", cleanAppName, cleanEnvName);
+
+                opts.BootstrapMethod = BootstrapMethod.Failure;
+
+                opts.ConfigureChannel = channelOpts =>
+                {
+                    channelOpts.BufferOptions = new BufferOptions
+                    {
+                        ExportMaxConcurrency = 4
+                    };
+                };
+            }, transport =>
+            {
+
+            });
+
         });
+
+        return builder;
     }
 }
