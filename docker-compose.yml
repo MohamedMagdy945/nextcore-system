@@ -220,6 +220,28 @@ services:
     networks:
       - app-network
 
+
+        # =========================================================================
+  # 🛠️  (Management Tools)
+  # =========================================================================
+  
+  ocelot.apigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Ocelot.APIGateway/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "8010:8080"
+
+
   # =========================================================================
   # 🛠️  (Management Tools)
   # =========================================================================
