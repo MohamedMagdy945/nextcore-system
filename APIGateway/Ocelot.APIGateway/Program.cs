@@ -1,3 +1,5 @@
+using Ocelot.DependencyInjection;
+
 namespace Ocelot.APIGateway
 {
     public class Program
@@ -10,7 +12,9 @@ namespace Ocelot.APIGateway
 
             builder.Services.AddControllers();
 
+            builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
+            builder.Services.AddOcelot(builder.Configuration);
 
             var app = builder.Build();
 
@@ -20,6 +24,14 @@ namespace Ocelot.APIGateway
 
 
             app.MapControllers();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Hello Ocelot !");
+                });
+            });
 
             app.Run();
         }
