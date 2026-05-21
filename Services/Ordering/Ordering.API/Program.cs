@@ -54,6 +54,10 @@ namespace Ordering.API
                     {
                         e.ConfigureConsumer<BasketOrderingConsumer>(context);
                     });
+                    cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueueV2, e =>
+                    {
+                        e.ConfigureConsumer<BasketOrderingConsumerV2>(context);
+                    });
                 });
             });
             builder.Services.AddMassTransitHostedService();

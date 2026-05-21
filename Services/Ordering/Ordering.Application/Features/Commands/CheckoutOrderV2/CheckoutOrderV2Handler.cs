@@ -1,7 +1,6 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Application.Features.Commands.CheckoutOrder;
 using Ordering.Core.Entities;
 using Ordering.Core.Repositories;
 
@@ -29,6 +28,5 @@ namespace Ordering.Application.Features.Commands.CheckoutOrderV2
             _logger.LogInformation($"Order {newOrder.Id} is successfully created wit v2 handler.", newOrder.Id);
             return newOrder.Id;
         }
-    {
     }
 }
