@@ -30,7 +30,7 @@ namespace Basket.API.Controllers.V2
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Checkout(BasketCheckout basketCheckout)
+        public async Task<IActionResult> Checkout(BasketCheckoutV2 basketCheckout)
         {
             var query = new GetBasketByUserNameQuery(basketCheckout.UserName);
             var basket = await Mediator.Send(query);

@@ -1,22 +1,24 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Application.Features.Commands.CheckoutOrderV2;
+using Ordering.Application.Features.Commands.CheckoutOrder;
 using Ordering.Core.Entities;
 using Ordering.Core.Repositories;
 
-namespace Ordering.Application.Features.Handlers.Commands
+namespace Ordering.Application.Features.Commands.CheckoutOrderV2
 {
-    public class CheckoutOrderCommandHandlerV2 : IRequest<CheckoutOrderCommandV2>
+    public class CheckoutOrderV2Handler : IRequestHandler<CheckoutOrderCommandV2, int>
     {
-        private readonly ILogger<CheckoutOrderCommandHandlerV2> _logger;
+        private readonly ILogger<CheckoutOrderV2Handler> _logger;
+
         private readonly IOrderRepository _orderRepository;
-        public CheckoutOrderCommandHandlerV2(
-            ILogger<CheckoutOrderCommandHandlerV2> logger,
+        public CheckoutOrderV2Handler(
+            ILogger<CheckoutOrderV2Handler> logger,
 
             IOrderRepository orderRepository)
         {
             _logger = logger;
+
             _orderRepository = orderRepository;
         }
 
@@ -24,8 +26,9 @@ namespace Ordering.Application.Features.Handlers.Commands
         {
             var orderEntity = request.Adapt<Order>();
             var newOrder = await _orderRepository.AddAsync(orderEntity);
-            _logger.LogInformation($"Order {newOrder.Id} is successfully created. with version 2 handler", newOrder.Id);
+            _logger.LogInformation($"Order {newOrder.Id} is successfully created wit v2 handler.", newOrder.Id);
             return newOrder.Id;
         }
+    {
     }
 }
