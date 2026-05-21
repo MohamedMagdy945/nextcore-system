@@ -1,10 +1,11 @@
 using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace Ocelot.APIGateway
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ namespace Ocelot.APIGateway
 
             // Configure the HTTP request pipeline.
 
+            app.UseRouting();
+
             app.UseAuthorization();
 
 
@@ -33,7 +36,9 @@ namespace Ocelot.APIGateway
                 });
             });
 
-            app.Run();
+            await app.UseOcelot();
+
+            await app.RunAsync();
         }
     }
 }
