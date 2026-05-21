@@ -37,6 +37,7 @@ namespace Ordering.API
             {
                 // Consumer
                 x.AddConsumer<BasketOrderingConsumer>();
+                x.AddConsumer<BasketOrderingConsumerV2>();
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
