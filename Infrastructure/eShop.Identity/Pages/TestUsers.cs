@@ -56,17 +56,18 @@ public static class TestUsers
                         new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
                     }
-                },new TestUser
+                },
+                new TestUser
                 {
-                    SubjectId = "1",
-                    Username = "alice",
-                    Password = "alice",
+                    SubjectId = "2",
+                    Username = "abanoub",
+                    Password = "P@ssw0rd",
                     Claims =
                     {
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                        new Claim(JwtClaimTypes.Name, "Abanoub nabil"),
+                        new Claim(JwtClaimTypes.GivenName, "abanoub"),
+                        new Claim(JwtClaimTypes.FamilyName, "nabil"),
+                        new Claim(JwtClaimTypes.Email, "abanoubnabil@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
                         new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
