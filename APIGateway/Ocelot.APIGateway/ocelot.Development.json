@@ -158,6 +158,57 @@
         }
       ],
       "UpstreamHttpMethod": [ "POST" ]
+    },
+    // =========================
+    // ORDER SERVICE
+    // =========================
+    {
+      "DownstreamPathTemplate": "/api/v1/Orders/{userName}",
+      "UpstreamPathTemplate": "/api/v1/orders/{userName}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8004
+        }
+      ],
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Orders/CheckoutOrder",
+      "UpstreamPathTemplate": "/api/v1/orders/CheckoutOrder",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8004
+        }
+      ],
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Orders/UpdateOrder",
+      "UpstreamPathTemplate": "/api/v1/orders/UpdateOrder",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8004
+        }
+      ],
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Orders/DeleteOrder/{id}",
+      "UpstreamPathTemplate": "/api/v1/orders/DeleteOrder/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8004
+        }
+      ],
+      "UpstreamHttpMethod": [ "DELETE" ]
     }
   ],
 
