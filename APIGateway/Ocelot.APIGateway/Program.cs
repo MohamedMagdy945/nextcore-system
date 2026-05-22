@@ -9,32 +9,18 @@ namespace Ocelot.APIGateway
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
-            builder.Services.AddControllers();
-
-            builder.Configuration.AddJsonFile("ocelot.Development.json", optional: false, reloadOnChange: true);
+            builder.Configuration
+                .AddJsonFile(
+                    $"ocelot.{builder.Environment.EnvironmentName}.json",
+                    optional: false,
+                    reloadOnChange: true);
 
             builder.Services.AddOcelot(builder.Configuration);
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello Ocelot !");
-                });
-            });
+            app.MapGet("/", () => "Ocelot Gateway Running");
 
             await app.UseOcelot();
 
