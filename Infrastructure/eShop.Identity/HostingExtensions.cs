@@ -1,6 +1,4 @@
 using Duende.IdentityServer;
-using eShop.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Serilog;
 
 namespace eShop.Identity;
@@ -26,6 +24,7 @@ internal static class HostingExtensions
         // in-memory, code config
         isBuilder.AddInMemoryIdentityResources(Config.IdentityResources);
         isBuilder.AddInMemoryApiScopes(Config.ApiScopes);
+        isBuilder.AddInMemoryApiResources(Config.ApiResources);
         isBuilder.AddInMemoryClients(Config.Clients);
 
 
@@ -56,11 +55,11 @@ internal static class HostingExtensions
 
         return builder.Build();
     }
-    
+
     public static WebApplication ConfigurePipeline(this WebApplication app)
-    { 
+    {
         app.UseSerilogRequestLogging();
-    
+
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -70,7 +69,7 @@ internal static class HostingExtensions
         app.UseRouting();
         app.UseIdentityServer();
         app.UseAuthorization();
-        
+
         app.MapRazorPages()
             .RequireAuthorization();
 
