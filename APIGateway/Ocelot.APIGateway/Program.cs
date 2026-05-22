@@ -20,8 +20,17 @@ namespace Ocelot.APIGateway
 
             var app = builder.Build();
 
-            app.MapGet("/", () => "Ocelot Gateway Running");
+            app.UseRouting();
 
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/")
+                {
+                    await context.Response.WriteAsync("Ocelot Gateway Running");
+                    return;
+                }
+
+            });
             await app.UseOcelot();
 
             await app.RunAsync();

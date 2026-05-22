@@ -57,6 +57,8 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
@@ -95,6 +97,8 @@ services:
       - "8003:8080"
     depends_on:
       discountdb:
+        condition: service_healthy
+      elasticsearch:
         condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -137,6 +141,8 @@ services:
       orderdb:
         condition: service_healthy
       rabbitmq:
+        condition: service_healthy
+      elasticsearch:
         condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -221,8 +227,8 @@ services:
       - app-network
 
 
-        # =========================================================================
-  # 🛠️  (Management Tools)
+  # =========================================================================
+  # 🛠️  API Gateway (Ocelot)
   # =========================================================================
   
   ocelot.apigateway:

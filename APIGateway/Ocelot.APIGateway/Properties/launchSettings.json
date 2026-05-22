@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "http": {
+    "APIGateway": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5259"
+      "applicationUrl": "http://localhost:8010"
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
