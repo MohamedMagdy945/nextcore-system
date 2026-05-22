@@ -106,6 +106,58 @@
         }
       ],
       "UpstreamHttpMethod": [ "GET" ]
+    },
+
+    // =========================
+    // BASKET SERVICE
+    // =========================
+    {
+      "DownstreamPathTemplate": "/api/v1/Basket/GetBasket/{userName}",
+      "UpstreamPathTemplate": "/api/v1/basket/GetBasket/{userName}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8002
+        }
+      ],
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Basket/CreateBasket",
+      "UpstreamPathTemplate": "/api/v1/basket/CreateBasket",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8002
+        }
+      ],
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Basket/DeleteBasket/{userName}",
+      "UpstreamPathTemplate": "/api/v1/basket/DeleteBasket/{userName}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8002
+        }
+      ],
+      "UpstreamHttpMethod": [ "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Basket/Checkout",
+      "UpstreamPathTemplate": "/api/v1/basket/Checkout",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 8002
+        }
+      ],
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ],
 
