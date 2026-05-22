@@ -26,11 +26,13 @@ namespace Ocelot.APIGateway
             {
                 if (context.Request.Path == "/")
                 {
-                    await context.Response.WriteAsync("Ocelot Gateway Running");
+                    await context.Response.WriteAsync("Gateway Running");
                     return;
                 }
 
+                await next();
             });
+
             await app.UseOcelot();
 
             await app.RunAsync();
