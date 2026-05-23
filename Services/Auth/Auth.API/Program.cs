@@ -1,4 +1,5 @@
 using Auth.API.Configurations;
+using Auth.API.Controllers;
 using Auth.Application;
 namespace Auth.API
 {
@@ -7,14 +8,23 @@ namespace Auth.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
             builder.Services.AddCustomLocalization();
+
             builder.Services.AddApiVersioningConfiguration();
+
+            builder.Services.AddSwaggerConfiguration();
 
             builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddApplicationServices();
 
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwaggerDocumentation();
+            }
 
             app.UseCustomLocalization();
 
