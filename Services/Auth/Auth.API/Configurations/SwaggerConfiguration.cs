@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Auth.API.Controllers;
+namespace Auth.API.Configurations;
 
 public static class SwaggerConfiguration
 {

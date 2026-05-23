@@ -33,7 +33,6 @@ public static class LoggingConfiguration
             .MinimumLevel.Information()
             .Enrich.FromLogContext()
             .Enrich.WithMachineName()
-            .Enrich.WithCorrelationId()
             .Enrich.WithExceptionDetails()
             .Enrich.WithProperty("ServiceName", loggingOptions.ServiceName)
             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)

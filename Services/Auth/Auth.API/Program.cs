@@ -1,5 +1,5 @@
 using Auth.API.Configurations;
-using Auth.API.Controllers;
+using Auth.API.Middlewares;
 using Auth.Application;
 using Common.Logging;
 namespace Auth.API
@@ -30,6 +30,8 @@ namespace Auth.API
             {
                 app.UseSwaggerDocumentation();
             }
+
+            app.UseMiddleware<CorrelationIdMiddleware>();
 
             app.UseCustomRequestLogging();
 
