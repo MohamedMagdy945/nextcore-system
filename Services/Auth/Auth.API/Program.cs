@@ -8,6 +8,7 @@ namespace Auth.API
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddCustomLocalization();
+            builder.Services.AddApiVersioningConfiguration();
 
             builder.Services.AddHttpContextAccessor();
 

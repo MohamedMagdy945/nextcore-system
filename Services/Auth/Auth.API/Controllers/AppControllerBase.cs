@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Auth.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v{version:apiVersion}/[controller]")]
 public abstract class AppControllerBase : ControllerBase
 {
     private IMediator? _mediator;
