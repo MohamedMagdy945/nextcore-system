@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "Auth.API": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

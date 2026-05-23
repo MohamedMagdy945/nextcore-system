@@ -1,6 +1,9 @@
-﻿namespace Auth.Application.Features.Auth.Login
+﻿using Auth.Application.Bases;
+using MediatR;
+
+namespace Auth.Application.Features.Auth.Login
 {
-    public class LoginCommand
+    public class LoginCommand : IRequest<Response<Unit>>
     {
     }
 }

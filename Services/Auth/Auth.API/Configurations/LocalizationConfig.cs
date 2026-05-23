@@ -7,7 +7,7 @@ namespace Auth.API.Configurations
     {
         public static IServiceCollection AddCustomLocalization(this IServiceCollection services)
         {
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization(options => options.ResourcesPath = "");
 
             services.AddControllers()
                 .AddDataAnnotationsLocalization(options =>
@@ -15,7 +15,8 @@ namespace Auth.API.Configurations
                     options.DataAnnotationLocalizerProvider = (type, factory) =>
                     {
                         var assemblyName = new AssemblyName(typeof(AuthSharedResource).Assembly.FullName!);
-                        return factory.Create("AuthSharedResource", assemblyName.Name!);
+
+                        return factory.Create(typeof(AuthSharedResource));
                     };
                 });
 

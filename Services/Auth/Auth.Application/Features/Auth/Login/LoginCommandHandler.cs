@@ -1,10 +1,12 @@
-﻿using Auth.Application.Resources;
+﻿using Auth.Application.Bases;
+using Auth.Application.Resources;
 using MediatR;
 using Microsoft.Extensions.Localization;
 
 namespace Auth.Application.Features.Auth.Login
 {
-    public class LoginCommandHandler // : IRequestHandler<LoginCommand, AuthResult>
+    public class LoginCommandHandler :
+        IRequestHandler<LoginCommand, Response<Unit>>
     {
         private readonly IStringLocalizer<AuthSharedResource> _localizer;
 
@@ -13,18 +15,16 @@ namespace Auth.Application.Features.Auth.Login
             _localizer = localizer;
         }
 
-        public async Task<Unit> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Unit>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             bool userExists = false;
 
             if (!userExists)
             {
-                string errorMessage = _localizer["UserNotFound"];
-
-                throw new Exception(errorMessage);
+                return Response<Unit>.Failure(Messages.UserNotFound);
             }
 
-            return Unit.Value;
+            return Response<Unit>.Success(Unit.Value);
         }
     }
 }
