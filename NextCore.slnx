@@ -1,40 +1,43 @@
 <Solution>
   <Folder Name="/APIGateway/">
-    <Project Path="APIGateway/Ocelot.APIGateway/Ocelot.APIGateway.csproj" Id="73a79190-6c85-4c79-9783-ff6de4ce7877" />
+    <Project Path="D:/Project/nextcore-system/APIGateway/Ocelot.APIGateway/Ocelot.APIGateway.csproj" Id="73a79190-6c85-4c79-9783-ff6de4ce7877" />
   </Folder>
   <Folder Name="/Infrastructure/">
-    <Project Path="Infrastructure/Common.Logging/Common.Logging.csproj" Id="a40b7830-a62f-4f9d-aedf-3177bdf80cbe" />
-    <Project Path="Infrastructure/EventBus.Messages/EventBus.Messages.csproj" />
+    <Project Path="D:/Project/nextcore-system/Infrastructure/Common.Logging/Common.Logging.csproj" Id="a40b7830-a62f-4f9d-aedf-3177bdf80cbe" />
+    <Project Path="D:/Project/nextcore-system/Infrastructure/EventBus.Messages/EventBus.Messages.csproj" />
   </Folder>
   <Folder Name="/Services/" />
   <Folder Name="/Services/Auth/">
-    <Project Path="Services/Auth/Auth.API/Auth.API.csproj" Id="e8695ee7-4844-4b33-a030-a9067437509c" />
+    <Project Path="D:/Project/nextcore-system/Services/Auth/Auth.API/Auth.API.csproj" Id="e8695ee7-4844-4b33-a030-a9067437509c" />
+    <Project Path="D:/Project/nextcore-system/Services/Auth/Auth.Application/Auth.Application.csproj" />
+    <Project Path="D:/Project/nextcore-system/Services/Auth/Auth.Domain/Auth.Domain.csproj" Id="b53e1c25-9670-46a1-9c35-d7bd5e87a5c3" />
+    <Project Path="D:/Project/nextcore-system/Services/Auth/Auth.Infrastructure/Auth.Infrastructure.csproj" Id="b40f23d7-ecd6-46e2-b402-143dd94fe0da" />
   </Folder>
   <Folder Name="/Services/Basket/">
-    <Project Path="Services/Basket/Basket.API/Basket.API.csproj" Id="423f5b81-9ddb-42e7-b676-47205b85f83c" />
-    <Project Path="Services/Basket/Basket.Application/Basket.Application.csproj" />
-    <Project Path="Services/Basket/Basket.Core/Basket.Core.csproj" Id="a2d57ff4-bc44-4934-887b-24978703efd9" />
-    <Project Path="Services/Basket/Basket.Infrastructure/Basket.Infrastructure.csproj" />
+    <Project Path="D:/Project/nextcore-system/Services/Basket/Basket.API/Basket.API.csproj" Id="423f5b81-9ddb-42e7-b676-47205b85f83c" />
+    <Project Path="D:/Project/nextcore-system/Services/Basket/Basket.Application/Basket.Application.csproj" />
+    <Project Path="D:/Project/nextcore-system/Services/Basket/Basket.Core/Basket.Core.csproj" Id="a2d57ff4-bc44-4934-887b-24978703efd9" />
+    <Project Path="D:/Project/nextcore-system/Services/Basket/Basket.Infrastructure/Basket.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/Services/Catalog/">
-    <Project Path="Services/Catalog/Catalog.API/Catalog.API.csproj" Id="a5a9c8e4-a17a-46f7-a9ed-f2a5ddbb1a07" />
-    <Project Path="Services/Catalog/Catalog.Application/Catalog.Application.csproj" />
-    <Project Path="Services/Catalog/Catalog.Core/Catalog.Core.csproj" Id="4f353498-ef4d-49ee-aec8-5bfbe1c94234" />
-    <Project Path="Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj" />
+    <Project Path="D:/Project/nextcore-system/Services/Catalog/Catalog.API/Catalog.API.csproj" Id="a5a9c8e4-a17a-46f7-a9ed-f2a5ddbb1a07" />
+    <Project Path="D:/Project/nextcore-system/Services/Catalog/Catalog.Application/Catalog.Application.csproj" />
+    <Project Path="D:/Project/nextcore-system/Services/Catalog/Catalog.Core/Catalog.Core.csproj" Id="4f353498-ef4d-49ee-aec8-5bfbe1c94234" />
+    <Project Path="D:/Project/nextcore-system/Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/Services/Discount/">
-    <Project Path="Services/Discount/Discount.API/Discount.API.csproj" Id="8d855e57-f87b-4c60-bb2d-2e9fa8ea9a4f" />
-    <Project Path="Services/Discount/Discount.Application/Discount.Application.csproj" Id="4508f802-86c8-48f1-9772-a6664d8d3d02" />
-    <Project Path="Services/Discount/Discount.Core/Discount.Core.csproj" Id="4437b88f-eaef-44eb-885f-32c70ea44c24" />
-    <Project Path="Services/Discount/Discount.Infrastructure/Discount.Infrastructure.csproj" />
+    <Project Path="D:/Project/nextcore-system/Services/Discount/Discount.API/Discount.API.csproj" Id="8d855e57-f87b-4c60-bb2d-2e9fa8ea9a4f" />
+    <Project Path="D:/Project/nextcore-system/Services/Discount/Discount.Application/Discount.Application.csproj" Id="4508f802-86c8-48f1-9772-a6664d8d3d02" />
+    <Project Path="D:/Project/nextcore-system/Services/Discount/Discount.Core/Discount.Core.csproj" Id="4437b88f-eaef-44eb-885f-32c70ea44c24" />
+    <Project Path="D:/Project/nextcore-system/Services/Discount/Discount.Infrastructure/Discount.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/Services/Ordering/">
-    <Project Path="Services/Ordering/Ordering.API/Ordering.API.csproj" Id="560edb14-a51f-45d0-9a53-f2689769953e" />
-    <Project Path="Services/Ordering/Ordering.Application/Ordering.Application.csproj" Id="34df9cf8-ae66-4ea8-87a4-d987c95fad6f" />
-    <Project Path="Services/Ordering/Ordering.Core/Ordering.Core.csproj" Id="f9d8d169-ec4f-4dc4-865f-aba90b9d2767" />
-    <Project Path="Services/Ordering/Ordering.Infrastructrue/Ordering.Infrastructure.csproj" Id="fc20c96b-328d-41d9-a908-06e5996d94d9" />
+    <Project Path="D:/Project/nextcore-system/Services/Ordering/Ordering.API/Ordering.API.csproj" Id="560edb14-a51f-45d0-9a53-f2689769953e" />
+    <Project Path="D:/Project/nextcore-system/Services/Ordering/Ordering.Application/Ordering.Application.csproj" Id="34df9cf8-ae66-4ea8-87a4-d987c95fad6f" />
+    <Project Path="D:/Project/nextcore-system/Services/Ordering/Ordering.Core/Ordering.Core.csproj" Id="f9d8d169-ec4f-4dc4-865f-aba90b9d2767" />
+    <Project Path="D:/Project/nextcore-system/Services/Ordering/Ordering.Infrastructrue/Ordering.Infrastructure.csproj" Id="fc20c96b-328d-41d9-a908-06e5996d94d9" />
   </Folder>
-  <Project Path="docker-compose.dcproj">
+  <Project Path="D:/Project/nextcore-system/docker-compose.dcproj">
     <Build />
   </Project>
 </Solution>
