@@ -7,10 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Persistence\DbContext\" />
     <Folder Include="Persistence\Files\" />
     <Folder Include="Persistence\SeederRunner\" />
     <Folder Include="Persistence\Seeder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auth.Application\Auth.Application.csproj" />
   </ItemGroup>
 
 </Project>
