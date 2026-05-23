@@ -15,7 +15,6 @@ namespace Auth.Application.Features.Auth.Login
 
         public async Task<Unit> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            // فرضاً بنعمل تشيك على المستخدم وموجودش في الـ Database
             bool userExists = false;
 
             if (!userExists)
