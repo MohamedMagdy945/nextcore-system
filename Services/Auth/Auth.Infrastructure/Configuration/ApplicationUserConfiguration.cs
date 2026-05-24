@@ -9,7 +9,6 @@ namespace Auth.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            builder.HasKey(x => x.Id);
 
             builder.HasIndex(x => x.Email)
                 .IsUnique();
