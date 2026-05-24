@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Auth.Infrastructure.Entities
+﻿namespace Auth.Infrastructure.Entities
 {
-    public class ApplicationUser : IdentityUser<int>
+    public class ApplicationUser : BaseIdentityEntity
     {
-        public ICollection<UserRole> UserRoles { get; private set; }
-        = new List<UserRole>();
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
 
-        public ICollection<RefreshToken> RefreshTokens { get; private set; }
-        = new List<RefreshToken>();
+        public string PasswordHash { get; set; } = string.Empty;
+
+        public bool IsActive { get; set; } = true;
+
+        public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }
