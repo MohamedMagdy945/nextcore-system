@@ -1,6 +1,6 @@
 ﻿namespace Auth.Infrastructure.Entities
 {
-    internal class Permission
+    public class Permission : BaseIdentityEntity
     {
         public string Name { get; set; } = null!;
         //public ICollection<RolePermission> RolePermissions { get; set; } = new List<RolePermission>();
