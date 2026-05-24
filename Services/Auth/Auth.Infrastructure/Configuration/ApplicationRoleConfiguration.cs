@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Auth.Infrastructure.Configuration
 {
-    public class RoleConfiguration
+    public class ApplicationRoleConfiguration
         : IEntityTypeConfiguration<ApplicationRole>
     {
         public void Configure(EntityTypeBuilder<ApplicationRole> builder)

@@ -9,7 +9,8 @@ namespace Auth.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<RefreshToken> builder)
         {
-            builder.HasIndex(x => x.TokenHash).IsUnique();
+            builder.HasIndex(x => x.TokenHash)
+                .IsUnique();
 
             builder.Property(x => x.TokenHash).HasMaxLength(200).IsRequired();
 
@@ -17,11 +18,6 @@ namespace Auth.Infrastructure.Configuration
                    .WithMany(u => u.RefreshTokens)
                    .HasForeignKey(x => x.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(x => x.User)
-                .WithMany()
-                .HasForeignKey(x => x.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
