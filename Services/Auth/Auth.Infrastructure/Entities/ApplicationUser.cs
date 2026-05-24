@@ -6,5 +6,8 @@ namespace Auth.Infrastructure.Entities
     {
         public ICollection<UserRole> UserRoles { get; private set; }
         = new List<UserRole>();
+
+        public ICollection<RefreshToken> RefreshTokens { get; private set; }
+        = new List<RefreshToken>();
     }
 }
