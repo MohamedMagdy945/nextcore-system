@@ -6,7 +6,7 @@
 
         public ApplicationUser User { get; set; } = default!;
 
-        public Guid RoleId { get; set; }
+        public int RoleId { get; set; }
 
         public ApplicationRole Role { get; set; } = default!;
     }
