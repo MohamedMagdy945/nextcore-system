@@ -4,7 +4,7 @@
     {
         public string TokenHash { get; set; } = string.Empty;
         public int UserId { get; set; }
-        public ApplicationUser User { get; set; } = default!;
+        public User User { get; set; } = default!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime ExpiresAt { get; set; }
         public DateTime? RevokedAt { get; set; }

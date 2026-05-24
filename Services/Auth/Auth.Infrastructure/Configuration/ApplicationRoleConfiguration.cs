@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Auth.Infrastructure.Configuration
 {
     public class ApplicationRoleConfiguration
-        : IEntityTypeConfiguration<ApplicationRole>
+        : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<ApplicationRole> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
 
             builder.HasIndex(x => x.Name)

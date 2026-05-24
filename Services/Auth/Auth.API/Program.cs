@@ -1,6 +1,7 @@
 using Auth.API.Configurations;
 using Auth.API.Middlewares;
 using Auth.Application;
+using Auth.Infrastructure;
 using Common.Logging;
 namespace Auth.API
 {
@@ -23,6 +24,8 @@ namespace Auth.API
             builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddApplicationServices();
+
+            builder.Services.AddInfrastructureServices(builder.Configuration);
 
             var app = builder.Build();
 

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Auth.Infrastructure.Configuration
 {
     public class ApplicationUserConfiguration :
-        IEntityTypeConfiguration<ApplicationUser>
+        IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
 
             builder.HasIndex(x => x.Email)
