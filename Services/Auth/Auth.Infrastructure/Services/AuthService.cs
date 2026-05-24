@@ -1,14 +1,15 @@
 ﻿using Auth.Application.Bases;
 using Auth.Application.Common;
+using Auth.Application.DTOs;
 using Auth.Application.Interfaces;
 
 namespace Auth.Infrastructure.Services
 {
     public class AuthService : IAuthService
     {
-        public Task<Result<TokenResponse>> LoginAsync(string username, string password)
+        public Task<Result<TokenResponse>> RegisterAsync(RegisterRequest request)
         {
-            throw new NotImplementedException();
+
         }
 
         public Task<Result<LogoutResponse>> LogoutAsync(string refreshToken)
@@ -25,5 +26,7 @@ namespace Auth.Infrastructure.Services
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

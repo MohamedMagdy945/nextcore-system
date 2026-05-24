@@ -1,6 +1,6 @@
 ﻿namespace Auth.Infrastructure.Entities
 {
-    public class ApplicationUser : BaseIdentityEntity
+    public class User : BaseIdentityEntity
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;

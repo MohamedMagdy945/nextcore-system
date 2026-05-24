@@ -1,6 +1,6 @@
 ﻿namespace Auth.Infrastructure.Entities
 {
-    public class ApplicationRole : BaseIdentityEntity
+    public class Role : BaseIdentityEntity
     {
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
