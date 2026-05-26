@@ -2,12 +2,13 @@ using Auth.API.Configurations;
 using Auth.API.Middlewares;
 using Auth.Application;
 using Auth.Infrastructure;
+using Auth.Infrastructure.Persistence.DatabaseSeeder;
 using Common.Logging;
 namespace Auth.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             LoggingConfiguration.ConfigureBootstrapLogger();
 
@@ -32,7 +33,13 @@ namespace Auth.API
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwaggerDocumentation();
+                using (var scope = app.Services.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
+                    await seeder.SeedAsync();
+                }
             }
+
 
             app.UseMiddleware<CorrelationIdMiddleware>();
 

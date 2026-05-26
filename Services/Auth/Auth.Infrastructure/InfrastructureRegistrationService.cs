@@ -1,6 +1,7 @@
 ﻿using Auth.Application.Interfaces;
 using Auth.Infrastructure.Interfaces;
 using Auth.Infrastructure.Persistence;
+using Auth.Infrastructure.Persistence.Seeder;
 using Auth.Infrastructure.Services;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,11 @@ namespace Auth.Infrastructure
             services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<RoleSeeder>();
+            services.AddScoped<PermissionSeeder>();
+            services.AddScoped<UserSeeder>();
+            services.AddScoped<DatabaseSeeder>();
 
             return services;
         }
