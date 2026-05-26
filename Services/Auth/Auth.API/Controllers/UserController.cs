@@ -8,9 +8,8 @@ namespace Auth.API.Controllers
     public class UserController : AppControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> CreateUser(AddUserCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUser(CreateUserCommand command, CancellationToken cancellationToken)
         {
-
             var response = await Mediator.Send(command, cancellationToken);
             return Result(response);
         }
