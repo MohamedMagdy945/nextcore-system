@@ -2,9 +2,9 @@
 using Auth.Application.Common;
 using Auth.Application.DTOs;
 using Auth.Application.Interfaces;
-using Auth.Domain.Constants;
 using Auth.Domain.Entities;
 using Auth.Infrastructure.Interfaces;
+using Common.Shared.Constant;
 using Microsoft.EntityFrameworkCore;
 
 namespace Auth.Infrastructure.Services

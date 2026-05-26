@@ -15,18 +15,6 @@ namespace Auth.Infrastructure.Persistence
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
-        DbSet<User> IAuthDbContext.Users => throw new NotImplementedException();
-
-        DbSet<Role> IAuthDbContext.Roles => throw new NotImplementedException();
-
-        DbSet<UserRole> IAuthDbContext.UserRoles => throw new NotImplementedException();
-
-        DbSet<RefreshToken> IAuthDbContext.RefreshTokens => throw new NotImplementedException();
-
-        DbSet<Permission> IAuthDbContext.Permissions => throw new NotImplementedException();
-
-        DbSet<RolePermission> IAuthDbContext.RolePermissions => throw new NotImplementedException();
-
         public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
         }

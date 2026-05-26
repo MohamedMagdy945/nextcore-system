@@ -57,7 +57,7 @@ public class PermissionSeeder
             .Select(p => new RolePermission
             {
                 RoleId = adminRole.Id,
-                PermissionId = p.Id
+                Permission = p
             })
             .ToList();
 
@@ -66,7 +66,7 @@ public class PermissionSeeder
             .Select(p => new RolePermission
             {
                 RoleId = userRole.Id,
-                PermissionId = p.Id
+                Permission = p
             })
             .ToList();
 

@@ -1,14 +1,16 @@
 ﻿using Auth.Application.Interfaces;
 using Auth.Infrastructure.Interfaces;
 using Auth.Infrastructure.Persistence;
+using Auth.Infrastructure.Persistence.DatabaseSeeder;
 using Auth.Infrastructure.Persistence.Seeder;
 using Auth.Infrastructure.Services;
+using Auth.Infrastructure.Settings;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
+using System.Reflection;
 namespace Auth.Infrastructure
 {
     public static class InfrastructureRegistrationService
@@ -16,8 +18,11 @@ namespace Auth.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<AuthDbContext>(options =>
+            services.AddDbContext<IAuthDbContext, AuthDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.Configure<JwtSettings>(
+             configuration.GetSection("JwtSettings"));
 
             services.AddScoped<IAuthService, AuthService>();
 

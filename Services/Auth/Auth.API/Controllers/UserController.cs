@@ -1,32 +1,17 @@
-﻿using Auth.Application.Features.Auth.Login;
-using Auth.Application.Features.Auth.Register;
+﻿using Auth.Application.Features.Users.Commands.AddUser;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.API.Controllers
 {
-
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserController : AppControllerBase
     {
-
-        private readonly ILogger<UserController> _logger;
-        public UserController(ILogger<UserController> logger)
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(AddUserCommand command, CancellationToken cancellationToken)
         {
-            _logger = logger;
-        }
 
-        [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginCommand command)
-        {
-            _logger.LogInformation("Login attempt for user");
-
-            var response = await Mediator.Send(command);
-            return Result(response);
-        }
-
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterCommand command)
-        {
-            var response = await Mediator.Send(command);
+            var response = await Mediator.Send(command, cancellationToken);
             return Result(response);
         }
 

@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Persistence\Files\" />
-    <Folder Include="Persistence\SeederRunner\" />
-    <Folder Include="Persistence\Seeder\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,9 +17,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.16" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Infrastructure\Common.Shared\Common.Shared.csproj" />
     <ProjectReference Include="..\Auth.Application\Auth.Application.csproj" />
   </ItemGroup>
 

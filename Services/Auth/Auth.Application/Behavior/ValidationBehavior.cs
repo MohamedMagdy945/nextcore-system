@@ -1,12 +1,9 @@
-﻿using Auth.Application.Bases;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 
-namespace Auth.Infrastructure.Behavior;
-
-public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class ValidationBehavior<TRequest, TResponse>
+    : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
-    where TResponse : IResult
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -29,14 +26,14 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
                 _validators.Select(v => v.ValidateAsync(context, cancellationToken))
             ))
             .SelectMany(x => x.Errors)
-            .Where(e => e != null)
-            .Select(e => e.ErrorMessage)
+            .Where(x => x != null)
             .ToList();
 
         if (failures.Any())
         {
-            return (TResponse)(IResult)Result<object>.Failure("Validation Failed", failures);
+            throw new ValidationException(failures);
         }
+
         return await next();
     }
 }
