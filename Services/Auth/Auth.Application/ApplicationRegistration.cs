@@ -1,5 +1,4 @@
-﻿using Auth.Infrastructure.Behavior;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 

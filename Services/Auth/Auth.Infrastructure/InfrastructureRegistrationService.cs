@@ -9,7 +9,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 namespace Auth.Infrastructure
 {
@@ -19,10 +19,13 @@ namespace Auth.Infrastructure
         {
 
             services.AddDbContext<IAuthDbContext, AuthDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.LogTo(Console.WriteLine, LogLevel.Information);
+            });
 
             services.Configure<JwtSettings>(
-             configuration.GetSection("JwtSettings"));
+                 configuration.GetSection("JwtSettings"));
 
             services.AddScoped<IAuthService, AuthService>();
 

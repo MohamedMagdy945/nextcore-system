@@ -2,9 +2,9 @@
 
 namespace Auth.Application.Features.Users.Commands.AddUser
 {
-    public class AddUserCommandValidator : AbstractValidator<AddUserCommand>
+    public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {
-        public AddUserCommandValidator()
+        public CreateUserCommandValidator()
         {
             RuleFor(x => x.UserName)
                 .NotEmpty().WithMessage("Username is required.")

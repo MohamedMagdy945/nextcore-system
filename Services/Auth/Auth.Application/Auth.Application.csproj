@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Users\Commands\DeleteUser\" />
-    <Folder Include="Features\Users\Queries\" />
+    <Folder Include="Features\Users\Models\" />
   </ItemGroup>
 
 </Project>
