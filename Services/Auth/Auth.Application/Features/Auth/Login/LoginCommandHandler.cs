@@ -6,7 +6,7 @@ using Microsoft.Extensions.Localization;
 namespace Auth.Application.Features.Auth.Login
 {
     public class LoginCommandHandler :
-        IRequestHandler<LoginCommand, Response<Unit>>
+        IRequestHandler<LoginCommand, Result<Unit>>
     {
         private readonly IStringLocalizer<AuthSharedResource> _localizer;
 
@@ -15,16 +15,16 @@ namespace Auth.Application.Features.Auth.Login
             _localizer = localizer;
         }
 
-        public async Task<Response<Unit>> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Unit>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             bool userExists = false;
 
             if (!userExists)
             {
-                return Response<Unit>.Failure(Messages.UserNotFound);
+                return Result<Unit>.Failure(Messages.UserNotFound);
             }
 
-            return Response<Unit>.Success(Unit.Value);
+            return Result<Unit>.Success(Unit.Value);
         }
     }
 }

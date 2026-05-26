@@ -1,4 +1,5 @@
 ﻿using Auth.Application.Features.Auth.Login;
+using Auth.Application.Features.Auth.Register;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.API.Controllers
@@ -18,6 +19,13 @@ namespace Auth.API.Controllers
         {
             _logger.LogInformation("Login attempt for user");
 
+            var response = await Mediator.Send(command);
+            return Result(response);
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterCommand command)
+        {
             var response = await Mediator.Send(command);
             return Result(response);
         }

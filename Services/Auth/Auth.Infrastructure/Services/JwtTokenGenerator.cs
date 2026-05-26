@@ -1,7 +1,13 @@
 ﻿using Auth.Application.Common;
-using Auth.Infrastructure.Entities;
+using Auth.Domain.Entities;
 using Auth.Infrastructure.Interfaces;
+using Auth.Infrastructure.Settings;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Auth.Infrastructure.Services
 {
@@ -25,18 +31,48 @@ namespace Auth.Infrastructure.Services
 
         public string GenerateAccessToken(User user, IEnumerable<string>? permissions)
         {
-            throw new NotImplementedException();
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            if (permissions != null && permissions.Any())
+            {
+                claims.AddRange(permissions!.Select(p =>
+                         new Claim("permission", p)));
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.AccessTokenSecret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+               issuer: _jwtSettings.Issuer,
+               audience: _jwtSettings.Audience,
+               claims: claims,
+               expires: DateTime.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpiryMinutes),
+               signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
         public string GenerateRefreshToken()
         {
-            throw new NotImplementedException();
+            return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
         }
 
 
         public string HashToken(string token)
         {
-            throw new NotImplementedException();
+            var key = Encoding.UTF8.GetBytes(_jwtSettings.RefreshTokenSecret);
+
+            using var hmac = new HMACSHA256(key);
+            var bytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(token));
+
+            return Convert.ToHexString(bytes).ToLower();
         }
     }
 }

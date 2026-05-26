@@ -1,5 +1,5 @@
 ﻿using Auth.Application.Interfaces;
-using Auth.Infrastructure.Entities;
+using Auth.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Auth.Infrastructure.Persistence
@@ -14,6 +14,18 @@ namespace Auth.Infrastructure.Persistence
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+        DbSet<User> IAuthDbContext.Users => throw new NotImplementedException();
+
+        DbSet<Role> IAuthDbContext.Roles => throw new NotImplementedException();
+
+        DbSet<UserRole> IAuthDbContext.UserRoles => throw new NotImplementedException();
+
+        DbSet<RefreshToken> IAuthDbContext.RefreshTokens => throw new NotImplementedException();
+
+        DbSet<Permission> IAuthDbContext.Permissions => throw new NotImplementedException();
+
+        DbSet<RolePermission> IAuthDbContext.RolePermissions => throw new NotImplementedException();
 
         public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {

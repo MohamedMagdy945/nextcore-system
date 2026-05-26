@@ -1,5 +1,5 @@
 ﻿using Auth.Application.Common;
-using Auth.Infrastructure.Entities;
+using Auth.Domain.Entities;
 
 namespace Auth.Infrastructure.Interfaces
 {
