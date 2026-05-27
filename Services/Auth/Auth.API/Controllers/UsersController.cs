@@ -1,6 +1,7 @@
 ﻿using Auth.Application.Bases;
 using Auth.Application.DTOs;
 using Auth.Application.Features.Users.Commands.AddUser;
+using Auth.Application.Features.Users.Queries.GetUserById;
 using Auth.Application.Features.Users.Queries.GetUsersList;
 using Auth.Application.Pagination;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,11 @@ namespace Auth.API.Controllers
         [ProducesResponseType(typeof(Result<UserDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetUserById(int Id)
         {
+            var query = new GetUserByIdQuery { Id = Id };
 
+            var response = await Mediator.Send(query, CancellationToken.None);
+
+            return ApiResult(response);
         }
     }
 }

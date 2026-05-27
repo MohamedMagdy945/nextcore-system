@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Auth.Application.Features.Users.Queries.GetUserById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserById, Result<UserDto>>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, Result<UserDto>>
     {
         private readonly IAuthDbContext _authDbContext;
 
@@ -14,7 +14,7 @@ namespace Auth.Application.Features.Users.Queries.GetUserById
         {
             _authDbContext = authDbContext;
         }
-        public async Task<Result<UserDto>> Handle(GetUserById request, CancellationToken cancellationToken)
+        public async Task<Result<UserDto>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _authDbContext.Users.FindAsync(request.Id, cancellationToken);
 
