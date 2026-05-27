@@ -25,4 +25,8 @@
     <Folder Include="Features\Users\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Features\Users\Queries\GetUserById\GetUserByIdQuery.cs" />
+  </ItemGroup>
+
 </Project>
