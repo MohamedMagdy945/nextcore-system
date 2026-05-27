@@ -58,6 +58,8 @@ namespace Auth.API
             app.UseCustomLocalization();
 
             //app.UseHttpsRedirection(); 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.MapControllers();

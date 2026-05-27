@@ -57,6 +57,9 @@ namespace Auth.Infrastructure
                .GetSection("JwtSettings")
                .Get<JwtSettings>();
 
+               if (jwtSettings == null)
+                   throw new InvalidOperationException("JWT settings are not configured properly.");
+
                options.RequireHttpsMetadata = false;
                options.SaveToken = true;
 
@@ -81,6 +84,8 @@ namespace Auth.Infrastructure
                {
                    OnAuthenticationFailed = context =>
                    {
+                       Console.WriteLine(context.Exception);
+
                        var logger = context.HttpContext
                            .RequestServices
                            .GetRequiredService<ILoggerFactory>()
