@@ -1,9 +1,11 @@
+using Auth.API.Authorization;
 using Auth.API.Configurations;
 using Auth.API.Middlewares;
 using Auth.Application;
 using Auth.Infrastructure;
 using Auth.Infrastructure.Persistence.DatabaseSeeder;
 using Common.Logging;
+using Microsoft.AspNetCore.Authorization;
 namespace Auth.API
 {
     public class Program
@@ -23,6 +25,14 @@ namespace Auth.API
             builder.Services.AddSwaggerConfiguration();
 
             builder.Services.AddHttpContextAccessor();
+
+            builder.Services.AddAuthorization();
+
+            builder.Services.AddSingleton<IAuthorizationHandler,
+                PermissionAuthorizationHandler>();
+
+            builder.Services.AddSingleton<IAuthorizationPolicyProvider,
+                PermissionPolicyProvider>();
 
             builder.Services.AddApplicationServices();
 
