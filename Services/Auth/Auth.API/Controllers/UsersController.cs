@@ -28,5 +28,12 @@ namespace Auth.API.Controllers
 
             return ApiResult(response);
         }
+
+        [HttpGet("/{Id}")]
+        [ProducesResponseType(typeof(Result<UserDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetUserById(int Id)
+        {
+
+        }
     }
 }
