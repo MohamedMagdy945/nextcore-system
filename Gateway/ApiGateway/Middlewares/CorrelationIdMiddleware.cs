@@ -18,6 +18,8 @@ namespace ApiGateway.Middlewares
                 "correlation.id",
                 correlationId);
 
+            context.Request.Headers[HeaderName] = correlationId;
+
             context.Response.OnStarting(() =>
             {
                 if (!context.Response.Headers.ContainsKey(HeaderName))

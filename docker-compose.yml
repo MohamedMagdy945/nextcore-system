@@ -13,8 +13,8 @@ services:
     depends_on:
       catalogdb:
         condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+      # elasticsearch:
+      #   condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
@@ -57,8 +57,8 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+      # elasticsearch:
+      #   condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
@@ -98,8 +98,8 @@ services:
     depends_on:
       discountdb:
         condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+      # elasticsearch:
+      #   condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
@@ -142,8 +142,8 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+      # elasticsearch:
+      #   condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
@@ -189,17 +189,18 @@ services:
     depends_on:
       authdb:
         condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+      # elasticsearch:
+      #   condition: service_healthy
+      seq:
+        condition: service_started
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings__DefaultConnection: Server=authdb,1433;Database=authDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
-      LoggingOptions: ServiceName=AuthService
-      LoggingOptionsSeqUrl: http://seq:5341
+      LoggingOptions__SeqUrl: http://seq:80
       LoggingOptions__ElasticsearchUrl: http://elasticsearch:9200
       LoggingOptions__UseConsole: true
-      LoggingOptions__UseSeq: false
+      LoggingOptions__UseSeq: true
       LoggingOptions__UseElasticsearch: false
     networks:
       - app-network
@@ -222,7 +223,41 @@ services:
     networks:
       - app-network
 
+  # =========================================================================
+  # 🛠️  API Gateway (YARP)
+  # =========================================================================
 
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Gateway/ApiGateway/Dockerfile
+    depends_on:
+     seq:
+        condition: service_started
+     catalog.api:
+        condition: service_started
+     basket.api:
+        condition: service_started
+     discount.api:
+        condition: service_started
+     ordering.api:
+        condition: service_started
+     auth.api:
+        condition: service_started
+      
+    ports:
+      - "8020:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      LoggingOptions__SeqUrl: http://seq:80
+      LoggingOptions__ElasticsearchUrl: http://elasticsearch:9200
+      LoggingOptions__UseConsole: true
+      LoggingOptions__UseSeq: true
+      LoggingOptions__UseElasticsearch: false
+    networks:
+      - app-network
 
   # =========================================================================
   # 📨 RabbitMQ
@@ -244,60 +279,51 @@ services:
   # =========================================================================
   # 🔎 Elasticsearch + Kibana
   # =========================================================================
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.1
-    container_name: elasticsearch
-    environment:
-      discovery.type: single-node
-      xpack.security.enabled: "false"
-      ES_JAVA_OPTS: -Xms512m -Xmx512m
-    ports:
-      - "9200:9200"
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-    healthcheck:
-      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"\\|\"status\":\"yellow\"'"]
-      interval: 15s
-      timeout: 10s
-      retries: 5
-    networks:
-      - app-network
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.18.1
+  #   container_name: elasticsearch
+  #   environment:
+  #     discovery.type: single-node
+  #     xpack.security.enabled: "false"
+  #     ES_JAVA_OPTS: -Xms512m -Xmx512m
+  #   ports:
+  #     - "9200:9200"
+  #   volumes:
+  #     - elasticsearch-data:/usr/share/elasticsearch/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"green\"\\|\"status\":\"yellow\"'"]
+  #     interval: 15s
+  #     timeout: 10s
+  #     retries: 5
+  #   networks:
+  #     - app-network
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:8.18.1
-    container_name: kibana
-    ports:
-      - "5601:5601"
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-    environment:
-      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
-    networks:
-      - app-network
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:8.18.1
+  #   container_name: kibana
+  #   ports:
+  #     - "5601:5601"
+  #   depends_on:
+  #     elasticsearch:
+  #       condition: service_healthy
+  #   environment:
+  #     ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+  #   networks:
+  #     - app-network
 
-
-  
   # =========================================================================
-  # 🛠️  API Gateway (Ocelot)
+  # 🔎 Seq
   # =========================================================================
-
-  apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
-    build:
-      context: .
-      dockerfile: Gateway/ApiGateway/Dockerfile
-    depends_on:
-      - catalog.api
-      - basket.api
-      - discount.api
-      - ordering.api
-      - auth.api
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
     ports:
-      - "8020:8080"
+      - "80:80"
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=true
     networks:
       - app-network
-
   # =========================================================================
   # 🛠️  (Management Tools)
   # =========================================================================
@@ -323,7 +349,7 @@ volumes:
   portainer_data:
   orderdb_data:
   authdb_data:
-  elasticsearch-data:
+  # elasticsearch-data:
 
 # =========================================================================
 # 🌐 Network Configuration

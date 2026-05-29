@@ -43,6 +43,7 @@ namespace ApiGateway
             // Configure the HTTP request pipeline.
 
             app.UseMiddleware<CorrelationIdMiddleware>();
+            app.UseCustomRequestLogging();
 
             app.UseAuthentication();
             app.UseAuthorization();
