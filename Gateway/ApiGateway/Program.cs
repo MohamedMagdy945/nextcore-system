@@ -1,4 +1,5 @@
 using ApiGateway.AuthenticationConfig;
+using ApiGateway.Middlewares;
 using ApiGateway.Service;
 using Microsoft.AspNetCore.Authorization;
 
@@ -35,6 +36,8 @@ namespace ApiGateway
 
 
             // Configure the HTTP request pipeline.
+
+            app.UseMiddleware<CorrelationIdMiddleware>();
 
             app.UseAuthentication();
             app.UseAuthorization();
