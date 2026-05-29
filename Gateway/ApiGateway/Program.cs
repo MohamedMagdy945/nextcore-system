@@ -28,6 +28,8 @@ namespace ApiGateway
 
             app.MapControllers();
 
+            app.MapReverseProxy();
+
             app.Run();
         }
     }
