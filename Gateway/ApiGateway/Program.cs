@@ -1,3 +1,5 @@
+using ApiGateway.Service;
+
 namespace ApiGateway
 {
     public class Program
@@ -16,12 +18,14 @@ namespace ApiGateway
             .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
 
+            builder.Services.AddJwtRegistrationService(builder.Configuration);
 
             var app = builder.Build();
 
 
             // Configure the HTTP request pipeline.
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapGet("/", () =>
