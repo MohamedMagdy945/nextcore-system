@@ -3,9 +3,11 @@ using Auth.API.Configurations;
 using Auth.API.Middlewares;
 using Auth.Application;
 using Auth.Infrastructure;
+using Auth.Infrastructure.Persistence;
 using Auth.Infrastructure.Persistence.DatabaseSeeder;
 using Common.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 namespace Auth.API
 {
     public class Program
@@ -39,6 +41,19 @@ namespace Auth.API
             builder.Services.AddInfrastructureServices(builder.Configuration);
 
             var app = builder.Build();
+
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
+
+                Console.WriteLine("Applying migrations...");
+
+                db.Database.Migrate();
+
+                Console.WriteLine("Migration completed");
+            }
+
 
             if (app.Environment.IsDevelopment())
             {
