@@ -1,4 +1,6 @@
+using ApiGateway.AuthenticationConfig;
 using ApiGateway.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ApiGateway
 {
@@ -17,6 +19,15 @@ namespace ApiGateway
             .AddReverseProxy()
             .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
+            builder.Services.AddHttpContextAccessor();
+
+            builder.Services.AddAuthorization();
+
+            builder.Services.AddSingleton<IAuthorizationHandler,
+                PermissionAuthorizationHandler>();
+
+            builder.Services.AddSingleton<IAuthorizationPolicyProvider,
+                PermissionPolicyProvider>();
 
             builder.Services.AddJwtRegistrationService(builder.Configuration);
 
