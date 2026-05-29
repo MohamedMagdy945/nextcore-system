@@ -48,16 +48,5 @@ namespace Auth.API.Controllers
 
             return ApiResult(response);
         }
-
-        [Authorize]
-        [HttpGet("claims")]
-        public IActionResult Claims()
-        {
-            return Ok(User.Claims.Select(c => new
-            {
-                c.Type,
-                c.Value
-            }));
-        }
     }
 }

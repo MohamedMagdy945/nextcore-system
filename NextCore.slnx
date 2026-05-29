@@ -1,6 +1,6 @@
 <Solution>
-  <Folder Name="/APIGateway/">
-    <Project Path="D:/Project/nextcore-system/APIGateway/Ocelot.APIGateway/Ocelot.APIGateway.csproj" Id="73a79190-6c85-4c79-9783-ff6de4ce7877" />
+  <Folder Name="/Gateway/">
+    <Project Path="Gateway/ApiGateway/ApiGateway.csproj" Id="dc7d312a-78d2-45e2-93de-d44981023ecd" />
   </Folder>
   <Folder Name="/Infrastructure/">
     <Project Path="D:/Project/nextcore-system/Infrastructure/Common.Logging/Common.Logging.csproj" Id="a40b7830-a62f-4f9d-aedf-3177bdf80cbe" />
