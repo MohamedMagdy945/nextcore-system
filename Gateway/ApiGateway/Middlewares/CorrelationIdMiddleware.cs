@@ -28,12 +28,12 @@ namespace ApiGateway.Middlewares
                 return Task.CompletedTask;
             });
 
-            //using (Serilog.Context.LogContext.PushProperty(
-            //           "CorrelationId",
-            //           correlationId))
-            //{
-            await next(context);
-            //}
+            using (Serilog.Context.LogContext.PushProperty(
+                       "CorrelationId",
+                       correlationId))
+            {
+                await next(context);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using ApiGateway.AuthenticationConfig;
 using ApiGateway.Middlewares;
 using ApiGateway.Service;
+using Common.Logging;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ApiGateway
@@ -9,7 +10,11 @@ namespace ApiGateway
     {
         public static void Main(string[] args)
         {
+            LoggingConfiguration.ConfigureBootstrapLogger();
+
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.ConfigureSerilog();
 
             // Add services to the container.
             builder.Configuration
