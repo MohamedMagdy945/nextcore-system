@@ -281,23 +281,22 @@ services:
   # =========================================================================
   # 🛠️  API Gateway (Ocelot)
   # =========================================================================
-  
-  # ocelot.apigateway:
-  #   image: ${DOCKER_REGISTRY-}ocelotapigateway
-  #   build:
-  #     context: .
-  #     dockerfile: APIGateway/Ocelot.APIGateway/Dockerfile
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     - ASPNETCORE_URLS=http://+:8080
-  #   depends_on:
-  #     - catalog.api
-  #     - basket.api
-  #     - discount.api
-  #     - ordering.api
-  #   ports:
-  #     - "8010:8080"
 
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Gateway/ApiGateway/Dockerfile
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+      - auth.api
+    ports:
+      - "8020:8080"
+    networks:
+      - app-network
 
   # =========================================================================
   # 🛠️  (Management Tools)
@@ -317,7 +316,6 @@ services:
 # =========================================================================
 # 📦 Volumes Configuration
 # =========================================================================
-
 volumes:
   catalogdata:
   postgres_data:
@@ -333,3 +331,4 @@ volumes:
 networks:
   app-network:
     driver: bridge
+

@@ -4,16 +4,22 @@
       "authRoute": {
         "ClusterId": "authCluster",
         "Match": {
-          "Path": "/api/auth/{**catch-all}"
+          "Path": "/api/v1/auth/{**catch-all}"
+        }
+      },
+      "testRoute": {
+        "ClusterId": "authCluster",
+        "Match": {
+          "Path": "/api/v1/test/{**catch-all}"
         }
       }
-    },
 
+    },
     "Clusters": {
       "authCluster": {
         "Destinations": {
-          "destination1": {
-            "Address": "https://localhost:7001/"
+          "auth": {
+            "Address": "http://auth.api:8080/"
           }
         }
       }

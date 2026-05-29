@@ -8,7 +8,7 @@ namespace ApiGateway
 
             // Add services to the container.
             builder.Configuration
-                .AddJsonFile("Configurations/yarp.json", optional: false, reloadOnChange: true);
+                .AddJsonFile("Yarp/yarp.json", optional: false, reloadOnChange: true);
 
 
             builder.Services
@@ -17,16 +17,22 @@ namespace ApiGateway
 
 
 
-            builder.Services.AddControllers();
-
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
 
             app.UseAuthorization();
 
-
-            app.MapControllers();
+            app.MapGet("/", () =>
+            {
+                return Results.Ok(new
+                {
+                    Service = "Auth Service",
+                    Status = "Working",
+                    Time = DateTime.UtcNow
+                });
+            });
 
             app.MapReverseProxy();
 
