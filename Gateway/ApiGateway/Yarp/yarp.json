@@ -1,3 +1,22 @@
 {
+  "ReverseProxy": {
+    "Routes": {
+      "authRoute": {
+        "ClusterId": "authCluster",
+        "Match": {
+          "Path": "/api/auth/{**catch-all}"
+        }
+      }
+    },
 
+    "Clusters": {
+      "authCluster": {
+        "Destinations": {
+          "destination1": {
+            "Address": "https://localhost:7001/"
+          }
+        }
+      }
+    }
+  }
 }
