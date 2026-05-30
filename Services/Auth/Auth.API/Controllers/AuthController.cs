@@ -1,4 +1,6 @@
-﻿using Auth.Application.Features.Auth.Login;
+﻿using Auth.Application.Bases;
+using Auth.Application.Common;
+using Auth.Application.Features.Auth.Login;
 using Auth.Application.Features.Auth.Register;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,8 @@ namespace Auth.API.Controllers
         }
 
         [HttpPost("Login")]
+        [ProducesResponseType(typeof(Result<TokenResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login(LoginCommand command)
         {
             _logger.LogInformation("Login attempt for user");
@@ -24,6 +28,8 @@ namespace Auth.API.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(typeof(Result<TokenResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register(RegisterCommand command)
         {
             var response = await Mediator.Send(command);

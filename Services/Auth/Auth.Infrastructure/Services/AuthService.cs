@@ -100,6 +100,9 @@ namespace Auth.Infrastructure.Services
                 DeviceInfo = deviceInfo
             };
 
+            tokenResponse.UserId = user.Id;
+            tokenResponse.Email = user.Email;
+
             await _context.RefreshTokens.AddAsync(refreshTokenEntity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 

@@ -36,11 +36,24 @@ namespace Auth.API
             builder.Services.AddSingleton<IAuthorizationPolicyProvider,
                 PermissionPolicyProvider>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngular", policy =>
+                {
+                    policy
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddApplicationServices();
 
             builder.Services.AddInfrastructureServices(builder.Configuration);
 
             var app = builder.Build();
+
+            app.UseCors("AllowAngular");
 
 
             using (var scope = app.Services.CreateScope())
