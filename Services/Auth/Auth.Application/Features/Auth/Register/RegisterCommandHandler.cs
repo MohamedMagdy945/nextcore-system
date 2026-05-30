@@ -29,7 +29,13 @@ namespace Auth.Application.Features.Auth.Register
 
         public async Task<Result<TokenResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            var ip = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress?.ToString();
+            var deviceInfo = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString();
+
             var registerRequest = request.Adapt<RegisterRequest>();
+
+            registerRequest.IpAddress = ip ?? "Unknown";
+            registerRequest.DeviceInfo = deviceInfo;
 
             var tokenResponseResult = await _authService.RegisterAsync(registerRequest, cancellationToken);
 

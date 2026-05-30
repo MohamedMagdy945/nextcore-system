@@ -197,7 +197,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings__DefaultConnection: Server=authdb,1433;Database=authDb;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True;
-      LoggingOptions__SeqUrl: http://seq:80
+      LoggingOptions__SeqUrl: http://seq:5341
       LoggingOptions__ElasticsearchUrl: http://elasticsearch:9200
       LoggingOptions__UseConsole: true
       LoggingOptions__UseSeq: true
@@ -251,7 +251,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
-      LoggingOptions__SeqUrl: http://seq:80
+      LoggingOptions__SeqUrl: http://seq:5341 
       LoggingOptions__ElasticsearchUrl: http://elasticsearch:9200
       LoggingOptions__UseConsole: true
       LoggingOptions__UseSeq: true
@@ -318,7 +318,8 @@ services:
     image: datalust/seq:latest
     container_name: seq
     ports:
-      - "80:80"
+      - "8009:80"
+      - "5341:5341"
     environment:
       - ACCEPT_EULA=Y
       - SEQ_FIRSTRUN_NOAUTHENTICATION=true
