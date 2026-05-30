@@ -19,7 +19,7 @@ namespace Auth.API.Controllers
         public async Task<IActionResult> CreateUser(CreateUserCommand command, CancellationToken cancellationToken)
         {
             var response = await Mediator.Send(command, cancellationToken);
-            return ApiResult(response);
+            return ApiResponse(response);
         }
 
 
@@ -33,7 +33,7 @@ namespace Auth.API.Controllers
 
             var response = await Mediator.Send(query, cancellationToken);
 
-            return ApiResult(response);
+            return ApiResponse(response);
         }
 
 
@@ -46,7 +46,7 @@ namespace Auth.API.Controllers
 
             var response = await Mediator.Send(query, cancellationToken);
 
-            return ApiResult(response);
+            return ApiResponse(response);
         }
     }
 }

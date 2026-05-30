@@ -11,7 +11,7 @@ namespace Auth.API.Controllers
         public async Task<IActionResult> get()
         {
 
-            return ApiResult(Result<string>.Success("Test successful"));
+            return ApiResponse(Result<string>.Success("Test successful"));
         }
 
 

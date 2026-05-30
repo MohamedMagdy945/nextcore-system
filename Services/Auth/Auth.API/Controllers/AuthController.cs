@@ -20,14 +20,14 @@ namespace Auth.API.Controllers
             _logger.LogInformation("Login attempt for user");
 
             var response = await Mediator.Send(command);
-            return ApiResult(response);
+            return ApiResponse(response);
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterCommand command)
         {
             var response = await Mediator.Send(command);
-            return ApiResult(response);
+            return ApiResponse(response);
         }
 
     }

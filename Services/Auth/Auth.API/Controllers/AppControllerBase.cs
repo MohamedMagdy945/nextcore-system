@@ -11,7 +11,7 @@ public abstract class AppControllerBase : ControllerBase
     private IMediator? _mediator;
     protected IMediator Mediator =>
         _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
-    protected IActionResult ApiResult<T>(Result<T> response)
+    protected IActionResult ApiResponse<T>(Result<T> response)
     {
         return response.StatusCode switch
         {
