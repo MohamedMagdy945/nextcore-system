@@ -19,7 +19,7 @@ namespace Auth.Application.Features.Users.Queries.GetUsersList
                 .AsNoTracking().OrderBy(u => u.Id)
                 .Select(u => new UserDto
                 {
-                    UserName = u.UserName,
+                    FullName = u.FullName,
                     Email = u.Email,
                     CreatedAt = u.CreatedAt,
                     ImageUrl = u.ImageUrl,

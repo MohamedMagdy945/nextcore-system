@@ -13,7 +13,7 @@ namespace Auth.Infrastructure.Configuration
             builder.HasIndex(x => x.Email)
                 .IsUnique();
 
-            builder.HasIndex(x => x.UserName)
+            builder.HasIndex(x => x.FullName)
                 .IsUnique();
         }
     }

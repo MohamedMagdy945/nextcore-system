@@ -27,28 +27,24 @@ namespace Auth.Infrastructure.Services
             CancellationToken cancellationToken)
         {
             var existingUser = await _context.Users
-             .Where(u => u.Email == request.Email || u.UserName == request.UserName)
-             .Select(u => new { u.Email, u.UserName })
+             .Where(u => u.Email == request.Email)
+             .Select(u => new { u.Id })
              .FirstOrDefaultAsync(cancellationToken);
 
             if (existingUser != null)
             {
-                if (existingUser.Email == request.Email)
-                    return Result<TokenResponse>.Failure("Email already exists.");
-
-                if (existingUser.UserName == request.UserName)
-                    return Result<TokenResponse>.Failure("Username already exists.");
+                return Result<TokenResponse>.Failure("Email already exists.");
             }
 
             var user = new User
             {
                 Email = request.Email,
-                UserName = request.UserName,
-                PasswordHash = _passwordHasher.Hash(request.Password)
+                FullName = request.FullName,
+                PasswordHash = _passwordHasher.Hash(request.Password),
+                PhoneNumber = request.PhoneNumber,
             };
 
             await _context.Users.AddAsync(user, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
 
             var permissions = await _context.Roles
              .Where(r => r.Name == Roles.User)
@@ -56,6 +52,8 @@ namespace Auth.Infrastructure.Services
              .Select(rp => rp.Permission.Name)
              .ToListAsync(cancellationToken);
 
+
+            await _context.SaveChangesAsync(cancellationToken);
 
             var tokenResponse = await GenerateAndSaveTokensAsync(user, permissions,
                 request.IpAddress, request.DeviceInfo, cancellationToken);

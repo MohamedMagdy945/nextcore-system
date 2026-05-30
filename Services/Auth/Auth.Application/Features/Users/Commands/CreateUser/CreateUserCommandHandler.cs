@@ -26,16 +26,16 @@ namespace Auth.Application.Features.Users.Commands.AddUser
         public async Task<Result<int>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var exists = await _context.Users
-                            .AnyAsync(x => x.Email == request.Email || x.UserName == request.UserName, cancellationToken);
+                            .AnyAsync(x => x.Email == request.Email, cancellationToken);
 
             if (exists)
-                return Result<int>.Failure("A user with the same email or username already exists.");
+                return Result<int>.Failure("A user with the same email already exists.");
 
 
 
             User user = new User
             {
-                UserName = request.UserName,
+                FullName = request.FullName,
                 Email = request.Email,
                 PasswordHash = _passwordHasher.Hash("Admin@1234")
             };

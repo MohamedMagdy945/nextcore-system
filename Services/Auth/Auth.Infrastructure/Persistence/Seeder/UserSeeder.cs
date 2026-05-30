@@ -40,7 +40,7 @@ public class UserSeeder
         {
             FirstName = "System",
             LastName = "Admin",
-            UserName = "admin",
+            FullName = "admin",
             Email = "admin@gmail.com",
             PasswordHash = _passwordHasher.Hash("Admin@123"),
         };
@@ -49,7 +49,7 @@ public class UserSeeder
         {
             FirstName = "Test",
             LastName = "User",
-            UserName = "user",
+            FullName = "user",
             Email = "user@gmail.com",
             PasswordHash = _passwordHasher.Hash("User@123"),
         };
