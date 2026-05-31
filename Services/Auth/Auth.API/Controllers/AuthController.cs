@@ -1,7 +1,9 @@
-﻿using Auth.Application.Bases;
+﻿using Auth.API.Helpers;
+using Auth.Application.Bases;
 using Auth.Application.Common;
 using Auth.Application.Features.Auth.Login;
 using Auth.Application.Features.Auth.Register;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.API.Controllers
@@ -28,12 +30,28 @@ namespace Auth.API.Controllers
         }
 
         [HttpPost("register")]
-        [ProducesResponseType(typeof(Result<TokenResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result<AccessTokenResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register(RegisterCommand command)
         {
             var response = await Mediator.Send(command);
-            return ApiResponse(response);
+
+            if (!response.IsSuccess || response.Data is null)
+                return ApiResponse(response);
+
+            CookieHelper.SetRefreshTokenCookie(
+                Response,
+                response.Data.RefreshToken,
+                response.Data.RefreshTokenExpiration,
+                HttpContext.Request.IsHttps
+            );
+
+
+            var accessTokenResponse = response.Data.Adapt<AccessTokenResponse>();
+
+            var result = Result<AccessTokenResponse>.Success(accessTokenResponse);
+
+            return ApiResponse(result);
         }
 
     }
