@@ -26,15 +26,23 @@ namespace Auth.Infrastructure.Services
         public async Task<Result<TokenResponse>> RegisterAsync(RegisterRequest request,
             CancellationToken cancellationToken)
         {
-            var existingUser = await _context.Users
-             .Where(u => u.Email == request.Email)
-             .Select(u => new { u.Id })
-             .FirstOrDefaultAsync(cancellationToken);
 
-            if (existingUser != null)
-            {
-                return Result<TokenResponse>.Failure("Email already exists.");
-            }
+            var exists = await _context.Users
+             .AnyAsync(u => u.Email == request.Email, cancellationToken);
+
+            if (exists != null)
+                return Result<TokenResponse>.Failure("Email is already in use.");
+
+            var defaultRole = await _context.Roles
+                .Include(r => r.RolePermissions)
+                .ThenInclude(rp => rp.Permission)
+                .FirstOrDefaultAsync(r => r.Name == Roles.User, cancellationToken);
+
+            if (defaultRole == null)
+                return Result<TokenResponse>.Failure("Default role not found.");
+
+            var permissions = defaultRole.RolePermissions.Select(rp => rp.Permission.Name).ToList();
+
 
             var user = new User
             {
@@ -44,19 +52,30 @@ namespace Auth.Infrastructure.Services
                 PhoneNumber = request.PhoneNumber,
             };
 
+
             await _context.Users.AddAsync(user, cancellationToken);
-
-            var permissions = await _context.Roles
-             .Where(r => r.Name == Roles.User)
-             .SelectMany(r => r.RolePermissions)
-             .Select(rp => rp.Permission.Name)
-             .ToListAsync(cancellationToken);
-
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            var tokenResponse = await GenerateAndSaveTokensAsync(user, permissions,
-                request.IpAddress, request.DeviceInfo, cancellationToken);
+            TokenResponse tokenResponse = _tokenGenerator.GenerateTokenPair(user, permissions);
+
+
+            await _context.UserRoles.AddAsync(new UserRole
+            {
+                UserId = user.Id,
+                RoleId = defaultRole.Id
+            }, cancellationToken);
+
+            await _context.RefreshTokens.AddAsync(new RefreshToken()
+            {
+                UserId = user.Id,
+                TokenHash = _tokenGenerator.HashToken(tokenResponse.RefreshToken),
+                ExpiresAt = tokenResponse.RefreshTokenExpiration,
+                CreatedByIp = request.IpAddress,
+                DeviceInfo = request.DeviceInfo
+            }, cancellationToken);
+
+            await _context.SaveChangesAsync(cancellationToken);
 
             return Result<TokenResponse>.Success(tokenResponse);
         }
@@ -80,38 +99,13 @@ namespace Auth.Infrastructure.Services
         {
             throw new NotImplementedException();
         }
-        private async Task<TokenResponse> GenerateAndSaveTokensAsync(
-            User user,
-            List<string> permissions,
-            string ipAddress,
-            string deviceInfo,
-            CancellationToken cancellationToken)
-        {
-            var tokenResponse = _tokenGenerator.GenerateTokenPair(user, permissions);
 
-            var refreshTokenHash = _tokenGenerator.HashToken(tokenResponse.RefreshToken);
-
-            var refreshTokenEntity = new RefreshToken
-            {
-                TokenHash = refreshTokenHash,
-                User = user,
-                ExpiresAt = tokenResponse.RefreshTokenExpiration,
-                CreatedByIp = ipAddress,
-                DeviceInfo = deviceInfo
-            };
-
-            tokenResponse.UserId = user.Id;
-            tokenResponse.Email = user.Email;
-
-            await _context.RefreshTokens.AddAsync(refreshTokenEntity, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return tokenResponse;
-        }
 
         public Task<Result<TokenResponse>> RegisterAsync(RegisterRequest request)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

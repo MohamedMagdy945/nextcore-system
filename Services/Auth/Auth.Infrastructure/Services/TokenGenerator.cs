@@ -22,6 +22,8 @@ namespace Auth.Infrastructure.Services
         {
             return new TokenResponse
             {
+                UserId = user.Id,
+                Email = user.Email,
                 AccessToken = GenerateAccessToken(user, permissions),
                 RefreshToken = GenerateRefreshToken(),
                 AccessTokenExpiration = DateTime.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpiryMinutes),

@@ -16,21 +16,25 @@ namespace Auth.Application.Features.Auth.Register
         private readonly IAuthService _authService;
         private readonly ILogger<RegisterCommandHandler> _logger;
         private IHttpContextAccessor _httpContextAccessor;
+        private IAuthDbContext _authDbContext;
         public RegisterCommandHandler(
             IAuthService authService,
             ILogger<RegisterCommandHandler> logger,
-            IHttpContextAccessor httpContextAccessor
+            IHttpContextAccessor httpContextAccessor,
+            IAuthDbContext authDbContext
             )
         {
             _authService = authService;
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
+            _authDbContext = authDbContext;
         }
 
         public async Task<Result<TokenResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             var ip = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress?.ToString();
             var deviceInfo = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString();
+
 
             var registerRequest = request.Adapt<RegisterRequest>();
 

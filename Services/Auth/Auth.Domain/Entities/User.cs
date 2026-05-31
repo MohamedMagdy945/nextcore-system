@@ -12,6 +12,16 @@
         public string PasswordHash { get; set; } = string.Empty;
 
         public bool IsEnabled { get; set; } = false;
+        public User() { }
+
+        public User(string email, string fullName, string passwordHash, string phoneNumber)
+        {
+            Email = email;
+            FullName = fullName;
+
+            PasswordHash = passwordHash;
+            PhoneNumber = phoneNumber;
+        }
 
         public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
         public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
