@@ -1,30 +1,45 @@
 ﻿using Auth.Application.Bases;
-using Auth.Application.Resources;
+using Auth.Application.Common;
+using Auth.Application.DTOs;
+using Auth.Application.Features.Auth.Register;
+using Auth.Application.Interfaces;
+using Mapster;
 using MediatR;
-using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Auth.Application.Features.Auth.Login
 {
     public class LoginCommandHandler :
-        IRequestHandler<LoginCommand, Result<Unit>>
+        IRequestHandler<LoginCommand, Result<TokenResponse>>
     {
-        private readonly IStringLocalizer<AuthSharedResource> _localizer;
-
-        public LoginCommandHandler(IStringLocalizer<AuthSharedResource> localizer)
+        private readonly IAuthService _authService;
+        private readonly ILogger<RegisterCommandHandler> _logger;
+        private IHttpContextAccessor _httpContextAccessor;
+        public LoginCommandHandler(IAuthService authService,
+            ILogger<RegisterCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
         {
-            _localizer = localizer;
+            _authService = authService;
+            _logger = logger;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Result<Unit>> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<Result<TokenResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            bool userExists = false;
+            var loginRequest = request.Adapt<LoginRequest>();
+            loginRequest.IpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
+            loginRequest.DeviceInfo = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString();
 
-            if (!userExists)
+            var result = await _authService.LoginAsync(loginRequest, cancellationToken);
+
+            if (!result.IsSuccess)
             {
-                return Result<Unit>.Failure(Messages.UserNotFound);
+                _logger.LogWarning("Login failed for Email: {Email}. Reason: {ErrorMessage}",
+                    request.Email, result.Message);
             }
+            _logger.LogInformation("User with Email: {Email} logged in successfully.", request.Email);
 
-            return Result<Unit>.Success(Unit.Value);
+            return result;
         }
     }
 }
