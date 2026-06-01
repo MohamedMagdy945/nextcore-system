@@ -2,6 +2,7 @@
 using Auth.Application.Bases;
 using Auth.Application.Common;
 using Auth.Application.Features.Auth.Login;
+using Auth.Application.Features.Auth.Logout;
 using Auth.Application.Features.Auth.RefreshToken;
 using Auth.Application.Features.Auth.Register;
 using Mapster;
@@ -100,6 +101,29 @@ namespace Auth.API.Controllers
             var result = Result<AccessTokenResponse>.Success(accessTokenResponse);
 
             return ApiResponse(result);
+        }
+
+        [HttpPost("Logout")]
+        [ProducesResponseType(typeof(Result<bool>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Logout()
+        {
+            var refreshTokenString = Request.Cookies["refreshToken"];
+
+            var command = new LogoutCommand
+            {
+                RefreshToken = refreshTokenString!
+            };
+
+
+            var response = await Mediator.Send(command);
+
+            if (!response.IsSuccess)
+                return ApiResponse(response);
+
+            CookieHelper.DeleteRefreshTokenCookie(Response);
+
+            return Ok(Result<bool>.Success(true));
         }
 
     }
