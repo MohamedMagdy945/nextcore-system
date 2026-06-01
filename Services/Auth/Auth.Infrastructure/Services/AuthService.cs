@@ -168,9 +168,23 @@ namespace Auth.Infrastructure.Services
 
 
 
-        public Task<Result<LogoutResponse>> LogoutAsync(string refreshToken)
+        public async Task<Result<bool>> LogoutAsync(LogoutRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var refreshTokenHash = _tokenGenerator.HashToken(request.RefreshToken);
+
+            var existingToken = await _context.RefreshTokens
+                .FirstOrDefaultAsync(rt => rt.TokenHash == refreshTokenHash, cancellationToken: cancellationToken);
+
+            if (existingToken is null)
+            {
+                return Result<bool>.Unauthorized("Invalid refresh token.");
+            }
+
+            existingToken.RevokedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return Result<bool>.Success(true);
         }
 
 
