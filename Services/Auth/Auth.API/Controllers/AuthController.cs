@@ -23,10 +23,24 @@ namespace Auth.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login(LoginCommand command)
         {
-            _logger.LogInformation("Login attempt for user");
-
             var response = await Mediator.Send(command);
-            return ApiResponse(response);
+
+            if (!response.IsSuccess || response.Data is null)
+                return ApiResponse(response);
+
+            CookieHelper.SetRefreshTokenCookie(
+                Response,
+                response.Data.RefreshToken,
+                response.Data.RefreshTokenExpiration,
+                HttpContext.Request.IsHttps
+            );
+
+
+            var accessTokenResponse = response.Data.Adapt<AccessTokenResponse>();
+
+            var result = Result<AccessTokenResponse>.Success(accessTokenResponse);
+
+            return ApiResponse(result);
         }
 
         [HttpPost("register")]
