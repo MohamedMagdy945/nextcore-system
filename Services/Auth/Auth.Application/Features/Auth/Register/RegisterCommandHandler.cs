@@ -4,7 +4,6 @@ using Auth.Application.DTOs;
 using Auth.Application.Interfaces;
 using Mapster;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace Auth.Application.Features.Auth.Register
@@ -15,17 +14,17 @@ namespace Auth.Application.Features.Auth.Register
 
         private readonly IAuthService _authService;
         private readonly ILogger<RegisterCommandHandler> _logger;
-        private IHttpContextAccessor _httpContextAccessor;
+        private IClientInfoProvider _clientInfoProvider;
         public RegisterCommandHandler(
             IAuthService authService,
             ILogger<RegisterCommandHandler> logger,
-            IHttpContextAccessor httpContextAccessor,
+            IClientInfoProvider clientInfoProvider,
             IAuthDbContext authDbContext
             )
         {
             _authService = authService;
             _logger = logger;
-            _httpContextAccessor = httpContextAccessor;
+            _clientInfoProvider = clientInfoProvider;
         }
 
         public async Task<Result<TokenResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
@@ -33,8 +32,8 @@ namespace Auth.Application.Features.Auth.Register
 
             var registerRequest = request.Adapt<RegisterRequest>();
 
-            registerRequest.IpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
-            registerRequest.DeviceInfo = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString();
+            registerRequest.IpAddress = _clientInfoProvider.GetIpAddress();
+            registerRequest.DeviceInfo = _clientInfoProvider.GetUserAgent();
 
             var result = await _authService.RegisterAsync(registerRequest, cancellationToken);
 
@@ -42,6 +41,7 @@ namespace Auth.Application.Features.Auth.Register
             {
                 _logger.LogWarning("Registration failed for Email: {Email}. Reason: {ErrorMessage}",
                     request.Email, result.Message);
+                return result;
             }
             _logger.LogInformation("User with Email: {Email} registered successfully.", request.Email);
 

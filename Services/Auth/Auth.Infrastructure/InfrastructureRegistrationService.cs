@@ -37,6 +37,8 @@ namespace Auth.Infrastructure
 
             services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
 
+            services.AddScoped<IClientInfoProvider, ClientInfoProvider>();
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped<RoleSeeder>();

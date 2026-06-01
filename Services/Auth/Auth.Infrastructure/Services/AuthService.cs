@@ -83,12 +83,14 @@ namespace Auth.Infrastructure.Services
         public async Task<Result<TokenResponse>> LoginAsync(LoginRequest request,
             CancellationToken cancellationToken)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email
-            && u.PasswordHash == _passwordHasher.Hash(request.Password)
-            , cancellationToken);
+            var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.Email == request.Email,
+                cancellationToken);
 
+            var isValidPassword = _passwordHasher.Verify(request.Password,
+                user.PasswordHash);
 
-            if (user == null)
+            if (user == null || !isValidPassword)
                 return Result<TokenResponse>.Unauthorized("Invalid email or password.");
 
             var userPermissions = await _context.UserRoles

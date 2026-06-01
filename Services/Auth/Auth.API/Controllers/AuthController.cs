@@ -19,7 +19,7 @@ namespace Auth.API.Controllers
         }
 
         [HttpPost("Login")]
-        [ProducesResponseType(typeof(Result<TokenResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Result<AccessTokenResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login(LoginCommand command)
         {
