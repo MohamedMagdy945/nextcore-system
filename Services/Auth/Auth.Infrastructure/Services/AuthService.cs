@@ -41,7 +41,10 @@ namespace Auth.Infrastructure.Services
             if (defaultRole == null)
                 return Result<TokenResponse>.Failure("Default role not found.");
 
-            var permissions = defaultRole.RolePermissions.Select(rp => rp.Permission.Name).ToList();
+            var permissions = defaultRole.RolePermissions
+                .Select(rp => rp.Permission.Name)
+                .Distinct()
+                .ToList();
 
 
             var user = new User
@@ -117,6 +120,52 @@ namespace Auth.Infrastructure.Services
 
             return Result<TokenResponse>.Success(tokenResponse);
         }
+        public async Task<Result<TokenResponse>> RefreshTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken)
+        {
+            var refreshTokenHash = _tokenGenerator.HashToken(request.RefreshToken);
+
+            var existingToken = await _context.RefreshTokens
+                .Include(rt => rt.User)
+                .FirstOrDefaultAsync(rt =>
+                    rt.TokenHash == refreshTokenHash &&
+                    rt.RevokedAt == null,
+                    cancellationToken);
+
+            if (existingToken is null || existingToken.IsRevoked)
+            {
+                return Result<TokenResponse>.Unauthorized("Invalid refresh token.");
+            }
+
+            var user = existingToken.User;
+
+            var permissions = await _context.UserRoles
+                .Where(ur => ur.UserId == user.Id)
+                .SelectMany(ur => ur.Role.RolePermissions)
+                .Select(rp => rp.Permission.Name)
+                .Distinct()
+                .ToListAsync(cancellationToken);
+
+            existingToken.RevokedAt = DateTime.UtcNow;
+
+            var tokenResponse = _tokenGenerator.GenerateTokenPair(user, permissions);
+
+            await _context.RefreshTokens.AddAsync(
+                new RefreshToken
+                {
+                    UserId = user.Id,
+                    TokenHash = _tokenGenerator.HashToken(tokenResponse.RefreshToken),
+                    ExpiresAt = tokenResponse.RefreshTokenExpiration,
+                    CreatedAt = DateTime.UtcNow,
+                    CreatedByIp = request.IpAddress,
+                    DeviceInfo = request.DeviceInfo
+                },
+                cancellationToken);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return Result<TokenResponse>.Success(tokenResponse);
+        }
+
 
 
         public Task<Result<LogoutResponse>> LogoutAsync(string refreshToken)
@@ -124,17 +173,9 @@ namespace Auth.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<Result<TokenResponse>> RefreshTokenAsync(string refreshToken)
-        {
-            throw new NotImplementedException();
-        }
 
 
 
-        public Task<Result<TokenResponse>> RegisterAsync(RegisterRequest request)
-        {
-            throw new NotImplementedException();
-        }
 
 
     }
