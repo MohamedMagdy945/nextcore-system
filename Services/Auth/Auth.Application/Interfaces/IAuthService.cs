@@ -7,9 +7,8 @@ namespace Auth.Application.Interfaces
     public interface IAuthService
     {
         Task<Result<TokenResponse>> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken);
-        Task<Result<TokenResponse>> LoginAsync(string username, string password);
+        Task<Result<TokenResponse>> LoginAsync(LoginRequest request, CancellationToken cancellationToken);
         Task<Result<TokenResponse>> RefreshTokenAsync(string refreshToken);
         Task<Result<LogoutResponse>> LogoutAsync(string refreshToken);
-
     }
 }

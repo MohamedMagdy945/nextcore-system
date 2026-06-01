@@ -80,9 +80,40 @@ namespace Auth.Infrastructure.Services
             return Result<TokenResponse>.Success(tokenResponse);
         }
 
-        public Task<Result<TokenResponse>> LoginAsync(string username, string password)
+        public async Task<Result<TokenResponse>> LoginAsync(LoginRequest request,
+            CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email
+            && u.PasswordHash == _passwordHasher.Hash(request.Password)
+            , cancellationToken);
+
+
+            if (user == null)
+                return Result<TokenResponse>.Unauthorized("Invalid email or password.");
+
+            var userPermissions = await _context.UserRoles
+            .Where(ur => ur.UserId == user.Id)
+            .Select(ur => ur.Role)
+            .SelectMany(r => r.RolePermissions)
+            .Select(rp => rp.Permission.Name)
+            .Distinct()
+            .ToListAsync(cancellationToken);
+
+            TokenResponse tokenResponse = _tokenGenerator.GenerateTokenPair(user, userPermissions);
+
+
+            await _context.RefreshTokens.AddAsync(new RefreshToken()
+            {
+                UserId = user.Id,
+                TokenHash = _tokenGenerator.HashToken(tokenResponse.RefreshToken),
+                ExpiresAt = tokenResponse.RefreshTokenExpiration,
+                CreatedByIp = request.IpAddress,
+                DeviceInfo = request.DeviceInfo
+            }, cancellationToken);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return Result<TokenResponse>.Success(tokenResponse);
         }
 
 
