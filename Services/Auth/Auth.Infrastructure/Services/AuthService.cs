@@ -30,7 +30,7 @@ namespace Auth.Infrastructure.Services
             var exists = await _context.Users
              .AnyAsync(u => u.Email == request.Email, cancellationToken);
 
-            if (exists != null)
+            if (exists)
                 return Result<TokenResponse>.Failure("Email is already in use.");
 
             var defaultRole = await _context.Roles
@@ -80,6 +80,12 @@ namespace Auth.Infrastructure.Services
             return Result<TokenResponse>.Success(tokenResponse);
         }
 
+        public Task<Result<TokenResponse>> LoginAsync(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public Task<Result<LogoutResponse>> LogoutAsync(string refreshToken)
         {
             throw new NotImplementedException();
@@ -90,15 +96,6 @@ namespace Auth.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<Result<TokenResponse>> RegisterAsync(string username, string email, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Result<TokenResponse>> LoginAsync(string username, string password)
-        {
-            throw new NotImplementedException();
-        }
 
 
         public Task<Result<TokenResponse>> RegisterAsync(RegisterRequest request)
