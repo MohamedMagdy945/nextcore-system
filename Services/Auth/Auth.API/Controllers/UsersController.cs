@@ -24,8 +24,7 @@ namespace Auth.API.Controllers
 
 
 
-        [Authorize(Policy = Users.View)]
-        [HttpGet]
+        [HttpGet("get-all-users")]
         [ProducesResponseType(typeof(Result<IEnumerable<UserDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetUsersList([FromQuery] PaginationParams pagination, CancellationToken cancellationToken)
         {
