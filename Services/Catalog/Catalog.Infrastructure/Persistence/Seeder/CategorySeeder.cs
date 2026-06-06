@@ -4,14 +4,14 @@ using System.Text.Json;
 
 namespace Catalog.Infrastructure.Persistence.Seeder
 {
-    public class TypeSeeder
+    public class CategorySeeder
     {
-        public static async Task SeedAsync(IMongoCollection<ProductType> typeCollection)
+        public static async Task SeedAsync(IMongoCollection<Category> typeCollection)
         {
-            var hasData = await typeCollection.Find(FilterDefinition<ProductType>.Empty).AnyAsync();
+            var hasData = await typeCollection.Find(FilterDefinition<Category>.Empty).AnyAsync();
             if (hasData) return;
 
-            var filePath = Path.Combine(AppContext.BaseDirectory, "Persistence", "Files", "types.json");
+            var filePath = Path.Combine(AppContext.BaseDirectory, "Persistence", "Files", "categories.json");
 
             if (!File.Exists(filePath))
             {
@@ -20,7 +20,7 @@ namespace Catalog.Infrastructure.Persistence.Seeder
                 return;
             }
             var typeJsonData = await File.ReadAllTextAsync(filePath);
-            var types = JsonSerializer.Deserialize<List<ProductType>>(typeJsonData);
+            var types = JsonSerializer.Deserialize<List<Category>>(typeJsonData);
 
             if (types?.Any() is true)
             {

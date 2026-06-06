@@ -7,6 +7,6 @@ namespace Catalog.Infrastructure.Persistence.DbContext
     {
         public IMongoCollection<Product> Products { get; }
         public IMongoCollection<ProductBrand> Brands { get; }
-        public IMongoCollection<ProductType> Types { get; }
+        public IMongoCollection<Category> Types { get; }
     }
 }

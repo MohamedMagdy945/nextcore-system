@@ -7,19 +7,35 @@
           "Path": "/api/v1/auth/{**catch-all}"
         }
       },
+
       "testRoute": {
         "ClusterId": "authCluster",
         "Match": {
           "Path": "/api/v1/test/{**catch-all}"
         }
-      }
+      },
 
+      "productRoute": {
+        "ClusterId": "productCluster",
+        "Match": {
+          "Path": "/api/v1/Product/{**catch-all}"
+        }
+      }
     },
+
     "Clusters": {
       "authCluster": {
         "Destinations": {
           "auth": {
             "Address": "http://auth.api:8080/"
+          }
+        }
+      },
+
+      "productCluster": {
+        "Destinations": {
+          "product": {
+            "Address": "http://localhost:8001/"
           }
         }
       }

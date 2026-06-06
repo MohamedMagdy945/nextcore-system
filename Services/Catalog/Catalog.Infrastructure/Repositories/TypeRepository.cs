@@ -13,7 +13,7 @@ namespace Catalog.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<ProductType>> GetAllAsync()
+        public async Task<IEnumerable<Category>> GetAllAsync()
         {
             return await _context.Types.Find(p => true).ToListAsync();
         }

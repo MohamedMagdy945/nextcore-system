@@ -16,7 +16,7 @@ namespace Catalog.Core.Entities
 
         public ProductBrand Brand { get; set; } = new();
 
-        public ProductType Type { get; set; } = new();
+        public Category Type { get; set; } = new();
 
         public string ImageFile { get; set; } = string.Empty;
     }

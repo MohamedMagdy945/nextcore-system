@@ -12,7 +12,7 @@ namespace Catalog.Application.Features.Commands.CreateProduct
         string Summary,
         decimal Price,
         ProductBrand Brand,
-        ProductType Type,
+        Category Type,
         string ImageFile
     ) : IRequest<ProductResponseDto>;
     public class CreateProductHandler : IRequestHandler<CreateProductCommand, ProductResponseDto>

@@ -17,7 +17,7 @@ namespace Catalog.Application.Responses
         public decimal Price { get; set; }
 
         public ProductBrand Brand { get; set; } = default!;
-        public ProductType Type { get; set; } = default!;
+        public Category Type { get; set; } = default!;
 
         public string ImageFile { get; set; } = string.Empty;
     }
