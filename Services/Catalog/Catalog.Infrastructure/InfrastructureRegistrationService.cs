@@ -22,7 +22,7 @@ namespace Catalog.Infrastructure
 
             services.AddScoped<IAppDbContext, AppDbContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<ITypeRepository, TypeRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IBrandRepository, BrandRepository>();
 
             return services;

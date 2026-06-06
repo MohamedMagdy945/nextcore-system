@@ -8,10 +8,10 @@ namespace Catalog.Application.Features.Queries.GetAllTypes
     public record GetAllTypesQuery() : IRequest<IList<TypeResponseDto>>;
     public class GetAllTypesQueryHandler : IRequestHandler<GetAllTypesQuery, IList<TypeResponseDto>>
     {
-        private readonly ITypeRepository _typeRepository;
+        private readonly ICategoryRepository _typeRepository;
 
         public GetAllTypesQueryHandler(
-            ITypeRepository typeRepository)
+            ICategoryRepository typeRepository)
         {
             _typeRepository = typeRepository;
         }
