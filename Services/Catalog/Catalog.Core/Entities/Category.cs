@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Core.Entities
 {
-    public class ProductType : BaseEntity
+    public class Category : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
     }

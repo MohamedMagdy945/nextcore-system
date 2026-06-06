@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Catalog.API.Controllers
 {
     [ApiVersion("1.0")]
-    public class TypeController : AppControllerBase
+    public class CategoriesController : AppControllerBase
     {
         [HttpGet]
-        [Route("GetAllTypes")]
+        [Route("GetAllCategories")]
         [ProducesResponseType(typeof(IList<BrandResponseDto>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllTypes()
+        public async Task<ActionResult<IList<ProductResponseDto>>> GetAllCategories()
         {
             var query = new GetAllTypesQuery();
             var result = await Mediator.Send(query);

@@ -22,7 +22,7 @@
     <None Update="Persistence\Files\products.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Persistence\Files\types.json">
+    <None Update="Persistence\Files\categories.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
