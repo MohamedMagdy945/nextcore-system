@@ -61,6 +61,10 @@ namespace ApiGateway
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+
+
+
             app.MapGet("/", () =>
             {
                 return Results.Ok(new

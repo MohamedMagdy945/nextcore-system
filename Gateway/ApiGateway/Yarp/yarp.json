@@ -16,9 +16,15 @@
       },
 
       "productRoute": {
-        "ClusterId": "productCluster",
+        "ClusterId": "catalogCluster",
         "Match": {
-          "Path": "/api/v1/Product/{**catch-all}"
+          "Path": "/api/v1/products/{**catch-all}"
+        }
+      },
+      "categoryRoute": {
+        "ClusterId": "catalogCluster",
+        "Match": {
+          "Path": "/api/v1/categories/{**catch-all}"
         }
       }
     },
@@ -32,10 +38,10 @@
         }
       },
 
-      "productCluster": {
+      "catalogCluster": {
         "Destinations": {
-          "product": {
-            "Address": "http://localhost:8001/"
+          "category": {
+            "Address": "http://catalog.api:8080/"
           }
         }
       }

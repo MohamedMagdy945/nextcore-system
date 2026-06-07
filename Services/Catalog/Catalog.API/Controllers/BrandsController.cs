@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Catalog.API.Controllers
 {
     [ApiVersion("1.0")]
-    public class BrandController : AppControllerBase
+    public class BrandsController : AppControllerBase
     {
         [HttpGet]
         [Route("GetAllBrands")]

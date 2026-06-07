@@ -12,12 +12,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Catalog.API.Controllers
 {
     [ApiVersion("1.0")]
-    public class ProductController : AppControllerBase
+    public class ProductsController : AppControllerBase
     {
 
-        private readonly ILogger<ProductController> _logger;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductController(ILogger<ProductController> logger)
+        public ProductsController(ILogger<ProductsController> logger)
         {
             _logger = logger;
         }
