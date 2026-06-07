@@ -5,11 +5,11 @@ using MongoDB.Driver;
 
 namespace Catalog.Infrastructure.Repositories
 {
-    public class TypeRepository : ITypeRepository
+    public class CategoryRepository : ICategoryRepository
     {
 
         private readonly IAppDbContext _context;
-        public TypeRepository(IAppDbContext context)
+        public CategoryRepository(IAppDbContext context)
         {
             _context = context;
         }

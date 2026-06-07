@@ -2,7 +2,7 @@
 
 namespace Catalog.Application.Interfaces.Repositories
 {
-    public interface ITypeRepository
+    public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> GetAllAsync();
     }

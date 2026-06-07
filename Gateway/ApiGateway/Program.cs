@@ -14,6 +14,17 @@ namespace ApiGateway
 
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp", policy =>
+                {
+                    policy
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             builder.ConfigureSerilog();
 
             // Add services to the container.
@@ -38,6 +49,8 @@ namespace ApiGateway
             builder.Services.AddJwtRegistrationService(builder.Configuration);
 
             var app = builder.Build();
+
+            app.UseCors("AllowAngularApp");
 
 
             // Configure the HTTP request pipeline.
