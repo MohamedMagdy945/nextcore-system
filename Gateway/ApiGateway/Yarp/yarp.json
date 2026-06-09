@@ -26,6 +26,12 @@
         "Match": {
           "Path": "/api/v1/categories/{**catch-all}"
         }
+      },
+      "images_route": {
+        "ClusterId": "catalogCluster",
+        "Match": {
+          "Path": "/images/{**catch-all}"
+        }
       }
     },
 

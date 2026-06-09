@@ -2,17 +2,17 @@
   {
     "Id": "63ca5d4bc3a8a58f47299f98",
     "Name": "Electronics",
-    "ImageUrl": "/images/categories/electronics.png"
+    "ImageUrl": "/images/categories/electronics.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f99",
     "Name": "Music",
-    "ImageUrl": "/images/categories/music.png"
+    "ImageUrl": "/images/categories/music.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f10",
     "Name": "Fashion",
-    "ImageUrl": "/images/categories/fashion.png"
+    "ImageUrl": "/images/categories/fashion.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f11",
@@ -22,17 +22,17 @@
   {
     "Id": "63ca5d4bc3a8a58f47299f12",
     "Name": "Baby & Toys",
-    "ImageUrl": "/images/categories/baby-toys.png"
+    "ImageUrl": "/images/categories/baby-toys.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f97",
     "Name": "Shoes",
-    "ImageUrl": "/images/categories/shoes.png"
+    "ImageUrl": "/images/categories/shoes.jpg"
   },
   {
     "Id": "63ca5d7d380402dce7f06ebc",
     "Name": "Football",
-    "ImageUrl": "/images/categories/football.png"
+    "ImageUrl": "/images/categories/football.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f13",
