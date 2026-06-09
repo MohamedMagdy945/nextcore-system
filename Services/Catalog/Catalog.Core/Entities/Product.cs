@@ -14,7 +14,9 @@ namespace Catalog.Core.Entities
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
 
-        public Brand Brand { get; set; } = new();
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string BrandId { get; set; } = string.Empty;
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId { get; set; } = string.Empty;
