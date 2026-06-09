@@ -14,10 +14,10 @@ namespace Catalog.Core.Entities
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
 
-        public ProductBrand Brand { get; set; } = new();
+        public Brand Brand { get; set; } = new();
 
         [BsonRepresentation(BsonType.ObjectId)]
-        public string CategoryId { get; set; }
+        public string CategoryId { get; set; } = string.Empty;
 
         public string ImageFile { get; set; } = string.Empty;
     }
