@@ -13,7 +13,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(IList<BrandResponseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IList<ProductResponseDto>>> GetAllCategories()
         {
-            var query = new GetAllTypesQuery();
+            var query = new GetAllCategoriesQuery();
             var result = await Mediator.Send(query);
             return Ok(result);
         }
