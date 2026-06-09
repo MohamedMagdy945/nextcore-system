@@ -21,6 +21,6 @@ namespace Catalog.Core.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId { get; set; } = string.Empty;
 
-        public string ImageFile { get; set; } = string.Empty;
+        public List<string> ImageUrls { get; set; } = new List<string>();
     }
 }
