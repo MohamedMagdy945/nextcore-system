@@ -1,562 +1,469 @@
 [
   {
-    "Id" : "602d2149e773f2a3990b47f5",
-    "Name": "Egypt Adidas Quick Force Indoor Badminton Shoes",
-    "Description": "Designed for professional as well as amateur badminton players. These indoor shoes are crafted with synthetic upper that provides natural fit, while the EVA midsole provides lightweight cushioning. The shoes can be used for Badminton and Squash",
-    "Price": 3500,
-    "ImageFile": "images/products/adidas_shoe-1.png",
-    "Summary": "Adidas Quick Force Indoor Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e40e0aa3968b549af53",
-      "Name": "Adidas"
-    }    
+    "_id": { "$oid": "665aa0000000000000000001" },
+    "name": "Nike Air Max 270",
+    "slug": "nike-air-max-270",
+    "description": "Comfortable running shoes with air cushioning.",
+    "summary": "Nike running shoes",
+    "price": { "$numberDecimal": "120.99" },
+    "brandId": { "$oid": "665cc0000000000000000006" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
+    "imageUrls": [
+      "/images/products/nike-air-max-270/1.webp",
+      "/images/products/nike-air-max-270/2.webp"
+    ]
   },
   {
-    "Id" : "602d2149e773f2a3990b47f6",
-    "Name": "PowerFit 19 FH Rubber Spike Cricket Shoes",
-    "Description": "Designed for professional as well as amateur badminton players. These indoor shoes are crafted with synthetic upper that provides natural fit, while the EVA midsole provides lightweight cushioning. The shoes can be used for Badminton and Squash",
-    "Price": 3375,
-    "ImageFile": "images/products/adidas_shoe-2.png",
-    "Summary": "Adidas Quick Force Indoor Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e40e0aa3968b549af53",
-      "Name": "Adidas"
-    } 
+    "_id": { "$oid": "665aa0000000000000000002" },
+    "name": "Adidas Ultraboost 22",
+    "slug": "adidas-ultraboost-22",
+    "description": "High performance running shoes with boost technology.",
+    "summary": "Adidas running shoes",
+    "price": { "$numberDecimal": "150.00" },
+    "brandId": { "$oid": "665cc0000000000000000001" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
+    "imageUrls": [
+      "/images/products/adidas-ultraboost-22/1.webp",
+      "/images/products/adidas-ultraboost-22/2.webp",
+      "/images/products/adidas-ultraboost-22/3.webp"
+    ]
   },
   {
-    "Id" : "602d2149e773f2a3990b47f7",
-    "Name": "Body Building Egypt Shadow Spirit Mens Badminton Shoes",
-    "Description": "Designed for professional as well as amateur badminton players. These indoor shoes are crafted with synthetic upper that provides natural fit, while the EVA midsole provides lightweight cushioning. The shoes can be used for Badminton and Squash",
-    "Price": 3375,
-    "ImageFile": "images/products/adidas_shoe-3.png",
-    "Summary": "Adidas Quick Force Indoor Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e40e0aa3968b549af53",
-      "Name": "Adidas"
-    } 
+    "_id": { "$oid": "665aa0000000000000000003" },
+    "name": "Puma RS-X",
+    "slug": "puma-rs-x",
+    "description": "Street style sneakers with bold design.",
+    "summary": "Puma sneakers",
+    "price": { "$numberDecimal": "110.50" },
+    "brandId": { "$oid": "665cc0000000000000000005" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
+    "imageUrls": [
+      "/images/products/puma-rs-x/1.webp",
+      "/images/products/puma-rs-x/2.webp"
+    ]
   },
   {
-    "Id" : "602d2149e773f2a3990b47f8",
-    "Name": "El Horreya Sports Super Ace Light Badminton Shoes",
-    "Description": "El Horreya Sports Super Ace Light Badminton Shoes (Orange/Silver) will keep you motivated and fired up to perform at your peak in volleyball, squash and other indoor sports. Beginner and intermediate players get cutting-edge technologies at an affordable price point.This entry level all-rounder has a durable upper and offers plenty of stability.",
-    "Price": 4249,
-    "ImageFile": "images/products/asics_shoe-1.png",
-    "Summary": "Asics Gel Rocket 8 Indoor Court Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e4c455900b990b43bc1",
-      "Name": "ASICS"
-    }    
+    "_id": { "$oid": "665aa0000000000000000004" },
+    "name": "New Balance 574",
+    "slug": "new-balance-574",
+    "description": "Classic everyday comfortable sneakers.",
+    "summary": "NB sneakers",
+    "price": { "$numberDecimal": "95.00" },
+    "brandId": { "$oid": "665cc0000000000000000008" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
+    "imageUrls": [
+      "/images/products/new-balance-574/1.webp",
+      "/images/products/new-balance-574/2.webp"
+    ]
   },
   {
-    "Id" : "602d2149e773f2a3990b47f9",
-    "Name": "Asics Gel Rocket 8 Indoor Court Shoes",
-    "Description": "The Asics Gel Rocket 8 Indoor Court Shoes (Orange/Silver) will keep you motivated and fired up to perform at your peak in volleyball, squash and other indoor sports. Beginner and intermediate players get cutting-edge technologies at an affordable price point.This entry level all-rounder has a durable upper and offers plenty of stability.",
-    "Price": 3499,
-    "ImageFile": "images/products/asics_shoe-2.png",
-    "Summary": "Asics Gel Rocket 8 Indoor Court Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e4c455900b990b43bc1",
-      "Name": "ASICS"
-    }
+    "_id": { "$oid": "665aa0000000000000000005" },
+    "name": "Reebok Classic Leather",
+    "slug": "reebok-classic-leather",
+    "description": "Retro leather sneakers.",
+    "summary": "Reebok shoes",
+    "price": { "$numberDecimal": "85.00" },
+    "brandId": { "$oid": "665cc0000000000000000010" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
+    "imageUrls": [
+      "/images/products/reebok-classic-leather/1.webp",
+      "/images/products/reebok-classic-leather/2.webp",
+      "/images/products/reebok-classic-leather/3.webp"
+    ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000006" },
+    "name": "iPhone 15 Pro",
+    "slug": "iphone-15-pro",
+    "description": "Apple flagship smartphone with A17 Pro chip.",
+    "summary": "Apple phone",
+    "price": { "$numberDecimal": "1199.00" },
+    "brandId": { "$oid": "665bb0000000000000000006" },
+    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "imageUrls": [
+      "/images/products/iphone-15-pro/1.webp",
+      "/images/products/iphone-15-pro/2.webp"
+    ]
   },
   {
-    "Id" : "602d2149e773f2a3990b47fa",
-    "Name": "Egypt Sigma Fit Quick Force Indoor Badminton Shoes",
-    "Description": "Sigma Fit Quick Force Indoor Badminton Shoes",
-    "Price": 3499,
-    "ImageFile": "images/products/asics_shoe-3.png",
-    "Summary": "Sigma Fit Quick Force Indoor Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e4c455900b990b43bc1",
-      "Name": "ASICS"
-    }
+    "_id": { "$oid": "665aa0000000000000000007" },
+    "name": "Samsung Galaxy S24 Ultra",
+    "slug": "samsung-galaxy-s24-ultra",
+    "description": "Premium Android smartphone with S Pen.",
+    "summary": "Samsung flagship",
+    "price": { "$numberDecimal": "1299.00" },
+    "brandId": { "$oid": "665bb0000000000000000007" },
+    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "imageUrls": [ "/images/products/galaxy-s24-ultra/1.webp" ]
   },
   {
-    "Id" : "702d2149e773f2a3990b47fa",
-    "Name": "Victor SHW503 F Badminton Shoes",
-    "Description": "PU Leather, Mesh,EVA, ENERGY MAX, Nylon sheet, Rubber",
-    "Price": 2392,
-    "ImageFile": "images/products/victor_shoe-1.png",
-    "Summary": "Victor SHW503 F Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e59065163c16451bd73",
-      "Name": "Victor"
-    }    
+    "_id": { "$oid": "665aa0000000000000000008" },
+    "name": "Google Pixel 8",
+    "slug": "google-pixel-8",
+    "description": "AI-powered camera smartphone.",
+    "summary": "Pixel phone",
+    "price": { "$numberDecimal": "799.00" },
+    "brandId": { "$oid": "665bb0000000000000000008" },
+    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "imageUrls": [ "/images/products/pixel-8/1.webp" ]
   },
   {
-    "Id" : "802d2149e773f2a3990b47fa",
-    "Name": "Victor SHW503 F Badminton Shoes",
-    "Description": "PU Leather, Mesh,EVA, ENERGY MAX, Nylon sheet, Rubber",
-    "Price": 3000,
-    "ImageFile": "images/products/victor_shoe-2.png",
-    "Summary": "Victor SHW503 F Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e59065163c16451bd73",
-      "Name": "Victor"
-    } 
+    "_id": { "$oid": "665aa0000000000000000009" },
+    "name": "OnePlus 12",
+    "slug": "oneplus-12",
+    "description": "Fast performance Android phone.",
+    "summary": "OnePlus phone",
+    "price": { "$numberDecimal": "899.00" },
+    "brandId": { "$oid": "665bb0000000000000000009" },
+    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "imageUrls": [ "/images/products/oneplus-12/1.webp" ]
   },
   {
-    "Id" : "902d2149e773f2a3990b47fa",
-    "Name": "4Flex Pitch Premier League Football (Yellow/Purple)",
-    "Description": "Rule the game with Super Ace Light highlights Maximum shock absorption Quick compression recovery Its high resilience ensure YONEX insoles retain their shape longer Meticulously contoured for comfort Provides stability in the forefoot and toe areas technology.",
-    "Price": 2590,
-    "ImageFile": "images/products/yonex_shoe-1.png",
-    "Summary": "Yonex Super Ace Light Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000010" },
+    "name": "Xiaomi 14",
+    "slug": "xiaomi-14",
+    "description": "High performance budget flagship phone.",
+    "summary": "Xiaomi phone",
+    "price": { "$numberDecimal": "699.00" },
+    "brandId": { "$oid": "665bb0000000000000000010" },
+    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "imageUrls": [ "/images/products/xiaomi-14/1.webp" ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000011" },
+    "name": "MacBook Pro M3",
+    "slug": "macbook-pro-m3",
+    "description": "Apple laptop for professionals.",
+    "summary": "MacBook Pro",
+    "price": { "$numberDecimal": "1999.00" },
+    "brandId": { "$oid": "665bb0000000000000000006" },
+    "categoryId": { "$oid": "665cc0000000000000000003" },
+    "imageUrls": [ "/images/products/macbook-pro-m3/1.webp" ]
   },
   {
-    "Id" : "912d2149e773f2a3990b47fa",
-    "Name": "Yonex Super Ace Light Badminton Shoes",
-    "Description": "Rule the game with Super Ace Light highlights Maximum shock absorption Quick compression recovery Its high resilience ensure YONEX insoles retain their shape longer Meticulously contoured for comfort Provides stability in the forefoot and toe areas technology.",
-    "Price": 3500,
-    "ImageFile": "images/products/yonex_shoe-2.png",
-    "Summary": "Yonex Super Ace Light Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000012" },
+    "name": "Dell XPS 13",
+    "slug": "dell-xps-13",
+    "description": "Ultra portable Windows laptop.",
+    "summary": "Dell laptop",
+    "price": { "$numberDecimal": "1299.00" },
+    "brandId": { "$oid": "665bb0000000000000000011" },
+    "categoryId": { "$oid": "665cc0000000000000000003" },
+    "imageUrls": [ "/images/products/dell-xps-13/1.webp" ]
   },
   {
-    "Id" : "922d2149e773f2a3990b47fa",
-    "Name": "Body Building Egypt Shadow Spirit Mens Badminton Shoes",
-    "Description": "Rule the game with Super Ace Light highlights Maximum shock absorption Quick compression recovery Its high resilience ensure YONEX insoles retain their shape longer Meticulously contoured for comfort Provides stability in the forefoot and toe areas technology.",
-    "Price": 3700,
-    "ImageFile": "images/products/yonex_shoe-3.png",
-    "Summary": "Yonex Super Ace Light Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000013" },
+    "name": "HP Spectre x360",
+    "slug": "hp-spectre-x360",
+    "description": "Convertible touchscreen laptop.",
+    "summary": "HP laptop",
+    "price": { "$numberDecimal": "1199.00" },
+    "brandId": { "$oid": "665bb0000000000000000012" },
+    "categoryId": { "$oid": "665cc0000000000000000003" },
+    "imageUrls": [ "/images/products/hp-spectre-x360/1.webp" ]
   },
   {
-    "Id" : "932d2149e773f2a3990b47fa",
-    "Name": "Puma 19 FH Rubber Spike Cricket Shoes",
-    "Description": "With features and functions designed to withstand long hours out on the pitch, these one8 19 FH Rubber shoes have been engineered to offer comfort to cricketers",
-    "Price": 4999,
-    "ImageFile": "images/products/puma_shoe-1.png",
-    "Summary": "Puma 19 FH Rubber Spike Cricket Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e728c4cff9708ada2a6",
-      "Name": "Puma"
-    }
+    "_id": { "$oid": "665aa0000000000000000014" },
+    "name": "Lenovo ThinkPad X1",
+    "slug": "lenovo-thinkpad-x1",
+    "description": "Business laptop with strong durability.",
+    "summary": "ThinkPad",
+    "price": { "$numberDecimal": "1400.00" },
+    "brandId": { "$oid": "665bb0000000000000000013" },
+    "categoryId": { "$oid": "665cc0000000000000000003" },
+    "imageUrls": [ "/images/products/thinkpad-x1/1.webp" ]
   },
   {
-    "Id" : "942d2149e773f2a3990b47fa",
-    "Name": "Puma Super Ace Light Badminton Shoes",
-    "Description": "With features and functions designed to withstand long hours out on the pitch, these one8 19 FH Rubber shoes have been engineered to offer comfort to cricketers.",
-    "Price": 5200,
-    "ImageFile": "images/products/puma_shoe-2.png",
-    "Summary": "Puma Super Ace Light Badminton Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e728c4cff9708ada2a6",
-      "Name": "Puma"
-    }
+    "_id": { "$oid": "665aa0000000000000000015" },
+    "name": "ASUS ROG Zephyrus",
+    "slug": "asus-rog-zephyrus",
+    "description": "Gaming laptop high performance GPU.",
+    "summary": "Gaming laptop",
+    "price": { "$numberDecimal": "1800.00" },
+    "brandId": { "$oid": "665bb0000000000000000014" },
+    "categoryId": { "$oid": "665cc0000000000000000003" },
+    "imageUrls": [ "/images/products/rog-zephyrus/1.webp" ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000016" },
+    "name": "Sony WH-1000XM5",
+    "slug": "sony-wh-1000xm5",
+    "description": "Noise cancelling headphones.",
+    "summary": "Sony headphones",
+    "price": { "$numberDecimal": "399.00" },
+    "brandId": { "$oid": "665bb0000000000000000015" },
+    "categoryId": { "$oid": "665cc0000000000000000004" },
+    "imageUrls": [ "/images/products/sony-xm5/1.webp" ]
   },
   {
-    "Id" : "952d2149e773f2a3990b47fa",
-    "Name": "Puma 19 FH Rubber Spike Cricket Shoes",
-    "Description": "With features and functions designed to withstand long hours out on the pitch, these one8 19 FH Rubber shoes have been engineered to offer comfort to cricketers.",
-    "Price": 5700,
-    "ImageFile": "images/products/puma_shoe-3.png",
-    "Summary": "Puma 19 FH Rubber Spike Cricket Shoes",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e728c4cff9708ada2a6",
-      "Name": "Puma"
-    }
+    "_id": { "$oid": "665aa0000000000000000017" },
+    "name": "AirPods Pro 2",
+    "slug": "airpods-pro-2",
+    "description": "Apple wireless earbuds.",
+    "summary": "AirPods Pro",
+    "price": { "$numberDecimal": "249.00" },
+    "brandId": { "$oid": "665bb0000000000000000016" },
+    "categoryId": { "$oid": "665cc0000000000000000004" },
+    "imageUrls": [ "/images/products/airpods-pro-2/1.webp" ]
   },
   {
-    "Id" : "962d2149e773f2a3990b47fa",
-    "Name": "Babolat Shadow Spirit Mens Badminton Shoes (Cloisonne/Strike)",
-    "Description": "Babolat Shadow Spirit Mens Badminton Shoes (Cloisonne/Strike)",
-    "Price": 4125,
-    "ImageFile": "images/products/babolat_shoe-1.png",
-    "Summary": "Babolat Shadow Spirit Mens Badminton Shoes (Cloisonne/Strike)",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000018" },
+    "name": "Bose QuietComfort",
+    "slug": "bose-quietcomfort",
+    "description": "Premium noise cancelling headphones.",
+    "summary": "Bose headphones",
+    "price": { "$numberDecimal": "329.00" },
+    "brandId": { "$oid": "665bb0000000000000000017" },
+    "categoryId": { "$oid": "665cc0000000000000000004" },
+    "imageUrls": [ "/images/products/bose-qc/1.webp" ]
   },
   {
-    "Id" : "972d2149e773f2a3990b47fa",
-    "Name": "Babolat Shadow Tour Mens Badminton Shoes (White/Blue)",
-    "Description": "Babolat Shadow Tour Mens Badminton Shoes (White/Blue)",
-    "Price": 5249,
-    "ImageFile": "images/products/babolat_shoe-2.png",
-    "Summary": "Babolat Shadow Tour Mens Badminton Shoes (White/Blue)",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000019" },
+    "name": "Logitech G Pro X",
+    "slug": "logitech-g-pro-x",
+    "description": "Gaming headset professional.",
+    "summary": "Gaming headset",
+    "price": { "$numberDecimal": "129.00" },
+    "brandId": { "$oid": "665bb0000000000000000018" },
+    "categoryId": { "$oid": "665cc0000000000000000004" },
+    "imageUrls": [ "/images/products/logitech-gpro/1.webp" ]
   },
   {
-    "Id" : "982d2149e773f2a3990b47fa",
-    "Name": "Babolat Shadow Team Womens Badminton Shoes (Black/Peony)",
-    "Description": "Babolat Shadow Team Womens Badminton Shoes (Black/Peony)",
-    "Price": 2999,
-    "ImageFile": "images/products/babolat_shoe-3.png",
-    "Summary": "Babolat Shadow Team Womens Badminton Shoes (Black/Peony)",
-    "Type": {
-      "Id": "63ca5d4bc3a8a58f47299f97",
-      "Name": "Shoes"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000020" },
+    "name": "SteelSeries Arctis 7",
+    "slug": "steelseries-arctis-7",
+    "description": "Wireless gaming headset.",
+    "summary": "SteelSeries headset",
+    "price": { "$numberDecimal": "149.00" },
+    "brandId": { "$oid": "665bb0000000000000000019" },
+    "categoryId": { "$oid": "665cc0000000000000000004" },
+    "imageUrls": [ "/images/products/arctis-7/1.webp" ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000021" },
+    "name": "Canon EOS R10",
+    "slug": "canon-eos-r10",
+    "description": "Mirrorless camera for creators.",
+    "summary": "Canon camera",
+    "price": { "$numberDecimal": "900.00" },
+    "brandId": { "$oid": "665bb0000000000000000020" },
+    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "imageUrls": [ "/images/products/canon-r10/1.webp" ]
   },
   {
-    "Id" : "992d2149e773f2a3990b47fb",
-    "Name": "Yonex VCORE Pro 100 A Tennis Racquet (270gm, Strung)",
-    "Description": "For offensive players looking to win with game-changing spin and power.",
-    "Price": 6099,
-    "ImageFile": "images/products/yonex-racket-1.png",
-    "Summary": "Yonex VCORE Pro 100 A Tennis Racquet (270gm, Strung)",
-    "Type": {
-      "Id": "63ca5d6d958e43ee1cd375fe",
-      "Name": "Rackets"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000022" },
+    "name": "Sony A7 IV",
+    "slug": "sony-a7-iv",
+    "description": "Full frame professional camera.",
+    "summary": "Sony camera",
+    "price": { "$numberDecimal": "2500.00" },
+    "brandId": { "$oid": "665bb0000000000000000021" },
+    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "imageUrls": [ "/images/products/sony-a7iv/1.webp" ]
   },
   {
-    "Id" : "991d2149e773f2a3990b47fa",
-    "Name": "Yonex VCORE Pro 100 A Tennis Racquet (290gm, Strung)",
-    "Description": "For offensive players looking to win with game-changing spin and power.",
-    "Price": 6399,
-    "ImageFile": "images/products/yonex-racket-2.png",
-    "Summary": "Yonex VCORE Pro 100 A Tennis Racquet (290gm, Strung)",
-    "Type": {
-      "Id": "63ca5d6d958e43ee1cd375fe",
-      "Name": "Rackets"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000023" },
+    "name": "GoPro Hero 12",
+    "slug": "gopro-hero-12",
+    "description": "Action camera for sports.",
+    "summary": "GoPro camera",
+    "price": { "$numberDecimal": "499.00" },
+    "brandId": { "$oid": "665bb0000000000000000022" },
+    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "imageUrls": [ "/images/products/gopro-hero12/1.webp" ]
   },
   {
-    "Id" : "992d2149e773f2a3990b47fa",
-    "Name": "Yonex VCORE Pro 100 2019 Tennis Racquet (280gm, Unstrung)",
-    "Description": "For offensive players looking to win with game-changing spin and power.",
-    "Price": 13299,
-    "ImageFile": "images/products/yonex-racket-3.png",
-    "Summary": "Yonex VCORE Pro 100 A Tennis Racquet (290gm, Strung)",
-    "Type": {
-      "Id": "63ca5d6d958e43ee1cd375fe",
-      "Name": "Rackets"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000024" },
+    "name": "DJI Mini 4 Pro",
+    "slug": "dji-mini-4-pro",
+    "description": "Compact drone with 4K camera.",
+    "summary": "DJI drone",
+    "price": { "$numberDecimal": "999.00" },
+    "brandId": { "$oid": "665bb0000000000000000023" },
+    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "imageUrls": [ "/images/products/dji-mini-4/1.webp" ]
   },
   {
-    "Id" : "993d2149e773f2a3990b47fa",
-    "Name": "Babolat Boost D Tennis Racquet (260gm, Strung)",
-    "Description": "Babolat Boost D Tennis Racquet (260gm, Strung)",
-    "Price": 6999,
-    "ImageFile": "images/products/babolat-racket-1.png",
-    "Summary": "Babolat Boost D Tennis Racquet (260gm, Strung)",
-    "Type": {
-      "Id": "63ca5d6d958e43ee1cd375fe",
-      "Name": "Rackets"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000025" },
+    "name": "Nikon Z6 II",
+    "slug": "nikon-z6-ii",
+    "description": "Professional mirrorless camera.",
+    "summary": "Nikon camera",
+    "price": { "$numberDecimal": "2000.00" },
+    "brandId": { "$oid": "665bb0000000000000000024" },
+    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "imageUrls": [ "/images/products/nikon-z6ii/1.webp" ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000026" },
+    "name": "T-Shirt Basic White",
+    "slug": "t-shirt-basic-white",
+    "description": "Cotton basic white t-shirt.",
+    "summary": "Basic T-shirt",
+    "price": { "$numberDecimal": "15.00" },
+    "brandId": { "$oid": "665bb0000000000000000025" },
+    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "imageUrls": [ "/images/products/tshirt-white/1.webp" ]
   },
   {
-    "Id" : "994d2149e773f2a3990b47fa",
-    "Name": "Babolat Pure Aero 2019 Superlite Tennis Racquet (Unstrung, 255gm)",
-    "Description": "Buy Babolat Pure Aero 2019 Superlite Tennis Racquet (Unstrung, 255gm) and get Free Stringing with Babolat RPM Blast String",
-    "Price": 13000,
-    "ImageFile": "images/products/babolat-racket-2.png",
-    "Summary": "Babolat Pure Aero 2019 Superlite Tennis Racquet",
-    "Type": {
-      "Id": "63ca5d6d958e43ee1cd375fe",
-      "Name": "Rackets"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000027" },
+    "name": "Levi's Jeans 501",
+    "slug": "levis-501-jeans",
+    "description": "Classic denim jeans.",
+    "summary": "Levi's jeans",
+    "price": { "$numberDecimal": "60.00" },
+    "brandId": { "$oid": "665bb0000000000000000026" },
+    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "imageUrls": [ "/images/products/levis-501/1.webp" ]
   },
   {
-    "Id" : "995d2149e773f2a3990b47fa",
-    "Name": "Babolat Pure Drive VS Tennis Racquet (Pair, 300gm, Strung)",
-    "Description": "Babolat Pure Drive VS Tennis Racquet (Pair, 300gm, Strung)",
-    "Price": 34000,
-    "ImageFile": "images/products/babolat-racket-3.png",
-    "Summary": "Babolat Pure Drive VS Tennis Racquet (Pair, 300gm, Strung)",
-    "Type": {
-      "Id": "63ca5d6d958e43ee1cd375fe",
-      "Name": "Rackets"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000028" },
+    "name": "Zara Jacket",
+    "slug": "zara-jacket",
+    "description": "Modern fashion jacket.",
+    "summary": "Zara jacket",
+    "price": { "$numberDecimal": "80.00" },
+    "brandId": { "$oid": "665bb0000000000000000027" },
+    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "imageUrls": [ "/images/products/zara-jacket/1.webp" ]
   },
   {
-    "Id" : "996d2149e773f2a3990b47fa",
-    "Name": "Adidas FIFA World Cup 2018 OMB Football (White/Red/Black)",
-    "Description": "Featuring an innovative surface panel design, this is the match ball used during football's FIFA World Cup™. Inspired by Russia's urban landscapes, a pixelated graphic pays tribute to the iconic Telstar ball. Its thermally bonded seamless surface designs.",
-    "Price": 2499,
-    "ImageFile": "images/products/adidas_football-1.png",
-    "Summary": "Adidas FIFA World Cup 2018 OMB Football (White/Red/Black)",
-    "Type": {
-      "Id": "63ca5d7d380402dce7f06ebc",
-      "Name": "Football"
-    },
-    "Brand": {
-      "Id":"63ca5e40e0aa3968b549af53",
-      "Name": "Adidas"
-    } 
+    "_id": { "$oid": "665aa0000000000000000029" },
+    "name": "H&M Hoodie",
+    "slug": "hm-hoodie",
+    "description": "Comfortable hoodie.",
+    "summary": "H&M hoodie",
+    "price": { "$numberDecimal": "45.00" },
+    "brandId": { "$oid": "665bb0000000000000000028" },
+    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "imageUrls": [ "/images/products/hm-hoodie/1.webp" ]
   },
   {
-    "Id" : "997d2149e773f2a3990b47fa",
-    "Name": "Adidas FIFA World Cup 2018 OMB Football",
-    "Description": "Featuring an innovative surface panel design, this is the match ball used during football's FIFA World Cup™. Inspired by Russia's urban landscapes, a pixelated graphic pays tribute to the iconic Telstar ball. Its thermally bonded seamless surface designs.",
-    "Price": 3200,
-    "ImageFile": "images/products/adidas_football-2.png",
-    "Summary": "Adidas FIFA World Cup 2018 OMB Football",
-    "Type": {
-      "Id": "63ca5d7d380402dce7f06ebc",
-      "Name": "Football"
-    },
-    "Brand": {
-      "Id":"63ca5e40e0aa3968b549af53",
-      "Name": "Adidas"
-    } 
+    "_id": { "$oid": "665aa0000000000000000030" },
+    "name": "Nike Tracksuit",
+    "slug": "nike-tracksuit",
+    "description": "Sports tracksuit set.",
+    "summary": "Nike tracksuit",
+    "price": { "$numberDecimal": "90.00" },
+    "brandId": { "$oid": "665bb0000000000000000001" },
+    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "imageUrls": [ "/images/products/nike-tracksuit/1.webp" ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000031" },
+    "name": "Coffee Maker Philips",
+    "slug": "coffee-maker-philips",
+    "description": "Automatic coffee machine.",
+    "summary": "Coffee machine",
+    "price": { "$numberDecimal": "120.00" },
+    "brandId": { "$oid": "665bb0000000000000000029" },
+    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "imageUrls": [ "/images/products/coffee-maker/1.webp" ]
   },
   {
-    "Id" : "998d2149e773f2a3990b47fa",
-    "Name": "Adidas FIFA World Cup Top Glider Ball",
-    "Description": "Featuring an innovative surface panel design, this is the match ball used during football's FIFA World Cup™. Inspired by Russia's urban landscapes, a pixelated graphic pays tribute to the iconic Telstar ball. Its thermally bonded seamless surface designs.",
-    "Price": 2499,
-    "ImageFile": "images/products/adidas_football-3.png",
-    "Summary": "Adidas FIFA World Cup 2023 OMB Football",
-    "Type": {
-      "Id": "63ca5d7d380402dce7f06ebc",
-      "Name": "Football"
-    },
-    "Brand": {
-      "Id":"63ca5e40e0aa3968b549af53",
-      "Name": "Adidas"
-    } 
+    "_id": { "$oid": "665aa0000000000000000032" },
+    "name": "Air Fryer Ninja",
+    "slug": "air-fryer-ninja",
+    "description": "Healthy cooking air fryer.",
+    "summary": "Air fryer",
+    "price": { "$numberDecimal": "150.00" },
+    "brandId": { "$oid": "665bb0000000000000000030" },
+    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "imageUrls": [ "/images/products/air-fryer/1.webp" ]
   },
   {
-    "Id" : "999d2149e773f2a3990b47fa",
-    "Name": "Nike Pitch Premier League Football (Yellow/Purple)",
-    "Description": "Nike Pitch Premier League Football (Yellow/Purple) Ball is made with colorful graphics that stand out on the field for easier ball tracking. A machine-stitched TPU casing delivers great touch and durability during play. ",
-    "Price": 1525,
-    "ImageFile": "images/products/Nike-Football-1.png",
-    "Summary": "Nike Pitch Premier League Football (Yellow/Purple)",
-    "Type": {
-      "Id": "63ca5d7d380402dce7f06ebc",
-      "Name": "Football"
-    },
-    "Brand": {
-      "Id":"63ca5e7ec90ff5c8f44d5ac8",
-      "Name": "Nike"
-    }
+    "_id": { "$oid": "665aa0000000000000000033" },
+    "name": "Vacuum Cleaner Dyson",
+    "slug": "dyson-vacuum-cleaner",
+    "description": "Powerful cordless vacuum.",
+    "summary": "Dyson vacuum",
+    "price": { "$numberDecimal": "399.00" },
+    "brandId": { "$oid": "665bb0000000000000000031" },
+    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "imageUrls": [ "/images/products/dyson-vacuum/1.webp" ]
   },
   {
-    "Id" : "99912149e773f2a3990b47fa",
-    "Name": "Nike Manchester City Supporters Football (Berry)",
-    "Description": "Nike Manchester City Supporters Football (Berry) Ball is made with colorful graphics that stand out on the field for easier ball tracking. A machine-stitched TPU casing delivers great touch and durability during play. ",
-    "Price": 1525,
-    "ImageFile": "images/products/Nike-Football-2.png",
-    "Summary": "Nike Manchester City Supporters Football (Berry)",
-    "Type": {
-      "Id": "63ca5d7d380402dce7f06ebc",
-      "Name": "Football"
-    },
-    "Brand": {
-      "Id":"63ca5e7ec90ff5c8f44d5ac8",
-      "Name": "Nike"
-    }
+    "_id": { "$oid": "665aa0000000000000000034" },
+    "name": "Blender Braun",
+    "slug": "braun-blender",
+    "description": "Kitchen blender.",
+    "summary": "Blender",
+    "price": { "$numberDecimal": "70.00" },
+    "brandId": { "$oid": "665bb0000000000000000032" },
+    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "imageUrls": [ "/images/products/braun-blender/1.webp" ]
   },
   {
-    "Id" : "99922149e773f2a3990b47fa",
-    "Name": "Nike Mercurial Veer Football (White/Green/Black)",
-    "Description": "Nike Mercurial Veer Football (White/Green/Black) Ball is made with colorful graphics that stand out on the field for easier ball tracking. A machine-stitched TPU casing delivers great touch and durability during play. ",
-    "Price": 1450,
-    "ImageFile": "images/products/Nike-Football-3.png",
-    "Summary": "Nike Mercurial Veer Football (White/Green/Black)",
-    "Type": {
-      "Id": "63ca5d7d380402dce7f06ebc",
-      "Name": "Football"
-    },
-    "Brand": {
-      "Id":"63ca5e7ec90ff5c8f44d5ac8",
-      "Name": "Nike"
-    }
+    "_id": { "$oid": "665aa0000000000000000035" },
+    "name": "Microwave Samsung",
+    "slug": "samsung-microwave",
+    "description": "Smart microwave oven.",
+    "summary": "Microwave",
+    "price": { "$numberDecimal": "200.00" },
+    "brandId": { "$oid": "665bb0000000000000000033" },
+    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "imageUrls": [ "/images/products/samsung-microwave/1.webp" ]
+  },
+
+  {
+    "_id": { "$oid": "665aa0000000000000000036" },
+    "name": "Shampoo L'Oréal",
+    "slug": "loreal-shampoo",
+    "description": "Hair care shampoo.",
+    "summary": "Shampoo",
+    "price": { "$numberDecimal": "10.00" },
+    "brandId": { "$oid": "665bb0000000000000000034" },
+    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "imageUrls": [ "/images/products/loreal-shampoo/1.webp" ]
   },
   {
-    "Id" : "99932149e773f2a3990b47fa",
-    "Name": "Babolat Team Line Racket 12 Kit Bag (Fluorescent Red)",
-    "Description": "The Babolat Team Line racquet bag is highly durable and fashionable, holding up to 12 racquets.",
-    "Price": 4550,
-    "ImageFile": "images/products/babolat-kitback-1.png",
-    "Summary": "Babolat Team Line Racket 12 Kit Bag (Fluorescent Red)",
-    "Type": {
-      "Id": "63ca5d8849bc19321b8be5f1",
-      "Name": "Kit Bags"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000037" },
+    "name": "Perfume Dior Sauvage",
+    "slug": "dior-sauvage",
+    "description": "Luxury men's perfume.",
+    "summary": "Perfume",
+    "price": { "$numberDecimal": "120.00" },
+    "brandId": { "$oid": "665bb0000000000000000035" },
+    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "imageUrls": [ "/images/products/dior-sauvage/1.webp" ]
   },
   {
-    "Id" : "99942149e773f2a3990b47fa",
-    "Name": "Babolat Pure Strike RH X12 Kit Bag (White/Red)",
-    "Description": "Babolat Pure Strike 12-Pack Bag will effortlessly hold the majority of the rigging you should be fruitful on the court",
-    "Price": 9799,
-    "ImageFile": "images/products/babolat-kitback-2.png",
-    "Summary": "Babolat Pure Strike RH X12 Kit Bag (White/Red)",
-    "Type": {
-      "Id": "63ca5d8849bc19321b8be5f1",
-      "Name": "Kit Bags"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000038" },
+    "name": "Face Cream Nivea",
+    "slug": "nivea-face-cream",
+    "description": "Skin moisturizing cream.",
+    "summary": "Face cream",
+    "price": { "$numberDecimal": "8.00" },
+    "brandId": { "$oid": "665bb0000000000000000036" },
+    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "imageUrls": [ "/images/products/nivea-cream/1.webp" ]
   },
   {
-    "Id" : "99952149e773f2a3990b47fa",
-    "Name": "Babolat Team Line 12 Racquet Kit Bag (Silver)",
-    "Description": "Babolat Team Line 12 Racquet Kit Bag (Silver) for players who have tennis in their blood, Babolat brings you the Babolat Tennis Kit Bag India - Babolat Team Line Red 12 Pack.",
-    "Price": 4550,
-    "ImageFile": "images/products/babolat-kitback-3.png",
-    "Summary": "Babolat Team Line 12 Racquet Kit Bag (Silver)",
-    "Type": {
-      "Id": "63ca5d8849bc19321b8be5f1",
-      "Name": "Kit Bags"
-    },
-    "Brand": {
-      "Id":"63ca5e8d6110a9c56ee7dc48",
-      "Name": "Babolat"
-    }
+    "_id": { "$oid": "665aa0000000000000000039" },
+    "name": "Lipstick Maybelline",
+    "slug": "maybelline-lipstick",
+    "description": "Matte lipstick.",
+    "summary": "Lipstick",
+    "price": { "$numberDecimal": "12.00" },
+    "brandId": { "$oid": "665bb0000000000000000037" },
+    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "imageUrls": [ "/images/products/maybelline-lipstick/1.webp" ]
   },
   {
-    "Id" : "99962149e773f2a3990b47fa",
-    "Name": "Yonex SUNR 4826TK BT6-SR Badminton Kit Bag (Black/Red/White)",
-    "Description": "Yonex SUNR 4826TK BT6-SR Badminton Kit Bag (Black/Red/White)",
-    "Price": 1999,
-    "ImageFile": "images/products/yonex-kitback-1.png",
-    "Summary": "Yonex SUNR 4826TK BT6-SR Badminton Kit Bag (Black/Red/White)",
-    "Type": {
-      "Id": "63ca5d8849bc19321b8be5f1",
-      "Name": "Kit Bags"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
-  },
-  {
-    "Id" : "99972149e773f2a3990b47fa",
-    "Name": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Blue/Red)",
-    "Description": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Blue/Red)",
-    "Price": 1499,
-    "ImageFile": "images/products/yonex-kitback-2.png",
-    "Summary": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Blue/Red)",
-    "Type": {
-      "Id": "63ca5d8849bc19321b8be5f1",
-      "Name": "Kit Bags"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
-  },
-  {
-    "Id" : "99982149e773f2a3990b47fa",
-    "Name": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Grey/Orange)",
-    "Description": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Grey/Orange)",
-    "Price": 1499,
-    "ImageFile": "images/products/yonex-kitback-3.png",
-    "Summary": "Yonex SUNR LRB05 MS BT6 S Badminton Kit Bag (Grey/Orange)",
-    "Type": {
-      "Id": "63ca5d8849bc19321b8be5f1",
-      "Name": "Kit Bags"
-    },
-    "Brand": {
-      "Id":"63ca5e655ec1fdc49bd9327d",
-      "Name": "Yonex"
-    }
+    "_id": { "$oid": "665aa0000000000000000040" },
+    "name": "Hand Cream Vaseline",
+    "slug": "vaseline-hand-cream",
+    "description": "Skin hydration hand cream.",
+    "summary": "Hand cream",
+    "price": { "$numberDecimal": "6.00" },
+    "brandId": { "$oid": "665bb0000000000000000038" },
+    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "imageUrls": [ "/images/products/vaseline-hand-cream/1.webp" ]
   }
 ]

@@ -1,57 +1,57 @@
 [
   {
-    "Id": "63ca5d4bc3a8a58f47299f98",
+    "Id": "665bb0000000000000000001",
     "Name": "Electronics",
-    "ImageUrl": "/images/categories/electronics.jpg"
+    "ImageUrl": "/images/categories/electronics.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f99",
+    "Id": "665bb0000000000000000002",
     "Name": "Music",
-    "ImageUrl": "/images/categories/music.jpg"
+    "ImageUrl": "/images/categories/music.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f10",
+    "Id": "665bb0000000000000000003",
     "Name": "Fashion",
-    "ImageUrl": "/images/categories/fashion.jpg"
+    "ImageUrl": "/images/categories/fashion.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f11",
+    "Id": "665bb0000000000000000004",
     "Name": "SuperMarket",
-    "ImageUrl": "/images/categories/supermarket.jpg"
+    "ImageUrl": "/images/categories/supermarket.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f12",
+    "Id": "665bb0000000000000000005",
     "Name": "Baby & Toys",
-    "ImageUrl": "/images/categories/baby-toys.jpg"
+    "ImageUrl": "/images/categories/baby-toys.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f97",
+    "Id": "665bb0000000000000000006",
     "Name": "Shoes",
-    "ImageUrl": "/images/categories/shoes.jpg"
+    "ImageUrl": "/images/categories/shoes.webp"
   },
   {
-    "Id": "63ca5d7d380402dce7f06ebc",
+    "Id": "665bb0000000000000000007",
     "Name": "Football",
-    "ImageUrl": "/images/categories/football.jpg"
+    "ImageUrl": "/images/categories/football.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f13",
+    "Id": "665bb0000000000000000008",
     "Name": "Mobiles",
-    "ImageUrl": "/images/categories/mobiles.jpg"
+    "ImageUrl": "/images/categories/mobiles.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f14",
+    "Id": "665bb0000000000000000009",
     "Name": "Beauty & Personal Care",
-    "ImageUrl": "/images/categories/beauty.jpg"
+    "ImageUrl": "/images/categories/beauty.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f16",
+    "Id": "665bb0000000000000000010",
     "Name": "Health & Fitness",
-    "ImageUrl": "/images/categories/health-fitness.jpg"
+    "ImageUrl": "/images/categories/health-fitness.webp"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f17",
+    "Id": "665bb0000000000000000011",
     "Name": "Home & Living",
-    "ImageUrl": "/images/categories/home.jpg"
+    "ImageUrl": "/images/categories/home.webp"
   }
 ]
