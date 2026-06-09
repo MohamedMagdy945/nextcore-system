@@ -12,12 +12,12 @@ namespace Catalog.Infrastructure.Persistence.DbContext
 
             var database = client.GetDatabase(options.Value.DatabaseName);
 
-            Brands = database.GetCollection<ProductBrand>(options.Value.Brands);
-            Types = database.GetCollection<Category>(options.Value.Types);
+            Brands = database.GetCollection<Brand>(options.Value.Brands);
+            Categories = database.GetCollection<Category>(options.Value.Categories);
             Products = database.GetCollection<Product>(options.Value.Products);
         }
         public IMongoCollection<Product> Products { get; }
-        public IMongoCollection<ProductBrand> Brands { get; }
-        public IMongoCollection<Category> Types { get; }
+        public IMongoCollection<Brand> Brands { get; }
+        public IMongoCollection<Category> Categories { get; }
     }
 }

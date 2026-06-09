@@ -8,7 +8,7 @@ namespace Catalog.Application.Features.Commands.UpdateProduct
     public record UpdateProductCommand(
         string Id, string Name, string Description,
         string Summary, decimal Price,
-        ProductBrand Brand, Category Type, string ImageFile
+        Brand Brand, Category Type, string ImageFile
     ) : IRequest<bool>;
     public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, bool>
     {

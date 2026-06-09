@@ -3,7 +3,7 @@ using Catalog.Application.Responses;
 using Mapster;
 using MediatR;
 
-namespace Catalog.Application.Features.Queries.GetAllTypes
+namespace Catalog.Application.Features.Queries.GetAllCategories
 {
     public record GetAllCategoriesQuery() : IRequest<IList<CategoryResponseDto>>;
     public class GetAllTypesQueryHandler : IRequestHandler<GetAllCategoriesQuery, IList<CategoryResponseDto>>

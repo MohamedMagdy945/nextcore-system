@@ -11,7 +11,7 @@ namespace Catalog.Application.Features.Commands.CreateProduct
         string Description,
         string Summary,
         decimal Price,
-        ProductBrand Brand,
+        Brand Brand,
         Category Type,
         string ImageFile
     ) : IRequest<ProductResponseDto>;

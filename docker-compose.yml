@@ -21,7 +21,7 @@ services:
       DatabaseSettings__ConnectionString: mongodb://catalogdb:27017
       DatabaseSettings__DatabaseName: CatalogDb
       DatabaseSettings__BrandsCollection: Brands
-      DatabaseSettings__TypesCollection: Types
+      DatabaseSettings__CategoriesCollection: Categories
       DatabaseSettings__ProductsCollection: Products
       ElasticConfiguration__Uri: http://elasticsearch:9200
     networks:

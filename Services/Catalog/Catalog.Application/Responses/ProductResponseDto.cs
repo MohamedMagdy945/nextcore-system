@@ -16,7 +16,7 @@ namespace Catalog.Application.Responses
         [BsonRepresentation(MongoDB.Bson.BsonType.Decimal128)]
         public decimal Price { get; set; }
 
-        public ProductBrand Brand { get; set; } = default!;
+        public Brand Brand { get; set; } = default!;
         public Category Type { get; set; } = default!;
 
         public string ImageFile { get; set; } = string.Empty;

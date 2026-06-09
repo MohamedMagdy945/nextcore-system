@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using Catalog.Application.Features.Queries.GetAllTypes;
+using Catalog.Application.Features.Queries.GetAllCategories;
 using Catalog.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
 

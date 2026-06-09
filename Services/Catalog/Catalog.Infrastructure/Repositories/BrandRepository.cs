@@ -1,5 +1,5 @@
-﻿using Catalog.Application.Interfaces.Repositories;
-using Catalog.Core.Entities;
+﻿using Catalog.Core.Entities;
+using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Persistence.DbContext;
 using MongoDB.Driver;
 
@@ -14,7 +14,7 @@ namespace Catalog.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductBrand>> GetAllAsync()
+        public async Task<IEnumerable<Brand>> GetAllAsync()
         {
             return await _context.Brands.Find(p => true).ToListAsync();
         }

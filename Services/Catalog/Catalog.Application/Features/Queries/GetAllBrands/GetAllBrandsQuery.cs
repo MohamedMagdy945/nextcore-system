@@ -1,5 +1,5 @@
-﻿using Catalog.Application.Interfaces.Repositories;
-using Catalog.Application.Responses;
+﻿using Catalog.Application.Responses;
+using Catalog.Core.Repositories;
 using Mapster;
 using MediatR;
 

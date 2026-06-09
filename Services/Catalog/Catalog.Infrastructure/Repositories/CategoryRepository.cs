@@ -15,7 +15,7 @@ namespace Catalog.Infrastructure.Repositories
         }
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            return await _context.Types.Find(p => true).ToListAsync();
+            return await _context.Categories.Find(p => true).ToListAsync();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Catalog.Infrastructure.Persistence.DbContext
     public interface IAppDbContext
     {
         public IMongoCollection<Product> Products { get; }
-        public IMongoCollection<ProductBrand> Brands { get; }
-        public IMongoCollection<Category> Types { get; }
+        public IMongoCollection<Brand> Brands { get; }
+        public IMongoCollection<Category> Categories { get; }
     }
 }

@@ -6,9 +6,9 @@ namespace Catalog.Infrastructure.Persistence.Seeder
 {
     public class BrandSeeder
     {
-        public static async Task SeedAsync(IMongoCollection<ProductBrand> brandCollection)
+        public static async Task SeedAsync(IMongoCollection<Brand> brandCollection)
         {
-            var hasData = await brandCollection.Find(FilterDefinition<ProductBrand>.Empty).AnyAsync();
+            var hasData = await brandCollection.Find(FilterDefinition<Brand>.Empty).AnyAsync();
             if (hasData) return;
 
             var filePath = Path.Combine(AppContext.BaseDirectory, "Persistence", "Files", "brands.json");
@@ -20,7 +20,7 @@ namespace Catalog.Infrastructure.Persistence.Seeder
                 return;
             }
             var brandJsonData = await File.ReadAllTextAsync(filePath);
-            var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandJsonData);
+            var brands = JsonSerializer.Deserialize<List<Brand>>(brandJsonData);
 
             if (brands?.Any() is true)
             {

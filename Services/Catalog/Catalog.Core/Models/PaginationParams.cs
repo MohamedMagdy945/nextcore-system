@@ -11,7 +11,7 @@
             set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
         public string? BrandId { get; set; }
-        public string? TypeId { get; set; }
+        public string? CategoryId { get; set; }
         public string? Sort { get; set; }
         public string? Search { get; set; }
 

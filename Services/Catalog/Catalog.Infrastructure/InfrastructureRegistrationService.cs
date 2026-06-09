@@ -1,4 +1,5 @@
 ﻿using Catalog.Application.Interfaces.Repositories;
+using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Common.Settings;
 using Catalog.Infrastructure.Persistence.DbContext;
 using Catalog.Infrastructure.Repositories;
