@@ -1,4 +1,4 @@
- [
+[
   {
     "Id": "63ca5d4bc3a8a58f47299f98",
     "Name": "Electronics",
@@ -21,7 +21,7 @@
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f12",
-    "Name":  "Baby & Toys",
+    "Name": "Baby & Toys",
     "ImageUrl": "/images/categories/baby-toys.png"
   },
   {
@@ -38,7 +38,6 @@
     "Id": "63ca5d4bc3a8a58f47299f13",
     "Name": "Mobiles",
     "ImageUrl": "/images/categories/mobiles.jpg"
-
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f14",
@@ -46,13 +45,13 @@
     "ImageUrl": "/images/categories/beauty.jpg"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f15",
+    "Id": "63ca5d4bc3a8a58f47299f16",
     "Name": "Health & Fitness",
     "ImageUrl": "/images/categories/health-fitness.jpg"
   },
   {
-    "Id": "63ca5d4bc3a8a58f47299f15",
+    "Id": "63ca5d4bc3a8a58f47299f17",
     "Name": "Home & Living",
     "ImageUrl": "/images/categories/home.jpg"
   }
- ]
+]

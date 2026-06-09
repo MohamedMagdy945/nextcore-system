@@ -43,12 +43,14 @@ namespace Catalog.API
                 {
                     var context = scope.ServiceProvider.GetRequiredService<IAppDbContext>();
 
-                    await BrandSeeder.SeedAsync(context.Brands);
+                    //await BrandSeeder.SeedAsync(context.Brands);
                     await CategorySeeder.SeedAsync(context.Categories);
-                    await CatalogSeeder.SeedAsync(context.Products);
+                    //await CatalogSeeder.SeedAsync(context.Products);
                 }
             }
             app.UseCustomRequestLogging();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
