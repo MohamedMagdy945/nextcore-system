@@ -36,20 +36,19 @@
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f13",
-    "Name": "Mobiles"
+    "Name": "Mobiles",
+    "ImageUrl": "/images/categories/mobiles.jpg"
+
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f14",
-    "Name": "Beauty & Personal Care"
+    "Name": "Beauty & Personal Care",
+    "ImageUrl": "/images/categories/beauty.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f15",
-    "Name": "Health & Fitness"
-  },
-  {
-    "Id": "63ca5d4bc3a8a58f47299f15",
-    "Name": "Mobiles",
-    "ImageUrl": "/images/categories/mobiles.jpg"
+    "Name": "Health & Fitness",
+    "ImageUrl": "/images/categories/health-fitness.jpg"
   },
   {
     "Id": "63ca5d4bc3a8a58f47299f15",

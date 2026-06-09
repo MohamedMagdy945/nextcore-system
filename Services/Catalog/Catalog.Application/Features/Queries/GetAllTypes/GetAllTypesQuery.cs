@@ -5,8 +5,8 @@ using MediatR;
 
 namespace Catalog.Application.Features.Queries.GetAllTypes
 {
-    public record GetAllTypesQuery() : IRequest<IList<TypeResponseDto>>;
-    public class GetAllTypesQueryHandler : IRequestHandler<GetAllTypesQuery, IList<TypeResponseDto>>
+    public record GetAllTypesQuery() : IRequest<IList<CategoryResponseDto>>;
+    public class GetAllTypesQueryHandler : IRequestHandler<GetAllTypesQuery, IList<CategoryResponseDto>>
     {
         private readonly ICategoryRepository _typeRepository;
 
@@ -16,10 +16,10 @@ namespace Catalog.Application.Features.Queries.GetAllTypes
             _typeRepository = typeRepository;
         }
 
-        public async Task<IList<TypeResponseDto>> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
+        public async Task<IList<CategoryResponseDto>> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
         {
             var types = await _typeRepository.GetAllAsync();
-            var typeResponses = types.Adapt<IList<TypeResponseDto>>();
+            var typeResponses = types.Adapt<IList<CategoryResponseDto>>();
             return typeResponses;
         }
     }
