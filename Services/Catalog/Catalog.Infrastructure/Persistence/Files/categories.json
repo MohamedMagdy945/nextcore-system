@@ -1,18 +1,34 @@
 [
   {
-    "Id": "63ca5d4bc3a8a58f47299f97",
-    "Name": "Shoes"
+    "Id": "63ca5d4bc3a8a58f47299f98",
+    "Name": "Electronics"
   },
   {
-    "Id": "63ca5d6d958e43ee1cd375fe",
-    "Name": "Rackets"
+    "Id": "63ca5d4bc3a8a58f47299f99",
+    "Name": "Music"
+  },
+  {
+    "Id": "63ca5d4bc3a8a58f47299f10",
+    "Name": "Fashion"
+  },
+  {
+    "Id": "63ca5d4bc3a8a58f47299f11",
+    "Name": "SuperMarket"
+  },
+  {
+    "Id": "63ca5d4bc3a8a58f47299f12",
+    "Name":  "Baby & Toys"
+  },
+  {
+    "Id": "63ca5d4bc3a8a58f47299f97",
+    "Name": "Shoes"
   },
   {
     "Id": "63ca5d7d380402dce7f06ebc",
     "Name": "Football"
   },
   {
-    "Id": "63ca5d8849bc19321b8be5f1",
-    "Name": "Kit Bags"
+    "Id": "63ca5d4bc3a8a58f47299f13",
+    "Name": "Mobiles"
   }
 ]

@@ -16,7 +16,8 @@ namespace Catalog.Core.Entities
 
         public ProductBrand Brand { get; set; } = new();
 
-        public Category Type { get; set; } = new();
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string CategoryId { get; set; }
 
         public string ImageFile { get; set; } = string.Empty;
     }
