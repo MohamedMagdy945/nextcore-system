@@ -206,39 +206,6 @@
   },
 
   {
-    "_id": { "$oid": "665aa0000000000000000021" },
-    "name": "Canon EOS R10",
-    "slug": "canon-eos-r10",
-    "description": "Mirrorless camera for creators.",
-    "summary": "Canon camera",
-    "price": { "$numberDecimal": "900.00" },
-    "brandId": { "$oid": "665bb0000000000000000020" },
-    "categoryId": { "$oid": "665cc0000000000000000005" },
-    "imageUrls": [ "/images/products/canon-r10/1.webp" ]
-  },
-  {
-    "_id": { "$oid": "665aa0000000000000000022" },
-    "name": "Sony A7 IV",
-    "slug": "sony-a7-iv",
-    "description": "Full frame professional camera.",
-    "summary": "Sony camera",
-    "price": { "$numberDecimal": "2500.00" },
-    "brandId": { "$oid": "665bb0000000000000000021" },
-    "categoryId": { "$oid": "665cc0000000000000000005" },
-    "imageUrls": [ "/images/products/sony-a7iv/1.webp" ]
-  },
-  {
-    "_id": { "$oid": "665aa0000000000000000023" },
-    "name": "GoPro Hero 12",
-    "slug": "gopro-hero-12",
-    "description": "Action camera for sports.",
-    "summary": "GoPro camera",
-    "price": { "$numberDecimal": "499.00" },
-    "brandId": { "$oid": "665bb0000000000000000022" },
-    "categoryId": { "$oid": "665cc0000000000000000005" },
-    "imageUrls": [ "/images/products/gopro-hero12/1.webp" ]
-  },
-  {
     "_id": { "$oid": "665aa0000000000000000024" },
     "name": "DJI Mini 4 Pro",
     "slug": "dji-mini-4-pro",
@@ -258,20 +225,9 @@
     "price": { "$numberDecimal": "2000.00" },
     "brandId": { "$oid": "665bb0000000000000000024" },
     "categoryId": { "$oid": "665cc0000000000000000005" },
-    "imageUrls": [ "/images/products/nikon-z6ii/1.webp" ]
+    "imageUrls": [ "/images/products/nikon-z6-ii/1.webp" ]
   },
 
-  {
-    "_id": { "$oid": "665aa0000000000000000026" },
-    "name": "T-Shirt Basic White",
-    "slug": "t-shirt-basic-white",
-    "description": "Cotton basic white t-shirt.",
-    "summary": "Basic T-shirt",
-    "price": { "$numberDecimal": "15.00" },
-    "brandId": { "$oid": "665bb0000000000000000025" },
-    "categoryId": { "$oid": "665cc0000000000000000006" },
-    "imageUrls": [ "/images/products/tshirt-white/1.webp" ]
-  },
   {
     "_id": { "$oid": "665aa0000000000000000027" },
     "name": "Levi's Jeans 501",
@@ -281,7 +237,7 @@
     "price": { "$numberDecimal": "60.00" },
     "brandId": { "$oid": "665bb0000000000000000026" },
     "categoryId": { "$oid": "665cc0000000000000000006" },
-    "imageUrls": [ "/images/products/levis-501/1.webp" ]
+    "imageUrls": [ "/images/products/levis-501-jeans/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000028" },
@@ -295,17 +251,6 @@
     "imageUrls": [ "/images/products/zara-jacket/1.webp" ]
   },
   {
-    "_id": { "$oid": "665aa0000000000000000029" },
-    "name": "H&M Hoodie",
-    "slug": "hm-hoodie",
-    "description": "Comfortable hoodie.",
-    "summary": "H&M hoodie",
-    "price": { "$numberDecimal": "45.00" },
-    "brandId": { "$oid": "665bb0000000000000000028" },
-    "categoryId": { "$oid": "665cc0000000000000000006" },
-    "imageUrls": [ "/images/products/hm-hoodie/1.webp" ]
-  },
-  {
     "_id": { "$oid": "665aa0000000000000000030" },
     "name": "Nike Tracksuit",
     "slug": "nike-tracksuit",
@@ -314,7 +259,10 @@
     "price": { "$numberDecimal": "90.00" },
     "brandId": { "$oid": "665bb0000000000000000001" },
     "categoryId": { "$oid": "665cc0000000000000000006" },
-    "imageUrls": [ "/images/products/nike-tracksuit/1.webp" ]
+    "imageUrls": [
+      "/images/products/nike-tracksuit/1.webp",
+      "/images/products/nike-tracksuit/2.webp"
+    ]
   },
 
   {
@@ -326,7 +274,7 @@
     "price": { "$numberDecimal": "120.00" },
     "brandId": { "$oid": "665bb0000000000000000029" },
     "categoryId": { "$oid": "665cc0000000000000000007" },
-    "imageUrls": [ "/images/products/coffee-maker/1.webp" ]
+    "imageUrls": [ "/images/products/coffee-maker-philips/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000032" },
@@ -348,7 +296,7 @@
     "price": { "$numberDecimal": "399.00" },
     "brandId": { "$oid": "665bb0000000000000000031" },
     "categoryId": { "$oid": "665cc0000000000000000007" },
-    "imageUrls": [ "/images/products/dyson-vacuum/1.webp" ]
+    "imageUrls": [ "/images/products/dyson-vacuum-cleaner/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000034" },
