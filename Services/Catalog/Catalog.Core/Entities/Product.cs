@@ -8,7 +8,8 @@ namespace Catalog.Core.Entities
         public string Name { get; set; } = string.Empty;
         public string Slug { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-
+        public double RatingsAverage { get; set; }
+        public int RatingsQuantity { get; set; }
         public string Summary { get; set; } = string.Empty;
 
         [BsonRepresentation(BsonType.Decimal128)]

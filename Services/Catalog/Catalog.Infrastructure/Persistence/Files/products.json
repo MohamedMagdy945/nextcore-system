@@ -1,417 +1,479 @@
 [
   {
-    "id": "665aa0000000000000000001",
-    "name": "Nike Air Max 270",
-    "slug": "nike-air-max-270",
-    "description": "Comfortable running shoes with air cushioning.",
-    "summary": "Nike running shoes",
-    "price": 120.99,
-    "brandId": "665cc0000000000000000006",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000001",
+    "Name": "Nike Air Max 270",
+    "Slug": "nike-air-max-270",
+    "Description": "Comfortable running shoes with air cushioning.",
+    "Summary": "Nike running shoes",
+    "Price": 120.99,
+    "BrandId": "665cc0000000000000000006",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.5,
+    "RatingsQuantity": 128,
+    "ImageUrls": [
       "/images/products/nike-air-max-270/1.webp",
       "/images/products/nike-air-max-270/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000002",
-    "name": "Adidas Ultraboost 22",
-    "slug": "adidas-ultraboost-22",
-    "description": "High performance running shoes with boost technology.",
-    "summary": "Adidas running shoes",
-    "price": 150.00,
-    "brandId": "665cc0000000000000000001",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000002",
+    "Name": "Adidas Ultraboost 22",
+    "Slug": "adidas-ultraboost-22",
+    "Description": "High performance running shoes with boost technology.",
+    "Summary": "Adidas running shoes",
+    "Price": 150.00,
+    "BrandId": "665cc0000000000000000001",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.8,
+    "RatingsQuantity": 340,
+    "ImageUrls": [
       "/images/products/adidas-ultraboost-22/1.webp",
       "/images/products/adidas-ultraboost-22/2.webp",
       "/images/products/adidas-ultraboost-22/3.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000003",
-    "name": "Puma RS-X",
-    "slug": "puma-rs-x",
-    "description": "Street style sneakers with bold design.",
-    "summary": "Puma sneakers",
-    "price": 110.50,
-    "brandId": "665cc0000000000000000005",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000003",
+    "Name": "Puma RS-X",
+    "Slug": "puma-rs-x",
+    "Description": "Street style sneakers with bold design.",
+    "Summary": "Puma sneakers",
+    "Price": 110.50,
+    "BrandId": "665cc0000000000000000005",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.2,
+    "RatingsQuantity": 85,
+    "ImageUrls": [
       "/images/products/puma-rs-x/1.webp",
       "/images/products/puma-rs-x/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000004",
-    "name": "New Balance 574",
-    "slug": "new-balance-574",
-    "description": "Classic everyday comfortable sneakers.",
-    "summary": "NB sneakers",
-    "price": 95.00,
-    "brandId": "665cc0000000000000000008",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000004",
+    "Name": "New Balance 574",
+    "Slug": "new-balance-574",
+    "Description": "Classic everyday comfortable sneakers.",
+    "Summary": "NB sneakers",
+    "Price": 95.00,
+    "BrandId": "665cc0000000000000000008",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.6,
+    "RatingsQuantity": 210,
+    "ImageUrls": [
       "/images/products/new-balance-574/1.webp",
       "/images/products/new-balance-574/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000005",
-    "name": "Reebok Classic Leather",
-    "slug": "reebok-classic-leather",
-    "description": "Retro leather sneakers.",
-    "summary": "Reebok shoes",
-    "price": 85.00,
-    "brandId": "665cc0000000000000000000",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000005",
+    "Name": "Reebok Classic Leather",
+    "Slug": "reebok-classic-leather",
+    "Description": "Retro leather sneakers.",
+    "Summary": "Reebok shoes",
+    "Price": 85.00,
+    "BrandId": "665cc0000000000000000000",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.4,
+    "RatingsQuantity": 92,
+    "ImageUrls": [
       "/images/products/reebok-classic-leather/1.webp",
       "/images/products/reebok-classic-leather/2.webp",
       "/images/products/reebok-classic-leather/3.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000006",
-    "name": "iPhone 15 Pro",
-    "slug": "iphone-15-pro",
-    "description": "Apple flagship smartphone with A17 Pro chip.",
-    "summary": "Apple phone",
-    "price": 1199.00,
-    "brandId": "665cc0000000000000000013",
-    "categoryId": "665cc0000000000000000002",
-    "imageUrls": [
+    "Id": "665aa0000000000000000006",
+    "Name": "iPhone 15 Pro",
+    "Slug": "iphone-15-pro",
+    "Description": "Apple flagship smartphone with A17 Pro chip.",
+    "Summary": "Apple phone",
+    "Price": 1199.00,
+    "BrandId": "665cc0000000000000000013",
+    "CategoryId": "665cc0000000000000000002",
+    "RatingsAverage": 4.9,
+    "RatingsQuantity": 1520,
+    "ImageUrls": [
       "/images/products/iphone-15-pro/1.webp",
       "/images/products/iphone-15-pro/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000007",
-    "name": "Samsung Galaxy S24 Ultra",
-    "slug": "samsung-galaxy-s24-ultra",
-    "description": "Premium Android smartphone with S Pen.",
-    "summary": "Samsung flagship",
-    "price": 1299.00,
-    "brandId": "665cc0000000000000000011",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000007",
+    "Name": "Samsung Galaxy S24 Ultra",
+    "Slug": "samsung-galaxy-s24-ultra",
+    "Description": "Premium Android smartphone with S Pen.",
+    "Summary": "Samsung flagship",
+    "Price": 1299.00,
+    "BrandId": "665cc0000000000000000011",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.8,
+    "RatingsQuantity": 945,
+    "ImageUrls": [
       "/images/products/samsung-galaxy-s24-ultra/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000009",
-    "name": "OnePlus 12",
-    "slug": "oneplus-12",
-    "description": "Fast performance Android phone.",
-    "summary": "OnePlus phone",
-    "price": 899.00,
-    "brandId": "665cc0000000000000000012",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000009",
+    "Name": "OnePlus 12",
+    "Slug": "oneplus-12",
+    "Description": "Fast performance Android phone.",
+    "Summary": "OnePlus phone",
+    "Price": 899.00,
+    "BrandId": "665cc0000000000000000012",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.5,
+    "RatingsQuantity": 112,
+    "ImageUrls": [
       "/images/products/oneplus-12/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000010",
-    "name": "Xiaomi 14",
-    "slug": "xiaomi-14",
-    "description": "High performance budget flagship phone.",
-    "summary": "Xiaomi phone",
-    "price": 699.00,
-    "brandId": "665cc0000000000000000012",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000010",
+    "Name": "Xiaomi 14",
+    "Slug": "xiaomi-14",
+    "Description": "High performance budget flagship phone.",
+    "Summary": "Xiaomi phone",
+    "Price": 699.00,
+    "BrandId": "665cc0000000000000000012",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.3,
+    "RatingsQuantity": 174,
+    "ImageUrls": [
       "/images/products/xiaomi-14/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000011",
-    "name": "MacBook Pro M3",
-    "slug": "macbook-pro-m3",
-    "description": "Apple laptop for professionals.",
-    "summary": "MacBook Pro",
-    "price": 1999.00,
-    "brandId": "665cc0000000000000000013",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000011",
+    "Name": "MacBook Pro M3",
+    "Slug": "macbook-pro-m3",
+    "Description": "Apple laptop for professionals.",
+    "Summary": "MacBook Pro",
+    "Price": 1999.00,
+    "BrandId": "665cc0000000000000000013",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.9,
+    "RatingsQuantity": 612,
+    "ImageUrls": [
       "/images/products/macbook-pro-m3/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000012",
-    "name": "Dell XPS 13",
-    "slug": "dell-xps-13",
-    "description": "Ultra portable Windows laptop.",
-    "summary": "Dell laptop",
-    "price": 1299.00,
-    "brandId": "665cc0000000000000000016",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000012",
+    "Name": "Dell XPS 13",
+    "Slug": "dell-xps-13",
+    "Description": "Ultra portable Windows laptop.",
+    "Summary": "Dell laptop",
+    "Price": 1299.00,
+    "BrandId": "665cc0000000000000000016",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.6,
+    "RatingsQuantity": 245,
+    "ImageUrls": [
       "/images/products/dell-xps-13/1.webp",
       "/images/products/dell-xps-13/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000015",
-    "name": "ASUS ROG Zephyrus",
-    "slug": "asus-rog-zephyrus",
-    "description": "Gaming laptop high performance GPU.",
-    "summary": "Gaming laptop",
-    "price": 1800.00,
-    "brandId": "665cc0000000000000000015",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000015",
+    "Name": "ASUS ROG Zephyrus",
+    "Slug": "asus-rog-zephyrus",
+    "Description": "Gaming laptop high performance GPU.",
+    "Summary": "Gaming laptop",
+    "Price": 1800.00,
+    "BrandId": "665cc0000000000000000015",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.7,
+    "RatingsQuantity": 138,
+    "ImageUrls": [
       "/images/products/asus-rog-zephyrus/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000017",
-    "name": "AirPods Pro 2",
-    "slug": "airpods-pro-2",
-    "description": "Apple wireless earbuds.",
-    "summary": "AirPods Pro",
-    "price": 249.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000017",
+    "Name": "AirPods Pro 2",
+    "Slug": "airpods-pro-2",
+    "Description": "Apple wireless earbuds.",
+    "Summary": "AirPods Pro",
+    "Price": 249.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.8,
+    "RatingsQuantity": 2405,
+    "ImageUrls": [
       "/images/products/airpods-pro-2/1.webp",
       "/images/products/airpods-pro-2/2.webp",
       "/images/products/airpods-pro-2/3.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000018",
-    "name": "Bose QuietComfort",
-    "slug": "bose-quietcomfort",
-    "description": "Premium noise cancelling headphones.",
-    "summary": "Bose headphones",
-    "price": 329.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000018",
+    "Name": "Bose QuietComfort",
+    "Slug": "bose-quietcomfort",
+    "Description": "Premium noise cancelling headphones.",
+    "Summary": "Bose headphones",
+    "Price": 329.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.7,
+    "RatingsQuantity": 812,
+    "ImageUrls": [
       "/images/products/bose-quietcomfort/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000019",
-    "name": "Logitech G Pro X",
-    "slug": "logitech-g-pro-x",
-    "description": "Gaming headset professional.",
-    "summary": "Gaming headset",
-    "price": 129.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000019",
+    "Name": "Logitech G Pro X",
+    "Slug": "logitech-g-pro-x",
+    "Description": "Gaming headset professional.",
+    "Summary": "Gaming headset",
+    "Price": 129.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.4,
+    "RatingsQuantity": 423,
+    "ImageUrls": [
       "/images/products/logitech-g-pro-x/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000020",
-    "name": "SteelSeries Arctis 7",
-    "slug": "steelseries-arctis-7",
-    "description": "Wireless gaming headset.",
-    "summary": "SteelSeries headset",
-    "price": 149.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000020",
+    "Name": "SteelSeries Arctis 7",
+    "Slug": "steelseries-arctis-7",
+    "Description": "Wireless gaming headset.",
+    "Summary": "SteelSeries headset",
+    "Price": 149.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.5,
+    "RatingsQuantity": 296,
+    "ImageUrls": [
       "/images/products/steelseries-arctis-7/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000024",
-    "name": "DJI Mini 4 Pro",
-    "slug": "dji-mini-4-pro",
-    "description": "Compact drone with 4K camera.",
-    "summary": "DJI drone",
-    "price": 999.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
-      "/images/products/dji-mini-4/1.webp"
+    "Id": "665aa0000000000000000024",
+    "Name": "DJI Mini 4 Pro",
+    "Slug": "dji-mini-4-pro",
+    "Description": "Compact drone with 4K camera.",
+    "Summary": "DJI drone",
+    "Price": 999.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.9,
+    "RatingsQuantity": 165,
+    "ImageUrls": [
+      "/images/products/dji-mini-4-pro/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000025",
-    "name": "Nikon Z6 II",
-    "slug": "nikon-z6-ii",
-    "description": "Professional mirrorless camera.",
-    "summary": "Nikon camera",
-    "price": 2000.00,
-    "brandId": "665cc0000000000000000000",
-    "categoryId": "665bb0000000000000000001",
-    "imageUrls": [
+    "Id": "665aa0000000000000000025",
+    "Name": "Nikon Z6 II",
+    "Slug": "nikon-z6-ii",
+    "Description": "Professional mirrorless camera.",
+    "Summary": "Nikon camera",
+    "Price": 2000.00,
+    "BrandId": "665cc0000000000000000000",
+    "CategoryId": "665bb0000000000000000001",
+    "RatingsAverage": 4.6,
+    "RatingsQuantity": 78,
+    "ImageUrls": [
       "/images/products/nikon-z6-ii/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000027",
-    "name": "Levi's Jeans 501",
-    "slug": "levis-501-jeans",
-    "description": "Classic denim jeans.",
-    "summary": "Levi's jeans",
-    "price": 60.00,
-    "brandId": "665cc0000000000000000014",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000027",
+    "Name": "Levi's Jeans 501",
+    "Slug": "levis-501-jeans",
+    "Description": "Classic denim jeans.",
+    "Summary": "Levi's jeans",
+    "Price": 60.00,
+    "BrandId": "665cc0000000000000000014",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.1,
+    "RatingsQuantity": 532,
+    "ImageUrls": [
       "/images/products/levis-501-jeans/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000028",
-    "name": "Zara Jacket",
-    "slug": "zara-jacket",
-    "description": "Modern fashion jacket.",
-    "summary": "Zara jacket",
-    "price": 80.00,
-    "brandId": "665cc0000000000000000014",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000028",
+    "Name": "Zara Jacket",
+    "Slug": "zara-jacket",
+    "Description": "Modern fashion jacket.",
+    "Summary": "Zara jacket",
+    "Price": 80.00,
+    "BrandId": "665cc0000000000000000014",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.0,
+    "RatingsQuantity": 143,
+    "ImageUrls": [
       "/images/products/zara-jacket/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000030",
-    "name": "Nike Tracksuit",
-    "slug": "nike-tracksuit",
-    "description": "Sports tracksuit set.",
-    "summary": "Nike tracksuit",
-    "price": 90.00,
-    "brandId": "665cc0000000000000000006",
-    "categoryId": "665bb0000000000000000003",
-    "imageUrls": [
+    "Id": "665aa0000000000000000030",
+    "Name": "Nike Tracksuit",
+    "Slug": "nike-tracksuit",
+    "Description": "Sports tracksuit set.",
+    "Summary": "Nike tracksuit",
+    "Price": 90.00,
+    "BrandId": "665cc0000000000000000006",
+    "CategoryId": "665bb0000000000000000003",
+    "RatingsAverage": 4.5,
+    "RatingsQuantity": 215,
+    "ImageUrls": [
       "/images/products/nike-tracksuit/1.webp",
       "/images/products/nike-tracksuit/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000031",
-    "name": "Coffee Maker Philips",
-    "slug": "coffee-maker-philips",
-    "description": "Automatic coffee machine.",
-    "summary": "Coffee machine",
-    "price": 120.00,
-    "brandId": "665cc0000000000000000000",
-    "categoryId": "665bb0000000000000000011",
-    "imageUrls": [
+    "Id": "665aa0000000000000000031",
+    "Name": "Coffee Maker Philips",
+    "Slug": "coffee-maker-philips",
+    "Description": "Automatic coffee machine.",
+    "Summary": "Coffee machine",
+    "Price": 120.00,
+    "BrandId": "665cc0000000000000000000",
+    "CategoryId": "665bb0000000000000000011",
+    "RatingsAverage": 4.3,
+    "RatingsQuantity": 86,
+    "ImageUrls": [
       "/images/products/coffee-maker-philips/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000032",
-    "name": "Air Fryer Ninja",
-    "slug": "air-fryer-ninja",
-    "description": "Healthy cooking air fryer.",
-    "summary": "Air fryer",
-    "price": 150.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000011",
-    "imageUrls": [
+    "Id": "665aa0000000000000000032",
+    "Name": "Air Fryer Ninja",
+    "Slug": "air-fryer-ninja",
+    "Description": "Healthy cooking air fryer.",
+    "Summary": "Air fryer",
+    "Price": 150.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000011",
+    "RatingsAverage": 4.7,
+    "RatingsQuantity": 412,
+    "ImageUrls": [
       "/images/products/air-fryer/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000033",
-    "name": "Vacuum Cleaner Dyson",
-    "slug": "dyson-vacuum-cleaner",
-    "description": "Powerful cordless vacuum.",
-    "summary": "Dyson vacuum",
-    "price": 399.00,
-    "brandId": "665cc0000000000000000000",
-    "categoryId": "665bb0000000000000000011",
-    "imageUrls": [
+    "Id": "665aa0000000000000000033",
+    "Name": "Vacuum Cleaner Dyson",
+    "Slug": "dyson-vacuum-cleaner",
+    "Description": "Powerful cordless vacuum.",
+    "Summary": "Dyson vacuum",
+    "Price": 399.00,
+    "BrandId": "665cc0000000000000000000",
+    "CategoryId": "665bb0000000000000000011",
+    "RatingsAverage": 4.8,
+    "RatingsQuantity": 318,
+    "ImageUrls": [
       "/images/products/dyson-vacuum-cleaner/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000034",
-    "name": "Blender Braun",
-    "slug": "braun-blender",
-    "description": "Kitchen blender.",
-    "summary": "Blender",
-    "price": 70.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000011",
-    "imageUrls": [
+    "Id": "665aa0000000000000000034",
+    "Name": "Blender Braun",
+    "Slug": "braun-blender",
+    "Description": "Kitchen blender.",
+    "Summary": "Blender",
+    "Price": 70.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000011",
+    "RatingsAverage": 4.2,
+    "RatingsQuantity": 64,
+    "ImageUrls": [
       "/images/products/braun-blender/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000035",
-    "name": "Microwave Samsung",
-    "slug": "samsung-microwave",
-    "description": "Smart microwave oven.",
-    "summary": "Microwave",
-    "price": 200.00,
-    "brandId": "665cc0000000000000000011",
-    "categoryId": "665bb0000000000000000011",
-    "imageUrls": [
+    "Id": "665aa0000000000000000035",
+    "Name": "Microwave Samsung",
+    "Slug": "samsung-microwave",
+    "Description": "Smart microwave oven.",
+    "Summary": "Microwave",
+    "Price": 200.00,
+    "BrandId": "665cc0000000000000000011",
+    "CategoryId": "665bb0000000000000000011",
+    "RatingsAverage": 4.5,
+    "RatingsQuantity": 156,
+    "ImageUrls": [
       "/images/products/samsung-microwave/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000036",
-    "name": "Shampoo L'Oréal",
-    "slug": "loreal-shampoo",
-    "description": "Hair care shampoo.",
-    "summary": "Shampoo",
-    "price": 10.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000009",
-    "imageUrls": [
+    "Id": "665aa0000000000000000036",
+    "Name": "Shampoo L'Oréal",
+    "Slug": "loreal-shampoo",
+    "Description": "Hair care shampoo.",
+    "Summary": "Shampoo",
+    "Price": 10.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000009",
+    "RatingsAverage": 4.4,
+    "RatingsQuantity": 1245,
+    "ImageUrls": [
       "/images/products/loreal-shampoo/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000037",
-    "name": "Perfume Dior Sauvage",
-    "slug": "dior-sauvage",
-    "description": "Luxury men's perfume.",
-    "summary": "Perfume",
-    "price": 120.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000009",
-    "imageUrls": [
+    "Id": "665aa0000000000000000037",
+    "Name": "Perfume Dior Sauvage",
+    "Slug": "dior-sauvage",
+    "Description": "Luxury men's perfume.",
+    "Summary": "Perfume",
+    "Price": 120.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000009",
+    "RatingsAverage": 4.9,
+    "RatingsQuantity": 3140,
+    "ImageUrls": [
       "/images/products/dior-sauvage/1.webp",
       "/images/products/dior-sauvage/2.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000038",
-    "name": "Face Cream Nivea",
-    "slug": "nivea-face-cream",
-    "description": "Skin moisturizing cream.",
-    "summary": "Face cream",
-    "price": 8.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000009",
-    "imageUrls": [
+    "Id": "665aa0000000000000000038",
+    "Name": "Face Cream Nivea",
+    "Slug": "nivea-face-cream",
+    "Description": "Skin moisturizing cream.",
+    "Summary": "Face cream",
+    "Price": 8.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000009",
+    "RatingsAverage": 4.3,
+    "RatingsQuantity": 680,
+    "ImageUrls": [
       "/images/products/nivea-cream/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000039",
-    "name": "Lipstick Maybelline",
-    "slug": "maybelline-lipstick",
-    "description": "Matte lipstick.",
-    "summary": "Lipstick",
-    "price": 12.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000009",
-    "imageUrls": [
+    "Id": "665aa0000000000000000039",
+    "Name": "Lipstick Maybelline",
+    "Slug": "maybelline-lipstick",
+    "Description": "Matte lipstick.",
+    "Summary": "Lipstick",
+    "Price": 12.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000009",
+    "RatingsAverage": 4.6,
+    "RatingsQuantity": 412,
+    "ImageUrls": [
       "/images/products/maybelline-lipstick/1.webp"
     ]
   },
   {
-    "id": "665aa0000000000000000040",
-    "name": "Hand Cream Vaseline",
-    "slug": "vaseline-hand-cream",
-    "description": "Skin hydration hand cream.",
-    "summary": "Hand cream",
-    "price": 6.00,
-    "brandId": "665bb0000000000000000000",
-    "categoryId": "665bb0000000000000000009",
-    "imageUrls": [
+    "Id": "665aa0000000000000000040",
+    "Name": "Hand Cream Vaseline",
+    "Slug": "vaseline-hand-cream",
+    "Description": "Skin hydration hand cream.",
+    "Summary": "Hand cream",
+    "Price": 6.00,
+    "BrandId": "665bb0000000000000000000",
+    "CategoryId": "665bb0000000000000000009",
+    "RatingsAverage": 4.5,
+    "RatingsQuantity": 289,
+    "ImageUrls": [
       "/images/products/vaseline-hand-cream/1.webp"
     ]
   }

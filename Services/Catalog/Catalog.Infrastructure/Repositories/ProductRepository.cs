@@ -149,7 +149,7 @@ namespace Catalog.Infrastructure.Repositories
             {
                 "pricedesc" => _sortBuilder.Descending(p => p.Price),
                 "priceasc" => _sortBuilder.Ascending(p => p.Price),
-                _ => _sortBuilder.Ascending(p => p.Name)
+                _ => _sortBuilder.Ascending(p => p.Id)
             };
 
             var skip = productParams.PageSize * (productParams.PageIndex - 1);

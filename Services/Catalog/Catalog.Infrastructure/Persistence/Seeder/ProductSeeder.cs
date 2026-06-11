@@ -21,12 +21,9 @@ namespace Catalog.Infrastructure.Persistence.Seeder
             }
             var productJsonData = await File.ReadAllTextAsync(filePath);
 
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
 
-            var products = JsonSerializer.Deserialize<List<Product>>(productJsonData, options);
+
+            var products = JsonSerializer.Deserialize<List<Product>>(productJsonData);
 
             if (products?.Any() is true)
             {

@@ -2,56 +2,56 @@
   {
     "Id": "665bb0000000000000000001",
     "Name": "Electronics",
-    "ImageUrl": "/images/categories/electronics.webp"
+    "ImageUrl": "/images/categories/electronics.jpg"
   },
   {
     "Id": "665bb0000000000000000002",
     "Name": "Music",
-    "ImageUrl": "/images/categories/music.webp"
+    "ImageUrl": "/images/categories/music.jpg"
   },
   {
     "Id": "665bb0000000000000000003",
     "Name": "Fashion",
-    "ImageUrl": "/images/categories/fashion.webp"
+    "ImageUrl": "/images/categories/fashion.jpg"
   },
   {
     "Id": "665bb0000000000000000004",
     "Name": "SuperMarket",
-    "ImageUrl": "/images/categories/supermarket.webp"
+    "ImageUrl": "/images/categories/supermarket.jpg"
   },
   {
     "Id": "665bb0000000000000000005",
     "Name": "Baby & Toys",
-    "ImageUrl": "/images/categories/baby-toys.webp"
+    "ImageUrl": "/images/categories/baby-toys.jpg"
   },
   {
     "Id": "665bb0000000000000000006",
     "Name": "Shoes",
-    "ImageUrl": "/images/categories/shoes.webp"
+    "ImageUrl": "/images/categories/shoes.jpg"
   },
   {
     "Id": "665bb0000000000000000007",
     "Name": "Football",
-    "ImageUrl": "/images/categories/football.webp"
+    "ImageUrl": "/images/categories/football.jpg"
   },
   {
     "Id": "665bb0000000000000000008",
     "Name": "Mobiles",
-    "ImageUrl": "/images/categories/mobiles.webp"
+    "ImageUrl": "/images/categories/mobiles.jpg"
   },
   {
     "Id": "665bb0000000000000000009",
     "Name": "Beauty & Personal Care",
-    "ImageUrl": "/images/categories/beauty.webp"
+    "ImageUrl": "/images/categories/beauty.jpg"
   },
   {
     "Id": "665bb0000000000000000010",
     "Name": "Health & Fitness",
-    "ImageUrl": "/images/categories/health-fitness.webp"
+    "ImageUrl": "/images/categories/health-fitness.jpg"
   },
   {
     "Id": "665bb0000000000000000011",
     "Name": "Home & Living",
-    "ImageUrl": "/images/categories/home.webp"
+    "ImageUrl": "/images/categories/home.jpg"
   }
 ]

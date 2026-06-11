@@ -21,7 +21,9 @@ namespace Catalog.Application.Features.Queries.GetAllProducts
         public async Task<Pagination<ProductResponseDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var products = await _productRepository.GetAllAsync(request.ProductParams);
+
             var productsResponse = products.Adapt<Pagination<ProductResponseDto>>();
+
             return productsResponse;
         }
     }
