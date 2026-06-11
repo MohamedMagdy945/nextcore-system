@@ -94,19 +94,8 @@
     "summary": "Samsung flagship",
     "price": { "$numberDecimal": "1299.00" },
     "brandId": { "$oid": "665bb0000000000000000007" },
-    "categoryId": { "$oid": "665cc0000000000000000002" },
-    "imageUrls": [ "/images/products/galaxy-s24-ultra/1.webp" ]
-  },
-  {
-    "_id": { "$oid": "665aa0000000000000000008" },
-    "name": "Google Pixel 8",
-    "slug": "google-pixel-8",
-    "description": "AI-powered camera smartphone.",
-    "summary": "Pixel phone",
-    "price": { "$numberDecimal": "799.00" },
-    "brandId": { "$oid": "665bb0000000000000000008" },
-    "categoryId": { "$oid": "665cc0000000000000000002" },
-    "imageUrls": [ "/images/products/pixel-8/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [ "/images/products/samsung-galaxy-s24-ultra/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000009" },
@@ -116,7 +105,7 @@
     "summary": "OnePlus phone",
     "price": { "$numberDecimal": "899.00" },
     "brandId": { "$oid": "665bb0000000000000000009" },
-    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/oneplus-12/1.webp" ]
   },
   {
@@ -127,7 +116,7 @@
     "summary": "Xiaomi phone",
     "price": { "$numberDecimal": "699.00" },
     "brandId": { "$oid": "665bb0000000000000000010" },
-    "categoryId": { "$oid": "665cc0000000000000000002" },
+    "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/xiaomi-14/1.webp" ]
   },
 
@@ -139,7 +128,7 @@
     "summary": "MacBook Pro",
     "price": { "$numberDecimal": "1999.00" },
     "brandId": { "$oid": "665bb0000000000000000006" },
-    "categoryId": { "$oid": "665cc0000000000000000003" },
+    "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/macbook-pro-m3/1.webp" ]
   },
   {
@@ -150,30 +139,11 @@
     "summary": "Dell laptop",
     "price": { "$numberDecimal": "1299.00" },
     "brandId": { "$oid": "665bb0000000000000000011" },
-    "categoryId": { "$oid": "665cc0000000000000000003" },
-    "imageUrls": [ "/images/products/dell-xps-13/1.webp" ]
-  },
-  {
-    "_id": { "$oid": "665aa0000000000000000013" },
-    "name": "HP Spectre x360",
-    "slug": "hp-spectre-x360",
-    "description": "Convertible touchscreen laptop.",
-    "summary": "HP laptop",
-    "price": { "$numberDecimal": "1199.00" },
-    "brandId": { "$oid": "665bb0000000000000000012" },
-    "categoryId": { "$oid": "665cc0000000000000000003" },
-    "imageUrls": [ "/images/products/hp-spectre-x360/1.webp" ]
-  },
-  {
-    "_id": { "$oid": "665aa0000000000000000014" },
-    "name": "Lenovo ThinkPad X1",
-    "slug": "lenovo-thinkpad-x1",
-    "description": "Business laptop with strong durability.",
-    "summary": "ThinkPad",
-    "price": { "$numberDecimal": "1400.00" },
-    "brandId": { "$oid": "665bb0000000000000000013" },
-    "categoryId": { "$oid": "665cc0000000000000000003" },
-    "imageUrls": [ "/images/products/thinkpad-x1/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [
+      "/images/products/dell-xps-13/1.webp",
+      "/images/products/dell-xps-13/2.webp"
+    ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000015" },
@@ -183,20 +153,8 @@
     "summary": "Gaming laptop",
     "price": { "$numberDecimal": "1800.00" },
     "brandId": { "$oid": "665bb0000000000000000014" },
-    "categoryId": { "$oid": "665cc0000000000000000003" },
-    "imageUrls": [ "/images/products/rog-zephyrus/1.webp" ]
-  },
-
-  {
-    "_id": { "$oid": "665aa0000000000000000016" },
-    "name": "Sony WH-1000XM5",
-    "slug": "sony-wh-1000xm5",
-    "description": "Noise cancelling headphones.",
-    "summary": "Sony headphones",
-    "price": { "$numberDecimal": "399.00" },
-    "brandId": { "$oid": "665bb0000000000000000015" },
-    "categoryId": { "$oid": "665cc0000000000000000004" },
-    "imageUrls": [ "/images/products/sony-xm5/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [ "/images/products/asus-rog-zephyrus/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000017" },
@@ -206,8 +164,12 @@
     "summary": "AirPods Pro",
     "price": { "$numberDecimal": "249.00" },
     "brandId": { "$oid": "665bb0000000000000000016" },
-    "categoryId": { "$oid": "665cc0000000000000000004" },
-    "imageUrls": [ "/images/products/airpods-pro-2/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [
+      "/images/products/airpods-pro-2/1.webp",
+      "/images/products/airpods-pro-2/2.webp",
+      "/images/products/airpods-pro-2/3.webp"
+    ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000018" },
@@ -217,8 +179,8 @@
     "summary": "Bose headphones",
     "price": { "$numberDecimal": "329.00" },
     "brandId": { "$oid": "665bb0000000000000000017" },
-    "categoryId": { "$oid": "665cc0000000000000000004" },
-    "imageUrls": [ "/images/products/bose-qc/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [ "/images/products/bose-quietcomfort/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000019" },
@@ -228,8 +190,8 @@
     "summary": "Gaming headset",
     "price": { "$numberDecimal": "129.00" },
     "brandId": { "$oid": "665bb0000000000000000018" },
-    "categoryId": { "$oid": "665cc0000000000000000004" },
-    "imageUrls": [ "/images/products/logitech-gpro/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [ "/images/products/logitech-g-pro-x/1.webp" ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000020" },
@@ -239,8 +201,8 @@
     "summary": "SteelSeries headset",
     "price": { "$numberDecimal": "149.00" },
     "brandId": { "$oid": "665bb0000000000000000019" },
-    "categoryId": { "$oid": "665cc0000000000000000004" },
-    "imageUrls": [ "/images/products/arctis-7/1.webp" ]
+    "categoryId": { "$oid": "665bb0000000000000000001" },
+    "imageUrls": [ "/images/products/steelseries-arctis-7/1.webp" ]
   },
 
   {
@@ -431,7 +393,10 @@
     "price": { "$numberDecimal": "120.00" },
     "brandId": { "$oid": "665bb0000000000000000035" },
     "categoryId": { "$oid": "665cc0000000000000000008" },
-    "imageUrls": [ "/images/products/dior-sauvage/1.webp" ]
+    "imageUrls": [
+      "/images/products/dior-sauvage/1.webp",
+      "/images/products/dior-sauvage/2.webp"
+    ]
   },
   {
     "_id": { "$oid": "665aa0000000000000000038" },
