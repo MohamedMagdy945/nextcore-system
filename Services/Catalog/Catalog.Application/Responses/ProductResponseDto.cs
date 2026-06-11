@@ -13,10 +13,8 @@ namespace Catalog.Application.Responses
         public int RatingsAverage { get; set; }
         public int RatingsQuantity { get; set; }
         public decimal Price { get; set; }
-
         public Brand Brand { get; set; } = default!;
         public Category Category { get; set; } = default!;
-
         public List<string> ImageUrls { get; set; } = new();
     }
 }
