@@ -63,7 +63,7 @@
     "description": "Retro leather sneakers.",
     "summary": "Reebok shoes",
     "price": { "$numberDecimal": "85.00" },
-    "brandId": { "$oid": "665cc0000000000000000010" },
+    "brandId": { "$oid": "665cc0000000000000000000" },
     "categoryId": { "$oid": "665bb0000000000000000003" },
     "imageUrls": [
       "/images/products/reebok-classic-leather/1.webp",
@@ -79,7 +79,7 @@
     "description": "Apple flagship smartphone with A17 Pro chip.",
     "summary": "Apple phone",
     "price": { "$numberDecimal": "1199.00" },
-    "brandId": { "$oid": "665bb0000000000000000006" },
+    "brandId": { "$oid": "665cc0000000000000000013" },
     "categoryId": { "$oid": "665cc0000000000000000002" },
     "imageUrls": [
       "/images/products/iphone-15-pro/1.webp",
@@ -93,7 +93,7 @@
     "description": "Premium Android smartphone with S Pen.",
     "summary": "Samsung flagship",
     "price": { "$numberDecimal": "1299.00" },
-    "brandId": { "$oid": "665bb0000000000000000007" },
+    "brandId": { "$oid": "665cc0000000000000000011" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/samsung-galaxy-s24-ultra/1.webp" ]
   },
@@ -104,7 +104,7 @@
     "description": "Fast performance Android phone.",
     "summary": "OnePlus phone",
     "price": { "$numberDecimal": "899.00" },
-    "brandId": { "$oid": "665bb0000000000000000009" },
+    "brandId": { "$oid": "665cc0000000000000000012" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/oneplus-12/1.webp" ]
   },
@@ -115,7 +115,7 @@
     "description": "High performance budget flagship phone.",
     "summary": "Xiaomi phone",
     "price": { "$numberDecimal": "699.00" },
-    "brandId": { "$oid": "665bb0000000000000000010" },
+    "brandId": { "$oid": "665cc0000000000000000012" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/xiaomi-14/1.webp" ]
   },
@@ -127,7 +127,7 @@
     "description": "Apple laptop for professionals.",
     "summary": "MacBook Pro",
     "price": { "$numberDecimal": "1999.00" },
-    "brandId": { "$oid": "665bb0000000000000000006" },
+    "brandId": { "$oid": "665cc0000000000000000013" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/macbook-pro-m3/1.webp" ]
   },
@@ -138,7 +138,7 @@
     "description": "Ultra portable Windows laptop.",
     "summary": "Dell laptop",
     "price": { "$numberDecimal": "1299.00" },
-    "brandId": { "$oid": "665bb0000000000000000011" },
+    "brandId": { "$oid": "665cc0000000000000000016" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [
       "/images/products/dell-xps-13/1.webp",
@@ -152,7 +152,7 @@
     "description": "Gaming laptop high performance GPU.",
     "summary": "Gaming laptop",
     "price": { "$numberDecimal": "1800.00" },
-    "brandId": { "$oid": "665bb0000000000000000014" },
+    "brandId": { "$oid": "665cc0000000000000000015" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/asus-rog-zephyrus/1.webp" ]
   },
@@ -163,7 +163,7 @@
     "description": "Apple wireless earbuds.",
     "summary": "AirPods Pro",
     "price": { "$numberDecimal": "249.00" },
-    "brandId": { "$oid": "665bb0000000000000000016" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [
       "/images/products/airpods-pro-2/1.webp",
@@ -178,7 +178,7 @@
     "description": "Premium noise cancelling headphones.",
     "summary": "Bose headphones",
     "price": { "$numberDecimal": "329.00" },
-    "brandId": { "$oid": "665bb0000000000000000017" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/bose-quietcomfort/1.webp" ]
   },
@@ -189,7 +189,7 @@
     "description": "Gaming headset professional.",
     "summary": "Gaming headset",
     "price": { "$numberDecimal": "129.00" },
-    "brandId": { "$oid": "665bb0000000000000000018" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/logitech-g-pro-x/1.webp" ]
   },
@@ -200,7 +200,7 @@
     "description": "Wireless gaming headset.",
     "summary": "SteelSeries headset",
     "price": { "$numberDecimal": "149.00" },
-    "brandId": { "$oid": "665bb0000000000000000019" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
     "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/steelseries-arctis-7/1.webp" ]
   },
@@ -212,8 +212,8 @@
     "description": "Compact drone with 4K camera.",
     "summary": "DJI drone",
     "price": { "$numberDecimal": "999.00" },
-    "brandId": { "$oid": "665bb0000000000000000023" },
-    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/dji-mini-4/1.webp" ]
   },
   {
@@ -223,8 +223,8 @@
     "description": "Professional mirrorless camera.",
     "summary": "Nikon camera",
     "price": { "$numberDecimal": "2000.00" },
-    "brandId": { "$oid": "665bb0000000000000000024" },
-    "categoryId": { "$oid": "665cc0000000000000000005" },
+    "brandId": { "$oid": "665cc0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000001" },
     "imageUrls": [ "/images/products/nikon-z6-ii/1.webp" ]
   },
 
@@ -235,8 +235,8 @@
     "description": "Classic denim jeans.",
     "summary": "Levi's jeans",
     "price": { "$numberDecimal": "60.00" },
-    "brandId": { "$oid": "665bb0000000000000000026" },
-    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "brandId": { "$oid": "665cc0000000000000000014" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
     "imageUrls": [ "/images/products/levis-501-jeans/1.webp" ]
   },
   {
@@ -246,8 +246,8 @@
     "description": "Modern fashion jacket.",
     "summary": "Zara jacket",
     "price": { "$numberDecimal": "80.00" },
-    "brandId": { "$oid": "665bb0000000000000000027" },
-    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "brandId": { "$oid": "665cc0000000000000000014" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
     "imageUrls": [ "/images/products/zara-jacket/1.webp" ]
   },
   {
@@ -257,8 +257,8 @@
     "description": "Sports tracksuit set.",
     "summary": "Nike tracksuit",
     "price": { "$numberDecimal": "90.00" },
-    "brandId": { "$oid": "665bb0000000000000000001" },
-    "categoryId": { "$oid": "665cc0000000000000000006" },
+    "brandId": { "$oid": "665cc0000000000000000006" },
+    "categoryId": { "$oid": "665bb0000000000000000003" },
     "imageUrls": [
       "/images/products/nike-tracksuit/1.webp",
       "/images/products/nike-tracksuit/2.webp"
@@ -272,8 +272,8 @@
     "description": "Automatic coffee machine.",
     "summary": "Coffee machine",
     "price": { "$numberDecimal": "120.00" },
-    "brandId": { "$oid": "665bb0000000000000000029" },
-    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "brandId": { "$oid": "665cc0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000011" },
     "imageUrls": [ "/images/products/coffee-maker-philips/1.webp" ]
   },
   {
@@ -283,8 +283,8 @@
     "description": "Healthy cooking air fryer.",
     "summary": "Air fryer",
     "price": { "$numberDecimal": "150.00" },
-    "brandId": { "$oid": "665bb0000000000000000030" },
-    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000011" },
     "imageUrls": [ "/images/products/air-fryer/1.webp" ]
   },
   {
@@ -294,8 +294,8 @@
     "description": "Powerful cordless vacuum.",
     "summary": "Dyson vacuum",
     "price": { "$numberDecimal": "399.00" },
-    "brandId": { "$oid": "665bb0000000000000000031" },
-    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "brandId": { "$oid": "665cc0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000011" },
     "imageUrls": [ "/images/products/dyson-vacuum-cleaner/1.webp" ]
   },
   {
@@ -305,8 +305,8 @@
     "description": "Kitchen blender.",
     "summary": "Blender",
     "price": { "$numberDecimal": "70.00" },
-    "brandId": { "$oid": "665bb0000000000000000032" },
-    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000011" },
     "imageUrls": [ "/images/products/braun-blender/1.webp" ]
   },
   {
@@ -316,8 +316,8 @@
     "description": "Smart microwave oven.",
     "summary": "Microwave",
     "price": { "$numberDecimal": "200.00" },
-    "brandId": { "$oid": "665bb0000000000000000033" },
-    "categoryId": { "$oid": "665cc0000000000000000007" },
+    "brandId": { "$oid": "665cc0000000000000000011" },
+    "categoryId": { "$oid": "665bb0000000000000000011" },
     "imageUrls": [ "/images/products/samsung-microwave/1.webp" ]
   },
 
@@ -328,8 +328,8 @@
     "description": "Hair care shampoo.",
     "summary": "Shampoo",
     "price": { "$numberDecimal": "10.00" },
-    "brandId": { "$oid": "665bb0000000000000000034" },
-    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000009" },
     "imageUrls": [ "/images/products/loreal-shampoo/1.webp" ]
   },
   {
@@ -339,8 +339,8 @@
     "description": "Luxury men's perfume.",
     "summary": "Perfume",
     "price": { "$numberDecimal": "120.00" },
-    "brandId": { "$oid": "665bb0000000000000000035" },
-    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000009" },
     "imageUrls": [
       "/images/products/dior-sauvage/1.webp",
       "/images/products/dior-sauvage/2.webp"
@@ -353,8 +353,8 @@
     "description": "Skin moisturizing cream.",
     "summary": "Face cream",
     "price": { "$numberDecimal": "8.00" },
-    "brandId": { "$oid": "665bb0000000000000000036" },
-    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000009" },
     "imageUrls": [ "/images/products/nivea-cream/1.webp" ]
   },
   {
@@ -364,8 +364,8 @@
     "description": "Matte lipstick.",
     "summary": "Lipstick",
     "price": { "$numberDecimal": "12.00" },
-    "brandId": { "$oid": "665bb0000000000000000037" },
-    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000009" },
     "imageUrls": [ "/images/products/maybelline-lipstick/1.webp" ]
   },
   {
@@ -375,8 +375,8 @@
     "description": "Skin hydration hand cream.",
     "summary": "Hand cream",
     "price": { "$numberDecimal": "6.00" },
-    "brandId": { "$oid": "665bb0000000000000000038" },
-    "categoryId": { "$oid": "665cc0000000000000000008" },
+    "brandId": { "$oid": "665bb0000000000000000000" },
+    "categoryId": { "$oid": "665bb0000000000000000009" },
     "imageUrls": [ "/images/products/vaseline-hand-cream/1.webp" ]
   }
 ]
