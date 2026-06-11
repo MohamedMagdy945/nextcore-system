@@ -20,7 +20,13 @@ namespace Catalog.Infrastructure.Persistence.Seeder
                 return;
             }
             var productJsonData = await File.ReadAllTextAsync(filePath);
-            var products = JsonSerializer.Deserialize<List<Product>>(productJsonData);
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+
+            var products = JsonSerializer.Deserialize<List<Product>>(productJsonData, options);
 
             if (products?.Any() is true)
             {
