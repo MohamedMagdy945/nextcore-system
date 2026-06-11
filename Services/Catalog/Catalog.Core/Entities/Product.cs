@@ -22,5 +22,11 @@ namespace Catalog.Core.Entities
         public string CategoryId { get; set; } = string.Empty;
 
         public List<string> ImageUrls { get; set; } = new List<string>();
+        [BsonIgnoreIfNull]
+        public Brand? Brand { get; set; }
+
+        [BsonIgnoreIfNull]
+        public Category? Category { get; set; }
+
     }
 }
