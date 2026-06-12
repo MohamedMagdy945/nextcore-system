@@ -32,7 +32,7 @@ namespace Basket.API.Controllers.V2
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Checkout(BasketCheckoutV2 basketCheckout)
         {
-            var query = new GetBasketByUserNameQuery(basketCheckout.UserName);
+            var query = new GetBasketByEmailQuery(basketCheckout.Email);
             var basket = await Mediator.Send(query);
 
             if (basket == null)
