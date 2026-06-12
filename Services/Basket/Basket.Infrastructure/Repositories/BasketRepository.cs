@@ -14,9 +14,9 @@ namespace Basket.Infrastructure.Repositories
             _redisCache = redisCache;
         }
 
-        public async Task<ShoppingCart?> GetCartAsync(string userName)
+        public async Task<ShoppingCart?> GetCartAsync(string email)
         {
-            var cart = await _redisCache.GetStringAsync(userName);
+            var cart = await _redisCache.GetStringAsync(email);
 
             return string.IsNullOrEmpty(cart)
                 ? null
@@ -28,16 +28,16 @@ namespace Basket.Infrastructure.Repositories
             var serializedCart = JsonConvert.SerializeObject(cart);
 
             await _redisCache.SetStringAsync(
-                cart.UserName,
+                cart.Email,
                 serializedCart
             );
 
             return cart;
         }
 
-        public async Task DeleteCartAsync(string userName)
+        public async Task DeleteCartAsync(string email)
         {
-            await _redisCache.RemoveAsync(userName);
+            await _redisCache.RemoveAsync(email);
         }
     }
 }

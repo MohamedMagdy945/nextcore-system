@@ -8,7 +8,7 @@
     "Price": 120.99,
     "BrandId": "665cc0000000000000000006",
     "CategoryId": "665bb0000000000000000003",
-    "RatingsAverage": 4.5,
+    "RatingsAverage": 3.5,
     "RatingsQuantity": 128,
     "ImageUrls": [
       "/images/products/nike-air-max-270/1.webp",
@@ -24,7 +24,7 @@
     "Price": 150.00,
     "BrandId": "665cc0000000000000000001",
     "CategoryId": "665bb0000000000000000003",
-    "RatingsAverage": 4.8,
+    "RatingsAverage": 5,
     "RatingsQuantity": 340,
     "ImageUrls": [
       "/images/products/adidas-ultraboost-22/1.webp",
@@ -41,7 +41,7 @@
     "Price": 110.50,
     "BrandId": "665cc0000000000000000005",
     "CategoryId": "665bb0000000000000000003",
-    "RatingsAverage": 4.2,
+    "RatingsAverage": 3.5,
     "RatingsQuantity": 85,
     "ImageUrls": [
       "/images/products/puma-rs-x/1.webp",
@@ -57,7 +57,7 @@
     "Price": 95.00,
     "BrandId": "665cc0000000000000000008",
     "CategoryId": "665bb0000000000000000003",
-    "RatingsAverage": 4.6,
+    "RatingsAverage": 2.9,
     "RatingsQuantity": 210,
     "ImageUrls": [
       "/images/products/new-balance-574/1.webp",
@@ -90,7 +90,7 @@
     "Price": 1199.00,
     "BrandId": "665cc0000000000000000013",
     "CategoryId": "665cc0000000000000000002",
-    "RatingsAverage": 4.9,
+    "RatingsAverage": 3.9,
     "RatingsQuantity": 1520,
     "ImageUrls": [
       "/images/products/iphone-15-pro/1.webp",
@@ -106,7 +106,7 @@
     "Price": 1299.00,
     "BrandId": "665cc0000000000000000011",
     "CategoryId": "665bb0000000000000000001",
-    "RatingsAverage": 4.8,
+    "RatingsAverage": 3.8,
     "RatingsQuantity": 945,
     "ImageUrls": [
       "/images/products/samsung-galaxy-s24-ultra/1.webp"
@@ -121,7 +121,7 @@
     "Price": 899.00,
     "BrandId": "665cc0000000000000000012",
     "CategoryId": "665bb0000000000000000001",
-    "RatingsAverage": 4.5,
+    "RatingsAverage": 3.5,
     "RatingsQuantity": 112,
     "ImageUrls": [
       "/images/products/oneplus-12/1.webp"
@@ -166,7 +166,7 @@
     "Price": 1299.00,
     "BrandId": "665cc0000000000000000016",
     "CategoryId": "665bb0000000000000000001",
-    "RatingsAverage": 4.6,
+    "RatingsAverage": 2.6,
     "RatingsQuantity": 245,
     "ImageUrls": [
       "/images/products/dell-xps-13/1.webp",
@@ -259,7 +259,7 @@
     "Price": 999.00,
     "BrandId": "665bb0000000000000000000",
     "CategoryId": "665bb0000000000000000001",
-    "RatingsAverage": 4.9,
+    "RatingsAverage": 5,
     "RatingsQuantity": 165,
     "ImageUrls": [
       "/images/products/dji-mini-4-pro/1.webp"
@@ -289,7 +289,7 @@
     "Price": 60.00,
     "BrandId": "665cc0000000000000000014",
     "CategoryId": "665bb0000000000000000003",
-    "RatingsAverage": 4.1,
+    "RatingsAverage": 3.1,
     "RatingsQuantity": 532,
     "ImageUrls": [
       "/images/products/levis-501-jeans/1.webp"
@@ -335,7 +335,7 @@
     "Price": 120.00,
     "BrandId": "665cc0000000000000000000",
     "CategoryId": "665bb0000000000000000011",
-    "RatingsAverage": 4.3,
+    "RatingsAverage":4.2,
     "RatingsQuantity": 86,
     "ImageUrls": [
       "/images/products/coffee-maker-philips/1.webp"
@@ -380,7 +380,7 @@
     "Price": 70.00,
     "BrandId": "665bb0000000000000000000",
     "CategoryId": "665bb0000000000000000011",
-    "RatingsAverage": 4.2,
+    "RatingsAverage": 3.2,
     "RatingsQuantity": 64,
     "ImageUrls": [
       "/images/products/braun-blender/1.webp"
@@ -425,7 +425,7 @@
     "Price": 120.00,
     "BrandId": "665bb0000000000000000000",
     "CategoryId": "665bb0000000000000000009",
-    "RatingsAverage": 4.9,
+    "RatingsAverage": 3.9,
     "RatingsQuantity": 3140,
     "ImageUrls": [
       "/images/products/dior-sauvage/1.webp",

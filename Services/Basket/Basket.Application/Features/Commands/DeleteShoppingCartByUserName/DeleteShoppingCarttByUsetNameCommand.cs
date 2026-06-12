@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Basket.Application.Features.Commands.DeleteShoppingCartByUserName
 {
-    public record class DeleteShoppingCartByUserNameCommand(string UserName)
+    public record class DeleteShoppingCartByUserNameCommand(string Email)
         : IRequest<Unit>;
     public class DeleteShoppingCartByUserNameHandler
         : IRequestHandler<DeleteShoppingCartByUserNameCommand, Unit>
@@ -17,7 +17,7 @@ namespace Basket.Application.Features.Commands.DeleteShoppingCartByUserName
 
         public async Task<Unit> Handle(DeleteShoppingCartByUserNameCommand request, CancellationToken cancellationToken)
         {
-            await _basketRepository.DeleteCartAsync(request.UserName);
+            await _basketRepository.DeleteCartAsync(request.Email);
             return Unit.Value;
         }
     }

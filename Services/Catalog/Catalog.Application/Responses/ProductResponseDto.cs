@@ -10,7 +10,7 @@ namespace Catalog.Application.Responses
         public string Description { get; set; } = string.Empty;
         public string Slug { get; set; } = string.Empty;
         public string Summary { get; set; } = string.Empty;
-        public int RatingsAverage { get; set; }
+        public double RatingsAverage { get; set; }
         public int RatingsQuantity { get; set; }
         public decimal Price { get; set; }
         public Brand Brand { get; set; } = default!;

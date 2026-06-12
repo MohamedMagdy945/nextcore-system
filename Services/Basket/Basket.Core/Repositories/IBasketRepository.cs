@@ -4,10 +4,10 @@ namespace Basket.Core.Repositories
 {
     public interface IBasketRepository
     {
-        Task<ShoppingCart?> GetCartAsync(string userName);
+        Task<ShoppingCart?> GetCartAsync(string Email);
 
         Task<ShoppingCart> UpdateCartAsync(ShoppingCart cart);
 
-        Task DeleteCartAsync(string userName);
+        Task DeleteCartAsync(string Email);
     }
 }

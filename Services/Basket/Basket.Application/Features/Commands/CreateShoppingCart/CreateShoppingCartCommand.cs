@@ -8,7 +8,7 @@ using MediatR;
 namespace Basket.Application.Features.Commands.CreateShoppingCart
 {
     public record CreateShoppingCartCommand(
-     string UserName,
+     string email,
      List<ShoppingCartItem> Items
     ) : IRequest<ShoppingCartResponse>;
 
