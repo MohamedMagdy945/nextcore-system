@@ -30,11 +30,11 @@ namespace Basket.API.Controllers
 
 
         [HttpGet]
-        [Route("[action]/{userName}", Name = "GetBasketByUserName")]
+        [Route("[action]/{email}", Name = "GetBasketByEmail")]
         [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ShoppingCartResponse>> GetBasket(string userName)
+        public async Task<ActionResult<ShoppingCartResponse>> GetBasket(string email)
         {
-            var query = new GetBasketByUserNameQuery(userName);
+            var query = new GetBasketByEmailQuery(email);
             var basket = await Mediator.Send(query);
             return Ok(basket);
         }
