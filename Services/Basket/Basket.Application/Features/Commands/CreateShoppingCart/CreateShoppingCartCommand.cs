@@ -8,7 +8,7 @@ using MediatR;
 namespace Basket.Application.Features.Commands.CreateShoppingCart
 {
     public record CreateShoppingCartCommand(
-     string email,
+     string Email,
      List<ShoppingCartItem> Items
     ) : IRequest<ShoppingCartResponse>;
 
@@ -39,7 +39,14 @@ namespace Basket.Application.Features.Commands.CreateShoppingCart
                 }
             }
 
-            var shoppingCart = request.Adapt<ShoppingCart>();
+
+            var shoppingCart = new ShoppingCart()
+            {
+                Email = request.Email,
+                Items = request.Items
+            };
+
+
 
             shoppingCart = await _basketRepository.UpdateCartAsync(shoppingCart);
             var shoppingCartResponse = shoppingCart.Adapt<ShoppingCartResponse>();

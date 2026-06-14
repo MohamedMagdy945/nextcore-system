@@ -90,8 +90,13 @@ namespace Auth.Infrastructure.Services
             .FirstOrDefaultAsync(u => u.Email == request.Email,
                 cancellationToken);
 
+            if (user == null)
+            {
+                return Result<TokenResponse>.Unauthorized("Invalid email or password.");
+            }
+
             var isValidPassword = _passwordHasher.Verify(request.Password,
-                user.PasswordHash);
+            user.PasswordHash);
 
             if (user == null || !isValidPassword)
                 return Result<TokenResponse>.Unauthorized("Invalid email or password.");

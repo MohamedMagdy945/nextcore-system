@@ -7,6 +7,12 @@
           "Path": "/api/v1/auth/{**catch-all}"
         }
       },
+      "userRoute": {
+        "ClusterId": "authCluster",
+        "Match": {
+          "Path": "/api/v1/users/{**catch-all}"
+        }
+      },
 
       "testRoute": {
         "ClusterId": "authCluster",
@@ -32,6 +38,12 @@
         "Match": {
           "Path": "/images/{**catch-all}"
         }
+      },
+      "basket_route": {
+        "ClusterId": "basketCluster",
+        "Match": {
+          "Path": "api/v1/basket/{**catch-all}"
+        }
       }
     },
 
@@ -48,6 +60,13 @@
         "Destinations": {
           "category": {
             "Address": "http://catalog.api:8080/"
+          }
+        }
+      },
+      "basketCluster": {
+        "Destinations": {
+          "category": {
+            "Address": "http://basket.api:8080/"
           }
         }
       }

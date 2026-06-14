@@ -75,8 +75,8 @@ namespace Basket.API.Controllers
 
             await _publishEndpoint.Publish(eventMsg);
 
-            _logger.LogInformation($"Basket Published for {basket.UserName}");
-            var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
+            _logger.LogInformation($"Basket Published for {basket.Email}");
+            var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.Email);
             await Mediator.Send(deleteCommand);
             return Accepted();
         }

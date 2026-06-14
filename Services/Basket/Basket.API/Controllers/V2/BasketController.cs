@@ -43,8 +43,8 @@ namespace Basket.API.Controllers.V2
             var eventMsg = basketCheckout.Adapt<BasketCheckoutEventV2>();
             eventMsg.TotalPrice = basket.TotalPrice;
             await _publishEndpoint.Publish(eventMsg);
-            _logger.LogInformation($"Basket Published for {basket.UserName} v2 endpoint");
-            var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.UserName);
+            _logger.LogInformation($"Basket Published for {basket.Email} v2 endpoint");
+            var deleteCommand = new DeleteShoppingCartByUserNameCommand(basket.Email);
             await Mediator.Send(deleteCommand);
             return Accepted();
         }
