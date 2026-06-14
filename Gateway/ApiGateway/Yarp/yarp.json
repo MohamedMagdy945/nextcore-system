@@ -10,7 +10,7 @@
       "userRoute": {
         "ClusterId": "authCluster",
         "Match": {
-          "Path": "/api/v1/users/{**catch-all}"
+          "Path": "/api/users/{**catch-all}"
         }
       },
 
