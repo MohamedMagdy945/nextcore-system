@@ -6,6 +6,9 @@ Backend microservices system for an e-commerce application. The project is built
 
 > Add the service architecture image here.
 
+<div align="center">
+  <img src="./docs/images/service-architecture.png" alt="Service architecture diagram" width="900" />
+</div>
 
 ## Architecture
 
@@ -66,6 +69,27 @@ flowchart TD
 - PostgreSQL
 - Docker
 - Docker Compose
+- JWT Authentication
+- Refresh Tokens
+- Permission-Based Authorization
+- Swagger / OpenAPI
+- Serilog
+- Seq
+- Correlation ID
+
+## Backend Features
+
+- API Gateway as the single entry point for backend services
+- Correlation ID support for request tracing across services
+- Structured logging using Serilog
+- Centralized log monitoring using Seq
+- Swagger / OpenAPI documentation for backend APIs
+- Authentication using access tokens and refresh tokens
+- Permission-based authorization in Auth Service
+- User registration and login
+- Basket checkout event publishing using RabbitMQ
+- Discount lookup using gRPC
+- Redis caching for basket data
 
 ## Ports
 
@@ -77,6 +101,7 @@ flowchart TD
 | Basket Service | `http://localhost:8002` |
 | Discount Service | `http://localhost:8003` |
 | Ordering Service | `http://localhost:8004` |
+| Seq Dashboard | `http://localhost:5341` |
 
 ## Main Endpoints
 
@@ -94,8 +119,11 @@ flowchart TD
 | Method | Endpoint | Description |
 |---|---|---|
 | POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Login user |
+| POST | `/auth/login` | Login user and return access token with refresh token |
+| POST | `/auth/refresh-token` | Generate a new access token using refresh token |
+| POST | `/auth/revoke-token` | Revoke refresh token |
 | GET | `/auth/profile` | Get authenticated user profile |
+| GET | `/auth/permissions` | Get authenticated user permissions |
 
 ### Basket Service
 
@@ -124,6 +152,161 @@ flowchart TD
 | POST | `/orders` | Create order |
 
 > Update endpoint paths if your actual controller routes are different.
+
+## Authentication And Authorization
+
+Auth Service is responsible for user registration, login, token generation, refresh token handling, and permission-based authorization.
+
+### Auth Flow
+
+```mermaid
+sequenceDiagram
+    participant User as User
+    participant Auth as Auth Service
+    participant DB as Auth DB
+
+    User->>Auth: Register user
+    Auth->>DB: Save user data
+    Auth-->>User: Registration success
+
+    User->>Auth: Login with credentials
+    Auth->>DB: Validate user
+    Auth-->>User: Access token + Refresh token
+
+    User->>Auth: Refresh token request
+    Auth->>DB: Validate refresh token
+    Auth-->>User: New access token
+```
+
+### Access Token
+
+The access token is used to authorize requests to protected endpoints.
+
+```http
+Authorization: Bearer <access-token>
+```
+
+### Refresh Token
+
+The refresh token is used to generate a new access token without forcing the user to login again.
+
+Recommended refresh token data:
+
+- Token value
+- User id
+- Expiration date
+- Created date
+- Revoked date
+- Replaced by token
+
+### Permission-Based Authorization
+
+Permissions are assigned to users or roles and used to protect backend actions.
+
+Examples:
+
+```txt
+Catalog.Products.Read
+Catalog.Products.Create
+Catalog.Products.Update
+Catalog.Products.Delete
+Orders.Read
+Orders.Create
+Users.Manage
+```
+
+Example protected endpoint behavior:
+
+| Permission | Allowed Action |
+|---|---|
+| `Catalog.Products.Read` | View products |
+| `Catalog.Products.Create` | Create products |
+| `Orders.Read` | View orders |
+| `Users.Manage` | Manage users and permissions |
+
+## API Documentation
+
+Each service should expose Swagger / OpenAPI documentation in development mode.
+
+| Service | Swagger URL |
+|---|---|
+| API Gateway | `http://localhost:8020/swagger` |
+| Catalog Service | `http://localhost:8001/swagger` |
+| Auth Service | `http://localhost:8010/swagger` |
+| Basket Service | `http://localhost:8002/swagger` |
+| Discount Service | `http://localhost:8003/swagger` |
+| Ordering Service | `http://localhost:8004/swagger` |
+
+Swagger helps document:
+
+- Available endpoints
+- Request payloads
+- Response models
+- Authentication requirements
+- HTTP status codes
+
+## Observability
+
+### Correlation ID
+
+Each request should include a correlation ID so logs can be traced across services.
+
+Example header:
+
+```http
+X-Correlation-ID: 7f2f0a3f-6e3d-4e2f-9f45-0e1c55d2b111
+```
+
+If the client does not send a correlation ID, the API Gateway or service middleware should generate one and pass it to downstream services.
+
+### Serilog With Seq
+
+The backend uses Serilog for structured logging and Seq for centralized log search and monitoring.
+
+Seq dashboard:
+
+```txt
+http://localhost:5341
+```
+
+Recommended log properties:
+
+- CorrelationId
+- ServiceName
+- RequestPath
+- RequestMethod
+- StatusCode
+- UserId
+- UserName
+- ElapsedMilliseconds
+- Exception
+
+Example Serilog output configuration:
+
+```json
+{
+  "Serilog": {
+    "Using": ["Serilog.Sinks.Console", "Serilog.Sinks.Seq"],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      { "Name": "Console" },
+      {
+        "Name": "Seq",
+        "Args": {
+          "serverUrl": "http://seq:5341"
+        }
+      }
+    ],
+    "Enrich": ["FromLogContext"]
+  }
+}
+```
 
 ## Prerequisites
 
@@ -185,6 +368,17 @@ RedisSettings__ConnectionString=basketdb:6379
 RabbitMQSettings__Host=rabbitmq
 RabbitMQSettings__Username=guest
 RabbitMQSettings__Password=guest
+
+JwtSettings__Issuer=ECommerceAuth
+JwtSettings__Audience=ECommerceClient
+JwtSettings__Secret=Your_super_secret_key_should_be_long
+JwtSettings__AccessTokenExpirationMinutes=15
+JwtSettings__RefreshTokenExpirationDays=7
+
+Serilog__WriteTo__1__Name=Seq
+Serilog__WriteTo__1__Args__serverUrl=http://seq:5341
+
+CorrelationIdSettings__HeaderName=X-Correlation-ID
 ```
 
 ## Databases
@@ -277,13 +471,14 @@ Make sure Redis is running and Basket Service is using the correct Redis connect
 
 ## Future Improvements
 
-- Add centralized logging
-- Add distributed tracing
+- Add distributed tracing with OpenTelemetry
 - Add health checks for all services
-- Add Swagger/OpenAPI documentation
 - Add CI/CD pipeline
 - Add unit and integration tests
 - Add monitoring with Prometheus and Grafana
+- Add role management dashboard
+- Add refresh token rotation
+- Add audit logs for sensitive actions
 
 ## License
 
