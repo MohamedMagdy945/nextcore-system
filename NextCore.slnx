@@ -1,11 +1,11 @@
 <Solution>
   <Folder Name="/Gateway/">
-    <Project Path="Gateway/ApiGateway/ApiGateway.csproj" Id="dc7d312a-78d2-45e2-93de-d44981023ecd" />
+    <Project Path="D:/Project/nextcore-system/Gateway/ApiGateway/ApiGateway.csproj" Id="dc7d312a-78d2-45e2-93de-d44981023ecd" />
   </Folder>
   <Folder Name="/Infrastructure/">
     <Project Path="D:/Project/nextcore-system/Infrastructure/Common.Logging/Common.Logging.csproj" Id="a40b7830-a62f-4f9d-aedf-3177bdf80cbe" />
+    <Project Path="D:/Project/nextcore-system/Infrastructure/Common.Shared/Common.Shared.csproj" Id="eb356825-e32a-4c9f-8d68-9ee5d4213ee6" />
     <Project Path="D:/Project/nextcore-system/Infrastructure/EventBus.Messages/EventBus.Messages.csproj" />
-    <Project Path="Infrastructure/Common.Shared/Common.Shared.csproj" Id="eb356825-e32a-4c9f-8d68-9ee5d4213ee6" />
   </Folder>
   <Folder Name="/Services/" />
   <Folder Name="/Services/Auth/">
