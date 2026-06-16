@@ -2,14 +2,6 @@
 
 Backend microservices system for an e-commerce application. The project is built as a set of independent services connected through an API Gateway, with service-to-service communication using REST, gRPC, RabbitMQ, Redis, and multiple databases.
 
-## Service Architecture Image
-
-> Add the service architecture image here.
-
-<div align="center">
-  <img src="./docs/images/service-architecture.png" alt="Service architecture diagram" width="900" />
-</div>
-
 ## Architecture
 
 ```mermaid
