@@ -6,9 +6,6 @@ Backend microservices system for an e-commerce application. The project is built
 
 > Add the service architecture image here.
 
-<div align="center">
-  <img src="./docs/images/service-architecture.png" alt="Service architecture diagram" width="900" />
-</div>
 
 ## Architecture
 
